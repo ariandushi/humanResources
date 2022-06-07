@@ -1,0 +1,26 @@
+<h2>Address List</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th> address Id</th>
+            <th> State</th>
+            <th> City</th>
+            <th> Street</th>
+            <th> Postal Code</th>
+            <th> Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let address of addresses">
+            <td> {{ address.addressID}}</td>
+            <td> {{ address.state}}</td>
+            <td> {{ address.city}}</td>
+            <td> {{ address.street}}</td>
+            <td> {{ address.postalCode}}</td>
+            <td>
+                <button (click)="addNewAddress()" class="btn btn-info " style="margin-left: 10px">Add new Address</button>
+
+            </td>
+        </tr>
+    </tbody>
+</table>

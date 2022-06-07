@@ -1,0 +1,29 @@
+<div class="col-md-8 offset-md-3">
+    <h3>Add Experience</h3>
+    <form (ngSubmit)="onSubmit()">
+    
+      
+        <div class="form-group">
+            <label>userid</label>
+            <input type="text" class="form-control" id="userId" 
+                [(ngModel)] = "certification.userId" name="userId">
+        </div>
+        <div class="form-group">
+            <label>Certification Name</label>
+            <input type="text" class="form-control" id="certificationName" 
+                [(ngModel)] = "certification.certificationName" name="certificationName">
+        </div>
+        <div class="form-group">
+            <label>Certification Year</label>
+            <input type="text" class="form-control" id="certificationYear" 
+                [(ngModel)] = "certification.certificationYear" name="certificationYear">
+        </div>
+        <div class="form-group">
+            <label>Expiration Date</label>
+            <input type="text" class="form-control" id="expirationDate" 
+                [(ngModel)] = "certification.expirationDate" name="expirationDate">
+        </div>
+        
+        <button class="btn btn-success" type="submit">Submit</button>
+    </form>
+    </div>

@@ -1,0 +1,28 @@
+<h2> User Experience</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th> userid</th>
+            <th> expid</th>
+            <th> Company</th>
+            <th> Position</th>
+            <th> Stat Time</th>
+            <th> End Time</th>
+            <th> Description</th>
+            <th> Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+            <td> {{ experience.userId}}</td>
+            <td> {{ experience.expId}}</td>
+            <td> {{ experience.company}}</td>
+        <!--   <td> {{ user.password}}</td>-->
+            <td> {{ experience.position}}</td>
+            <td> {{ experience.startTime}}</td>
+            <td> {{ experience.endTime}}</td>
+            <td> {{ experience.description}}</td>
+            <td>
+                <button (click)="updateExperience(experience.expId)" class="btn btn-info">Update</button>
+            </td>
+    </tbody>
+</table>

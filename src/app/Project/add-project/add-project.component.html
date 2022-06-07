@@ -1,0 +1,27 @@
+<div class="col-md-8 offset-md-3">
+    <h3>Add Project</h3>
+    <form (ngSubmit)="onSubmit()">
+    
+        <div class="form-group">
+            <label> Project Name</label>
+            <input type="text" class="form-control" id="projectName" 
+                [(ngModel)] = "project.projectName" name="projectName">
+        </div>
+        <div class="form-group">
+            <label>Start Time</label>
+            <input type="text" class="form-control" id="startTime" 
+                [(ngModel)] = "project.startTime" name="startTime">
+        </div>
+        <div class="form-group">
+            <label>End Time</label>
+            <input type="text" class="form-control" id="endTime" 
+                [(ngModel)] = "project.endTime" name="endTime">
+        </div>
+        <div class="form-group">
+            <label> Description</label>
+            <input type="text" class="form-control" id="description" 
+                [(ngModel)] = "project.description" name="description">
+        </div>
+        <button class="btn btn-success" type="submit">Submit</button>
+    </form>
+    </div>

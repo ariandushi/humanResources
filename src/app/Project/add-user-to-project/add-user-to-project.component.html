@@ -1,0 +1,19 @@
+<div class="col-md-8 offset-md-3">
+    <h3>Update Project</h3>
+    <form (ngSubmit)="onSubmit()">
+    
+        <!-- <input type="text" hidden="true" class="form-control" id="userId" [(ngModel)]="user.userId" name="userId"/>
+        <input type="text" hidden="true" class="form-control" id="project" [(ngModel)]="user.project" name="project"/> -->
+
+
+         <div class="form-group">
+            <label>User Id</label>
+            <input type="text" class="form-control" id="userId" 
+                [(ngModel)] = "project.userId" name="userId">
+        </div>
+        <button class="btn btn-success" type="submit">Submit</button>
+
+    </form>
+</div>
+<!-- <button class="btn btn-default" (click)="addUserToProject(project)">Add New Pet</button> -->
+
