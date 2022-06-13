@@ -18,12 +18,13 @@
             <td> {{ project.startTime}}</td>
             <td> {{ project.endTime}}</td>
             <td> {{ project.description}}</td>
-            <td> {{ project.userId}}</td>
+            <!-- <td *ngIf="project.users!=undefined"> {{ project.users[0].userId}}</td> -->
         
             <!-- <tr *ngFor="let user of project.users"> -->
 
                 <!-- <tr *ngFor="let user of users"></tr> -->
-                <select  [(ngModel)]="userId" (change)="chosenUser($event)">
+            
+                <select  [(ngModel)]="userId" (change)="chosenUser(userId)">
                     <option *ngFor="let user of users" [ngValue]=user>
                         {{user.userId}}
                     </option>
@@ -31,9 +32,9 @@
                 </select>
                 <!-- Selected Value : {{SelectedValue}} -->
                 <div>
-                    <input type="text" [(ngModel)] = "userId">
-                    {{userId}}
-                    <button (click)="getUserUserId(userId)" class="btn btn-info">Search Address</button>
+                    <input type="text" [(ngModel)] = "user.userId">
+                    <!-- {{user.userId}} -->
+                    <button (click)="addNewUserToProject(project)" class="btn btn-info">Save User</button>
                   </div>
             <button (click)="updateProject(project.projectId)" class="btn btn-info">Update</button>
             <!-- <select class="form-select"[(ngModel)]="user.userId">

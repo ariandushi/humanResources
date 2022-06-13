@@ -1,0 +1,17 @@
+<h2> User Projects</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th> userid</th>
+            <th> projectId</th>
+            <th> projectName</th>
+    </thead>
+    <tbody>
+            <td> {{ project.userId}}</td>
+            <td> {{ project.projectId}}</td>
+            <td> {{ project.projectName}}</td>
+            <td>
+                <button (click)="addProject(project.projectId)" class="btn btn-info">Update</button>
+            </td>
+    </tbody>
+</table>

@@ -1,1 +1,35 @@
-<p>update-certifications works!</p>
+<div class="col-sm-12">
+    <button (click)="addCertification(user.userId)" class="btn btn-info">Add Certification</button>
+</div>
+    <tr *ngFor="let certification of certifications">
+      <h6 class="d-flex align-items-center mb-3">Certification</h6>
+      <td> {{ certification.userId}</td>
+      <div class="progress mb-3" style="height: 5px">
+        <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">assignment</i>EXP</h6>
+      <td> {{ certification.certificationID}}</td>
+      <div class="progress mb-3" style="height: 5px">
+        <div class="progress-bar bg-primary" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <td> {{ certification.certificationName}}</td>
+      <div class="progress mb-3" style="height: 5px">
+        <div class="progress-bar bg-primary" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <td> {{ certification.certificationYear}}</td>
+      <div class="progress mb-3" style="height: 5px">
+        <div class="progress-bar bg-primary" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <td> {{ certification.expirationDate}}</td>
+      <div class="progress mb-3" style="height: 5px">
+        <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <td> {{ certification.releasingAuthority}}</td>
+      <div class="progress mb-3" style="height: 5px">
+        <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+      <td> {{ certification.linkOfCertification}}</td>
+      <div class="progress mb-3" style="height: 5px">
+        <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+    </tr>

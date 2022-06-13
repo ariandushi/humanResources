@@ -1,4 +1,5 @@
 <h2> User List</h2>
+<button (click)="addUser()" class="btn btn-info">Add User</button>
 <table class="table table-striped">
     <thead>
         <tr>
@@ -26,9 +27,21 @@
             <td> {{ user.secondContact}}</td>
             <td> {{ user.userStatus}}</td>
             <td>
+                <select  [(ngModel)]="projectId" (change)="chosenProject(projectId)">
+                    <option *ngFor="let project of projects" [ngValue]=project>
+                        {{project.projectId}}
+                    </option>
+                </select>
+                <div>
+                    <input type="text" [(ngModel)] = "project.projectId">
+                    <!-- {{user.userId}} -->
+                    <button (click)="addNewProjectToUser(user)" class="btn btn-info">Save Project</button>
+                  </div>
                 <button (click)="updateUser(user.userId)" class="btn btn-info">Update</button>
                 <!-- <button (click)="deleteUser(user.userId)" class="btn btn-danger" style="margin-left: 10px">Delete</button> -->
                 <button (click)="navigateToProfile(user.userId)" class="btn btn-info " style="margin-left: 10px">Profile</button>
+
+                <button (click)="addProjectToUser(user)" class="btn btn-info " style="margin-left: 10px">Assign Project</button>
 
             </td>
         </tr>

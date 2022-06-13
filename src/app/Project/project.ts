@@ -3,6 +3,7 @@ import { User } from "../User/user";
 
 export class Project{
     userId: Guid;
+    username:string;
     projectId: Guid;
     projectName: string;
     startTime: string;

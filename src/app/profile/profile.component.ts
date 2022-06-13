@@ -10,6 +10,9 @@ import { Address } from '../Address/address';
 import { AddressService } from '../Address/address.service';
 import { HttpResponse,HttpClient } from '@angular/common/http';
 import { Certification } from '../Certifications/certification';
+import { CertificationsService } from '../Certifications/certifications.service';
+import { Project } from '../Project/project';
+import { ProjectService } from '../Project/project.service';
 
 
 @Component({
@@ -20,6 +23,7 @@ import { Certification } from '../Certifications/certification';
 export class ProfileComponent implements OnInit {
   isButtonVisible:boolean = false;
   userId:Guid;
+  addressId:Guid;
   expId:Guid;
   certificationID:Guid;
   addressID:Guid;
@@ -30,10 +34,13 @@ export class ProfileComponent implements OnInit {
   experiences: Experience[];
   certifications: Certification[];
   certification: Certification = new Certification();
+  project: Project=new Project();
+  projects: Project[];
   constructor(private userService: UserService, private router: Router,
      public route: ActivatedRoute,
      private experienceService: ExperienceService, private addressService:AddressService,
-     private httpClient:HttpClient) { }
+     private certificationsService: CertificationsService,
+     private projectService: ProjectService) { }
 
   ngOnInit(): void {
     this.userId = this.route.snapshot.params['userId'];
@@ -42,7 +49,6 @@ export class ProfileComponent implements OnInit {
       
       this.user = data;
       //this.user.addressID
-      this.searchAddress(Guid.parse("dadb3077-6469-4287-8743-6d835e55f956"))
     }, error =>console.log(error));
 
    // this.expId = this.route.snapshot.params['userId'];
@@ -50,6 +56,16 @@ export class ProfileComponent implements OnInit {
     this.experienceService.getExperienceByUserId(this.userId).subscribe(data => {
       this.experiences = data;
     }, error=>console.log(error));
+
+    this.certificationsService.getCertificationByUserId(this.userId).subscribe(data => {
+      this.certifications = data;
+    }, error=>console.log(error));
+    this.projectService.getProjectsByUserId(this.userId).subscribe(data=>{
+      this.projects=data;
+    }, error=> console.log(error));
+    this.addressService.getAddressByUserId(this.userId).subscribe(data=>{
+      this.addresses=data;
+    }, error=> console.log(error));
   }
  /* private getUser(userId: string=uuid()){
     this.userService.getUserById(this.userId).subscribe(data=>{
@@ -80,12 +96,14 @@ export class ProfileComponent implements OnInit {
   //   }, error=>console.log(error));
   // }
 
-  searchAddress( addressId:Guid){
-    this.addressService.getAddressByAddressId(addressId).subscribe(res => {
-      debugger;
-    this.address=res
-    });
-    this.isButtonVisible=!this.isButtonVisible;
+  addAddress( userId:Guid){
+    // this.addressService.getAddressByAddressId(addressID).subscribe(res => {
+    //   debugger;
+    // this.address=res
+    // });
+    // this.isButtonVisible=!this.isButtonVisible;
+
+    this.router.navigate(['add-address', userId]);
     }
 
   reloadCurrentPage(){
@@ -100,7 +118,18 @@ export class ProfileComponent implements OnInit {
   addCertification(userId:Guid){
     this.router.navigate(['add-certifications', userId]);
   }
+  updateCertificationByCertificationId(certificationID:Guid){
+    this.router.navigate(['update-certification', certificationID]);
+  }
+  deleteCertification(certificationID:Guid){
+    this.certificationsService.deleteCertification(certificationID).subscribe(data=>{
+      this.certification=data;
+    }, error=>console.log(error));
+  }
 
+  addProjectToUser(){
+    this.router.navigate(['/user-list']);
+  }
 
   // show:boolean = false;
   // addNewAddress(address: Address){

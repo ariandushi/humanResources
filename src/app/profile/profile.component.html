@@ -136,7 +136,7 @@
                   </div>
                   <div class="col-sm-9 text-secondary">
                       <tbody>
-                          <td> {{ user.firstName}}</td>
+                          <td> {{ user.startingDay}}</td>
                       </tbody>
                   </div>
                   <hr>
@@ -148,7 +148,7 @@
                   </div>
                   <div class="col-sm-9 text-secondary">
                       <tbody>
-                          <td> {{ user.lastName}}</td>
+                          <td> {{ user.secondContact}}</td>
                       </tbody>
                   </div>
                   <hr>
@@ -184,11 +184,11 @@
                             <div class="address-button" *ngIf="!isButtonVisible">
                               <div class="row">
                                 <div class="col-sm-12">
-                                  <input type="text" [(ngModel)] = addressID>
-                                  <button (click)="searchAddress(this.addressID)" class="btn btn-info">Search Address</button>
+                                  <button (click)="addAddress(user.userId)" class="btn btn-info">Add Address</button>
                                 </div>
-                               </div>
                               </div>
+                            </div>
+                            <tr *ngFor="let address of addresses">
                               <h6 class="d-flex align-items-center mb-3"  *ngIf="isButtonVisible">State</h6>
                               <!-- <td *ngIf="isButtonVisible"> {{address.addressID}}</td> -->
                               <td *ngIf="isButtonVisible"> {{address.state}}</td>
@@ -426,6 +426,7 @@
                     </div>
                   </div>
                 </div>
+                
               </div>
 
 
@@ -476,14 +477,14 @@
                   <div class="experience-button">
                   <div class="row">
                     <div class="col-sm-12">
-                      <button (click)="updateExperienceByExpId(experience.expId)" class="btn btn-info">Edit Experience</button>
+                      <button (click)="updateCertificationByCertificationId(certification.certificationID)" class="btn btn-info">Edit Certification</button>
                     </div>
                   </div>
                 </div>
                 <div class="experience-button">
                   <div class="row">
                     <div class="col-sm-12">
-                      <button (click)=" deleteExperience(experience.expId)"(click)="reloadCurrentPage()" class="btn btn-info">Delete Experience</button>
+                      <button (click)=" deleteCertification(certification.certificationID)"(click)="reloadCurrentPage()" class="btn btn-info">Delete Certification</button>
                     </div>
                   </div>
                 </div>
@@ -494,27 +495,33 @@
                     </div>
                   </div>
                   </div>
-
+                </tr>
                 </div>
               </div>
             </div>
             </div>
 
-
-
+            <div class="experience-button">
+              <div class="row">
+                <div class="col-sm-12">
+                  <button (click)="addProjectToUser()" class="btn btn-info">Add Project</button>
+                </div>
+              </div>
+              </div>
                 <div class="col-sm-6 mb-3">
                   <div class="card h-100">
                     <div class="card-body">
+                      <tr *ngFor="let project of projects">
                       <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">assignment</i>Project Status</h6>
-                      <small>Web Design</small>
+                      <td> {{ user.projects[0].projectId}</td>
                       <div class="progress mb-3" style="height: 5px">
                         <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                       </div>
-                      <small>Website Markup</small>
+                      <td> {{ project.projectId}</td>
                       <div class="progress mb-3" style="height: 5px">
                         <div class="progress-bar bg-primary" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
                       </div>
-                      <small>One Page</small>
+                      <td> {{ project.projectName}</td>
                       <div class="progress mb-3" style="height: 5px">
                         <div class="progress-bar bg-primary" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
                       </div>

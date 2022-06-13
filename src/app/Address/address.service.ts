@@ -9,20 +9,25 @@ import { Guid } from 'guid-typescript';
 })
 export class AddressService {
 
-  private baseURL='http://localhost:8080/api/v1/hr_management_system/addressess';
+  private baseURL='http://localhost:8080/api/v1/hr_management_system/addresses';
   constructor(private httpClient: HttpClient) { }
 
   getAddressList():Observable<Address[]>{
     return this.httpClient.get<Address[]>(`${this.baseURL+"/getAll"}`);
   }
-  addNewAddress(address: Address):Observable<Object>{
+  addNewAddress(address: Address, userId:Guid):Observable<Object>{
     return this.httpClient.post(`${this.baseURL+"/addNewAddress"}`, address);
   }
-  getAddressByAddressId(addressId:Guid):Observable<Address>{
-    return this.httpClient.get<Address>(`${this.baseURL+"/id"}/${addressId}`);
+  getAddressByAddressId(addressID:Guid):Observable<Address>{
+    return this.httpClient.get<Address>(`${this.baseURL+"/getAddressById"}/${addressID}`);
   }
-  editAddress(addressId:Guid,address: Address): Observable<Object>{
-    return this.httpClient.put(`${this.baseURL+"/editAddress"}/${addressId}`,address);
+  getAddressByUserId(userId:Guid):Observable<Address[]>{
+    return this.httpClient.get<Address[]>(`${this.baseURL+"/getAddressByUserId"}/${userId}`);
   }
-
+  editAddress(addressID:Guid,address: Address): Observable<Object>{
+    return this.httpClient.put(`${this.baseURL+"/editAddress"}/${addressID}`,address);
+  }
+  // assignUserToAddress(addressID:Guid, userId:Guid): Observable<Object>{
+  //   return this.httpClient.patch(`${this.baseURL+"assignUser"}/${addressID}/userId/${userId}`, null);
+  // }
 }

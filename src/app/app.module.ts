@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,6 +27,16 @@ import { AddAddressComponent } from './Address/add-address/add-address.component
 import { UpdateAddressComponent } from './Address/update-address/update-address.component';
 import { AddCertificationsComponent } from './Certifications/add-certifications/add-certifications.component';
 import { UpdateCertificationsComponent } from './Certifications/update-certifications/update-certifications.component';
+import { AddProjectToUserComponent } from './User/add-project-to-user/add-project-to-user.component';
+import { UserProjectsListComponent } from './User/user-projects-list/user-projects-list.component';
+import { AdminComponent } from './admin/admin.component';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { LoginComponent } from './login/login.component';
+import { HeaderComponent } from './header/header.component';
+import { AuthGuard } from './_auth/auth.guard';
+import { AuthInterceptor } from './_auth/auth.interceptor';
+import { UserService } from './User/user.service';
+import { UserComponent } from './User/user/user.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +56,14 @@ import { UpdateCertificationsComponent } from './Certifications/update-certifica
     AddAddressComponent,
     UpdateAddressComponent,
     AddCertificationsComponent,
-    UpdateCertificationsComponent
+    UpdateCertificationsComponent,
+    AddProjectToUserComponent,
+    UserProjectsListComponent,
+    AdminComponent,
+    ForbiddenComponent,
+    LoginComponent,
+    HeaderComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
@@ -60,8 +77,16 @@ import { UpdateCertificationsComponent } from './Certifications/update-certifica
     MatButtonModule,
     MatIconModule,
     MatDividerModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [
+    AuthGuard,
+   { provide: HTTP_INTERCEPTORS,
+    useClass:AuthInterceptor,
+    multi:true
+  },
+  UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

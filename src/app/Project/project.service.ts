@@ -28,7 +28,10 @@ export class ProjectService {
   addUserToProject(projectId:Guid, project: Project, userId:Guid, user:User): Observable<Object>{
     return this.httpClient.put(`${this.baseURL+"/projects/updateProject"}/${projectId}`, project);
   }
-  getProjectByUserId(userId: Guid): Observable<Project>{
-    return this.httpClient.get<Project>(`${this.baseURL+"/projects"}/${userId}`);
+  getProjectsByUserId(userId: Guid): Observable<Project[]>{
+    return this.httpClient.get<Project[]>(`${this.baseURL+"/projects"}/${userId}`);
+  }
+  assignUserToProject(projectId:Guid, userId:Guid):Observable<Object>{
+    return this.httpClient.patch(`${this.baseURL+"/assignUser"}/${projectId}/userId/${userId}`, null);
   }
 }

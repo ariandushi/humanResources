@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Guid } from 'guid-typescript';
 import { User } from 'src/app/User/user';
 import { UserService } from 'src/app/User/user.service';
@@ -13,31 +13,33 @@ import { ProjectService } from '../project.service';
   styleUrls: ['./project-list.component.scss']
 })
 export class ProjectListComponent implements OnInit {
-
   userId: Guid;
   //user: User = new User();
   project: Project= new Project();
   projects: Project[];
   users: User[];
-  user:User= new User;
-  
+  user:User= new User();
   currentUser : User;
+  projectId:Guid;
+  currentProject: Project;
   constructor(private projectService: ProjectService,
-    private router: Router, private userService:UserService) { }
+    private router: Router, private userService:UserService,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.projectService.getProjectList().subscribe(data=>{
       this.projects=data;
+      // debugger;
     })
     this.userService.getUsersList().subscribe(data=>{
+      // debugger;
       this.users=data;
     })
   }
 
   SelectedValue: Guid;
   chosenUser(e:any){
-    console.log(e.target.value)
-    this.userId=e.target.value;
+    this.user=e;
   }
   updateProject(projectId:Guid){
     this.router.navigate([`update-project`, projectId])
@@ -59,10 +61,13 @@ export class ProjectListComponent implements OnInit {
   //   console.log(user);
   //   this.currentUser=user;
   // }
-  // addNewUserToProject(userId:Guid){
-  //   this.projectService.getProjectByProjectId(projectId).subscribe(data=>{
-  //     this.project=data;
-  //   })
+  addNewUserToProject(project: Project){
+    console.log(this.project);
+    this.projectService.assignUserToProject(project.projectId, this.user.userId).subscribe(data=>{
+      console.log(data);
+      this.router.navigate(['/project-list']);
+    }, error=>console.log(error));
+  }
 
-  // }
+ 
 }

@@ -1,4 +1,4 @@
-<mat-toolbar class="mat-elevation-z8">
+<!-- <mat-toolbar class="mat-elevation-z8">
     <button
       mat-icon-button
       *ngIf="sidenav.mode === 'over'"
@@ -30,6 +30,9 @@
 </li>
     
   </ul>
+    <button type="button" class="btn btn-success" routerLink="/login">Login</button>
+    <button type="button" class="btn btn-danger">Logout</button>
+
     </nav>
   </mat-toolbar>
   
@@ -70,4 +73,6 @@
         <router-outlet></router-outlet>
       </div>
     </mat-sidenav-content>
-  </mat-sidenav-container>
+  </mat-sidenav-container> -->
+  <app-header></app-header>
+  <router-outlet></router-outlet>
