@@ -44,12 +44,12 @@ export class UserListComponent implements OnInit {
   /*updateUserUsername(username){
     this.router.navigate(['update-user', username]);
   }*/
-  // deleteUser(userId: Guid){
-  //   this.userService.deleteUser().subscribe(data=>{
-  //     console.log(data);
-  //     this.getUsers();
-  //   })
-  // }
+  deleteUser(userId: Guid){
+    this.userService.deleteUser(userId).subscribe(data=>{
+      console.log(data);
+      this.getUsers();
+    })
+  }
   navigateToProfile(userId:Guid){
     this.router.navigate(['profile', userId]);
   }
@@ -79,5 +79,8 @@ export class UserListComponent implements OnInit {
       console.log(data);
       this.router.navigate(['/user-list']);
     }, error=>console.log(error));
+  }
+  reloadCurrentPage(){
+    window.location.reload();
   }
 }

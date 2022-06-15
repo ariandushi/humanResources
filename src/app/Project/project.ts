@@ -10,5 +10,5 @@ export class Project{
     endTime:string;
     description: string;
 //    mySet: Set<User> = new Set<User>();
-   users: User[];
+//   users: User[];
 }

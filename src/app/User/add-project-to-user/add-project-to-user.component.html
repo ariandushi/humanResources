@@ -1,1 +1,32 @@
-<p>add-project-to-user works!</p>
+<h2> User List</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th> userid</th>
+            <th> username</th>
+            <th> firstName</th>
+            <th> LastName</th>
+            <th> email</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- <tr *ngFor="let project of projects"> -->
+            <td> {{ user.userId}}</td>
+            <td> {{ user.username}}</td>
+            <td> {{ user.firstName}}</td>
+            <td> {{ user.lastName}}</td>
+            <td> {{ user.email}}</td>
+<select  [(ngModel)]="projectId" (change)="chosenProject(projectId)">
+    <option *ngFor="let project of projects" [ngValue]=project>
+        {{project.projectId}}
+    </option>
+    <!-- {{user.userId}} -->
+</select>
+<!-- Selected Value : {{SelectedValue}} -->
+<div>
+    <input type="text" [(ngModel)] = "project.projectId">
+    <!-- {{user.userId}} -->
+    <button (click)="addNewProjectToUser(user)" class="btn btn-info">Save Project</button>
+  </div>
+</tbody>
+</table>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Guid } from 'guid-typescript';
 import { Project } from 'src/app/Project/project';
+import { ProjectService } from 'src/app/Project/project.service';
 import { User } from '../user';
 import { UserService } from '../user.service';
 
@@ -12,10 +13,12 @@ import { UserService } from '../user.service';
 })
 export class AddProjectToUserComponent implements OnInit {
 
+  projectId:Guid;
   userId:Guid;
   user:User= new User();
   project: Project=new Project();
-  constructor(private route: ActivatedRoute, private userService: UserService, private router: Router ) { }
+  projects:Project[];
+  constructor(private route: ActivatedRoute, private userService: UserService, private router: Router, private projectService: ProjectService ) { }
 
   ngOnInit(): void {
     this.userId = this.route.snapshot.params['userId'];
@@ -23,14 +26,23 @@ export class AddProjectToUserComponent implements OnInit {
     this.userService.getUserById(this.userId).subscribe(data=>{
       this.user= data;
     }, error =>console.log(error));
+
+    this.projectService.getProjectList().subscribe(data=>{
+      this.projects=data;
+    }, error =>console.log(error));
   }
 
-  onSubmit(){
-    console.log(this.user);
-    this.userService.assignProjectToUser(this.userId,this.project.projectId).subscribe(data=>{
+  chosenProject(e:any){
+    this.project=e;
+  }
+  addNewProjectToUser(user:User){
+    this.userService.assignProjectToUser(user.userId,this.project.projectId).subscribe(data=>{
       console.log(data);
-      this.router.navigate(['/user-list']);
     },error=>console.log(error));
+    this.navigateToProfile(this.userId);
   }
 
+  navigateToProfile(userId:Guid){
+    this.router.navigate(['profile', userId]);
+  }
 }

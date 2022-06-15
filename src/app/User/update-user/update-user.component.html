@@ -24,8 +24,11 @@
         </div>
         <div class="form-group">
             <label>Date of Birth</label>
-            <input type="text" class="form-control" id="dob" 
-                [(ngModel)] = "user.dob" name="dob">
+            <input matInput [matDatepicker]="picker" id="dob"
+             [(ngModel)] = "user.dob" name="dob">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
         </div>
         <div class="form-group">
             <label>Mobile Phone</label>

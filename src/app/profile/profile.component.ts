@@ -13,6 +13,8 @@ import { Certification } from '../Certifications/certification';
 import { CertificationsService } from '../Certifications/certifications.service';
 import { Project } from '../Project/project';
 import { ProjectService } from '../Project/project.service';
+import { DayOffService } from '../dayOff/day-off.service';
+import { DayOff } from '../dayOff/dayOff';
 
 
 @Component({
@@ -36,11 +38,13 @@ export class ProfileComponent implements OnInit {
   certification: Certification = new Certification();
   project: Project=new Project();
   projects: Project[];
+  dayOff:DayOff= new DayOff();
+  dayOff1: DayOff[];
   constructor(private userService: UserService, private router: Router,
      public route: ActivatedRoute,
      private experienceService: ExperienceService, private addressService:AddressService,
      private certificationsService: CertificationsService,
-     private projectService: ProjectService) { }
+     private projectService: ProjectService, private dayOffService: DayOffService) { }
 
   ngOnInit(): void {
     this.userId = this.route.snapshot.params['userId'];
@@ -54,7 +58,7 @@ export class ProfileComponent implements OnInit {
    // this.expId = this.route.snapshot.params['userId'];
 
     this.experienceService.getExperienceByUserId(this.userId).subscribe(data => {
-      this.experiences = data;
+     this.experiences=data
     }, error=>console.log(error));
 
     this.certificationsService.getCertificationByUserId(this.userId).subscribe(data => {
@@ -65,6 +69,9 @@ export class ProfileComponent implements OnInit {
     }, error=> console.log(error));
     this.addressService.getAddressByUserId(this.userId).subscribe(data=>{
       this.addresses=data;
+    }, error=> console.log(error));
+    this.dayOffService.showDayOffRequestByUserId(this.userId).subscribe(data=>{
+      this.dayOff1=data;
     }, error=> console.log(error));
   }
  /* private getUser(userId: string=uuid()){
@@ -127,10 +134,13 @@ export class ProfileComponent implements OnInit {
     }, error=>console.log(error));
   }
 
-  addProjectToUser(){
-    this.router.navigate(['/user-list']);
+  addProjectToUser(userId:Guid){
+    this.router.navigate(['add-project-to-user', userId]);
   }
 
+  placeDayOff(userId:Guid){
+    this.router.navigate(['place-day-off-request', userId]);
+  }
   // show:boolean = false;
   // addNewAddress(address: Address){
   //   this.show=true;

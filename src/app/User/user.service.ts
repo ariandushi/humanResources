@@ -4,13 +4,14 @@ import { Observable } from 'rxjs';
 import { User } from './user';
 import { Guid } from 'guid-typescript';
 import { UserAuthService } from '../_services/user-auth.service';
+import { Project } from '../Project/project';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   
-  requestHeader= new HttpHeaders({"No-Auth":"True"})
+  requestHeader= new HttpHeaders({'No-Auth':'True'})
   private baseURL="http://localhost:8080/api/v1/hr_management_system/users";
   constructor(private httpClient: HttpClient, private userAuthService:UserAuthService) { }
 
@@ -34,6 +35,9 @@ export class UserService {
     return this.httpClient.patch(`${this.baseURL+"/assignProjectToUser"}/${userId}/projectId/${projectId}`, null);
   }
 
+  getUsersByProjectId(projectId:Guid):Observable<User[]>{
+    return this.httpClient.get<User[]>(`${this.baseURL+"/getUsersByProject"}/${projectId}`);
+  }
   public login(loginData: any){
     return this.httpClient.post(this.baseURL+"/login",loginData, {headers:this.requestHeader});
   }
@@ -43,25 +47,44 @@ export class UserService {
   public forAdmin(){
     return this.httpClient.get(this.baseURL+"/forAdmin", {responseType:'text'});
   }
-  public roleMatch(allowedRoles:any):boolean{
-    let isMatch=false;
-    const userRoles:any=this.userAuthService.getRoles();
-    if(userRoles !=null && userRoles){
-      for(let i = 0; i < userRoles.length; i++){
-        for(let j=0; j<allowedRoles.length; j++){
-          if(userRoles[i].roleName === allowedRoles[j]){
-            isMatch=true;
-            return isMatch;
-          }else{
-            return isMatch;
-          }
-        }
-      }
-    }
-  }
-  // deleteUser(userId: Guid):Observable<Object>{
-  //   return this.httpClient.delete(`${this.baseURL+"/userId"}/${userId}`);
+
+
+  // roleMatch(allowedRoles): boolean {
+  //   var isMatch = false;
+  //   var userRoles: string[] = JSON.parse(localStorage.getItem('userRoles'));
+  //   allowedRoles.forEach(element => {
+  //     if (userRoles.indexOf(element) > -1) {
+  //       isMatch = true;
+  //       return false;
+  //     }
+  //   });
+  //   return isMatch;
+
   // }
+
+  // public roleMatch(allowedRoles):boolean{
+  //   let isMatch=false;
+  //   const userRoles:any=this.userAuthService.getRoles();
+  //   if(userRoles !=null && userRoles){
+  //     for(let i = 0; i < userRoles.length; i++){
+  //       for(let j=0; j<allowedRoles.length; j++){
+  //         if(userRoles[i].roleName === allowedRoles[j]){
+  //           isMatch=true;
+  //           return isMatch;
+  //         }else{
+  //           return isMatch;
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
+
+
+
+
+  deleteUser(userId: Guid):Observable<Object>{
+    return this.httpClient.delete(`${this.baseURL+"/deleteUser"}/${userId}`);
+  }
 
   /*getUserByUsername(username): Observable<User>{
     return this.httpClient.get<User>(`${this.baseURL+"username/"}${username}`);

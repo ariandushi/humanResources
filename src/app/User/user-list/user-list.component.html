@@ -20,7 +20,7 @@
             <td> {{ user.lastName}}</td>
             <td> {{ user.email}}</td>
             <td> {{ user.dob}}</td>
-            <td> {{ user.leaveDays}}</td>
+            <td> {{ user.leaveDaysLeft}}</td>
             <td> {{ user.mobile}}</td>
             <td> {{ user.startingDay}}</td>
             <td> {{ user.terminationDay}}</td>
@@ -42,6 +42,10 @@
                 <button (click)="navigateToProfile(user.userId)" class="btn btn-info " style="margin-left: 10px">Profile</button>
 
                 <button (click)="addProjectToUser(user)" class="btn btn-info " style="margin-left: 10px">Assign Project</button>
+
+                <button (click)="deleteUser(user.userId)" 
+                
+                class="btn btn-info " style="margin-left: 10px">Delete User</button>
 
             </td>
         </tr>

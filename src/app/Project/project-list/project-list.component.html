@@ -1,4 +1,4 @@
-<h2> User List</h2>
+<h2> Project List</h2>
 <table class="table table-striped">
     <thead>
         <tr>
@@ -16,7 +16,7 @@
             <td> {{ project.projectId}}</td>
             <td> {{ project.projectName}}</td>
             <td> {{ project.startTime}}</td>
-            <td> {{ project.endTime}}</td>
+            <!-- <td> {{ project.endTime}}</td> -->
             <td> {{ project.description}}</td>
             <!-- <td *ngIf="project.users!=undefined"> {{ project.users[0].userId}}</td> -->
         
@@ -24,24 +24,23 @@
 
                 <!-- <tr *ngFor="let user of users"></tr> -->
             
-                <select  [(ngModel)]="userId" (change)="chosenUser(userId)">
+                <!-- <select  [(ngModel)]="userId" (change)="chosenUser(userId)">
                     <option *ngFor="let user of users" [ngValue]=user>
                         {{user.userId}}
                     </option>
-                    <!-- {{user.userId}} -->
-                </select>
-                <!-- Selected Value : {{SelectedValue}} -->
-                <div>
+                </select>                <div>
                     <input type="text" [(ngModel)] = "user.userId">
-                    <!-- {{user.userId}} -->
                     <button (click)="addNewUserToProject(project)" class="btn btn-info">Save User</button>
-                  </div>
+                  </div> -->
             <button (click)="updateProject(project.projectId)" class="btn btn-info">Update</button>
             <!-- <select class="form-select"[(ngModel)]="user.userId">
                 <option *ngFor="let u of users">{{u.username}}</option>
             </select>
             {{user}} -->
             <button (click)="addUserToProject(project.projectId)" class="btn btn-info">Add User To Project</button>
+            <button (click)="showUsers(project.projectId)" class="btn btn-info"> Show Users</button>
+            <button (click)="deleteProject(project.projectId)"  (click)="reloadCurrentPage()" class="btn btn-info"> Delete Project</button>
+
         </tr>
     </tbody>
 </table>

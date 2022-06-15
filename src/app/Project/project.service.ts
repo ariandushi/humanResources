@@ -34,4 +34,7 @@ export class ProjectService {
   assignUserToProject(projectId:Guid, userId:Guid):Observable<Object>{
     return this.httpClient.patch(`${this.baseURL+"/assignUser"}/${projectId}/userId/${userId}`, null);
   }
+  deleteProject(projectId:Guid):Observable<Object>{
+    return this.httpClient.delete(`${this.baseURL+"/projects/deleteProject"}/${projectId}`);
+  }
 }

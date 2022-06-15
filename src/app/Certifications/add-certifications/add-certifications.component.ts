@@ -14,7 +14,6 @@ import { CertificationsService } from '../certifications.service';
 export class AddCertificationsComponent implements OnInit {
 
   userId:Guid;
-  certificationID:Guid;
   certification: Certification=new Certification;
   user:User = new User();
 

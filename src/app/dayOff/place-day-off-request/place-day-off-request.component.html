@@ -1,0 +1,49 @@
+<div class="col-md-8 offset-md-3">
+    <h3>Place Day Off Request</h3>
+    <form (ngSubmit)="onSubmit()">
+    
+      
+        <div class="form-group">
+            <label>userid</label>
+            <input type="text" class="form-control" id="userId" 
+                [(ngModel)] = "dayOff.userId" name="userId">
+        </div>
+        <div class="form-group">
+            <label>Day Off Id</label>
+            <input type="text" class="form-control" id="dayOffId" 
+                [(ngModel)] = "dayOff.dayOffId" name="dayOffId">
+        </div>
+        <div class="form-group">
+            <label>Start Date</label>
+            <input type="text" class="form-control" id="startDate" 
+                [(ngModel)] = "dayOff.startDate" name="startDate">
+        </div>
+        <div class="form-group">
+            <label>End Date</label>
+            <input type="text" class="form-control" id="endDate" 
+                [(ngModel)] = "dayOff.endDate" name="endDate">
+        </div>
+        <div class="form-group">
+            <label> Reason</label>
+            <input type="text" class="form-control" id="reason" 
+                [(ngModel)] = "dayOff.reason" name="reason">
+        </div>
+        <!-- <div class="form-group">
+            <label> Permission Type</label>
+            <input type="text" class="form-control" id="permissionType" 
+                [(ngModel)] = "dayOff.permissionType" name="permissionType">
+        </div> -->
+        <div class="form-group">
+            <label>Report</label>
+            <input type="text" class="form-control" id="report" 
+                [(ngModel)] = "dayOff.report" name="report">
+        </div>
+        <!-- <div class="form-group">
+            <label>Request Status</label>
+            <input type="text" class="form-control" id="expirationDate" 
+                [(ngModel)] = "dayOff.request" name="expirationDate">
+        </div> -->
+        
+        <button class="btn btn-success" type="submit">Submit</button>
+    </form>
+    </div>

@@ -33,10 +33,15 @@ import { AdminComponent } from './admin/admin.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
-import { AuthGuard } from './_auth/auth.guard';
+// import { AuthGuard } from './_auth/auth.guard';
 import { AuthInterceptor } from './_auth/auth.interceptor';
 import { UserService } from './User/user.service';
 import { UserComponent } from './User/user/user.component';
+import { PlaceDayOffRequestComponent } from './dayOff/place-day-off-request/place-day-off-request.component';
+import { ProjectUserListComponent } from './Project/project-user-list/project-user-list.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -63,7 +68,9 @@ import { UserComponent } from './User/user/user.component';
     ForbiddenComponent,
     LoginComponent,
     HeaderComponent,
-    UserComponent
+    UserComponent,
+    PlaceDayOffRequestComponent,
+    ProjectUserListComponent
   ],
   imports: [
     BrowserModule,
@@ -77,14 +84,17 @@ import { UserComponent } from './User/user/user.component';
     MatButtonModule,
     MatIconModule,
     MatDividerModule,
-    FormsModule
+    FormsModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [
-    AuthGuard,
-   { provide: HTTP_INTERCEPTORS,
-    useClass:AuthInterceptor,
-    multi:true
-  },
+  //   AuthGuard,
+  //  { provide: HTTP_INTERCEPTORS,
+  //   useClass:AuthInterceptor,
+  //   multi:true
+  // },
   UserService
   ],
   bootstrap: [AppComponent]

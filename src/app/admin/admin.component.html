@@ -1,1 +1,46 @@
-<p>admin works!</p>
+<h2> Day Off Request List</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th> userId</th>
+            <th> Start Date</th>
+            <th> End Date</th>
+            <th> Reason</th>
+            <th> Report</th>
+            <th> Amount</th>
+            <th> Days Left</th>
+        </tr>
+    </thead>
+    <tbody>
+        <div *ngFor="let user of users">
+        <tr *ngFor="let dayOff of daysOff">
+            <td > {{ user.username}}</td>
+            <td> {{ dayOff.startDate}}</td>
+            <td> {{ dayOff.endDate}}</td>
+            <td> {{ dayOff.reason}}</td>
+            <td> {{ dayOff.report}}</td>
+            <td> {{ dayOff.dayOffAmount}}</td>
+            <td> {{ dayOff.leaveDaysLeft}}</td>
+
+            <td>
+                <select name="Status" (change)="changeStatus(theStatus)">
+                    <option *ngFor="let statusType of statusTypes"
+                    [value]="statusType">
+                        {{statusType}}
+                    </option>
+                </select>
+                <div>
+                    <input type="text" [(ngModel)] = "statusTypes">
+                    <!-- {{user.userId}} -->
+                    <button (click)="updateStatus(dayOff)" class="btn btn-info">Edit Request</button>
+                  </div>
+
+            </td>
+        </tr>
+        </div>
+        <!-- <tr *ngFor="let user of users">
+            <td> {{ user.userId}}</td>
+            <td> {{ user.leaveDaysLeft}}</td>
+        </tr> -->
+    </tbody>
+</table>

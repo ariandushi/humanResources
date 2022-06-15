@@ -29,10 +29,10 @@ export class ProjectListComponent implements OnInit {
   ngOnInit(): void {
     this.projectService.getProjectList().subscribe(data=>{
       this.projects=data;
-      // debugger;
+
     })
     this.userService.getUsersList().subscribe(data=>{
-      // debugger;
+
       this.users=data;
     })
   }
@@ -67,6 +67,19 @@ export class ProjectListComponent implements OnInit {
       console.log(data);
       this.router.navigate(['/project-list']);
     }, error=>console.log(error));
+  }
+  showUsers(projectId:Guid){
+    this.router.navigate([`project-user-list`, projectId]);
+  }
+  deleteProject(projectId:Guid){
+    this.projectService.deleteProject(projectId).subscribe(data=>{
+      console.log(data);
+      this.projectService.getProjectList();
+    },error=>console.log(error));
+  }
+
+  reloadCurrentPage(){
+    window.location.reload();
   }
 
  
