@@ -42,6 +42,10 @@ import { ProjectUserListComponent } from './Project/project-user-list/project-us
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import { RoleListComponent } from './Roles/role-list/role-list.component';
+import { AddRoleComponent } from './Roles/add-role/add-role.component';
+import { RoleUserListComponent } from './Roles/role-user-list/role-user-list.component';
+import { AddRoleToUserComponent } from './User/add-role-to-user/add-role-to-user.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +74,11 @@ import {MatNativeDateModule} from '@angular/material/core';
     HeaderComponent,
     UserComponent,
     PlaceDayOffRequestComponent,
-    ProjectUserListComponent
+    ProjectUserListComponent,
+    RoleListComponent,
+    AddRoleComponent,
+    RoleUserListComponent,
+    AddRoleToUserComponent
   ],
   imports: [
     BrowserModule,

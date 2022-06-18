@@ -63,13 +63,13 @@ export class ProjectListComponent implements OnInit {
   // }
   addNewUserToProject(project: Project){
     console.log(this.project);
-    this.projectService.assignUserToProject(project.projectId, this.user.userId).subscribe(data=>{
+    this.projectService.assignUserToProject(project.projectId, this.user.username).subscribe(data=>{
       console.log(data);
       this.router.navigate(['/project-list']);
     }, error=>console.log(error));
   }
   showUsers(projectId:Guid){
-    this.router.navigate([`project-user-list`, projectId]);
+    this.router.navigate([`/project-user-list`, projectId]);
   }
   deleteProject(projectId:Guid){
     this.projectService.deleteProject(projectId).subscribe(data=>{

@@ -12,7 +12,7 @@ import { Project } from '../Project/project';
 export class UserService {
   
   requestHeader= new HttpHeaders({'No-Auth':'True'})
-  private baseURL="http://localhost:8080/api/v1/hr_management_system/users";
+  private baseURL="http://localhost:8080/hr_management/users";
   constructor(private httpClient: HttpClient, private userAuthService:UserAuthService) { }
 
   getUsersList(): Observable<User[]>{
@@ -31,12 +31,18 @@ export class UserService {
     return this.httpClient.put(`${this.baseURL+"/updateUser"}/${userId}`, user);
   }
 
-  assignProjectToUser(userId: Guid, projectId:Guid): Observable<Object>{
-    return this.httpClient.patch(`${this.baseURL+"/assignProjectToUser"}/${userId}/projectId/${projectId}`, null);
+  assignProjectToUser(username: String, projectId:Guid): Observable<Object>{
+    return this.httpClient.patch(`${this.baseURL+"/assignProject"}/${username}/projectId/${projectId}`, null);
+  }
+  assignRoleToUser(userId: Guid, roleName: String): Observable<Object>{
+    return this.httpClient.patch(`${this.baseURL+"/assignRole"}/${userId}/roleName/${roleName}`, null);
   }
 
   getUsersByProjectId(projectId:Guid):Observable<User[]>{
     return this.httpClient.get<User[]>(`${this.baseURL+"/getUsersByProject"}/${projectId}`);
+  }
+  getUsersByRoleId(roleId:Guid):Observable<User[]>{
+    return this.httpClient.get<User[]>(`${this.baseURL+"/getUsersByRole"}/${roleId}`);
   }
   public login(loginData: any){
     return this.httpClient.post(this.baseURL+"/login",loginData, {headers:this.requestHeader});

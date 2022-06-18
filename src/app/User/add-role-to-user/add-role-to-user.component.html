@@ -1,0 +1,33 @@
+<h2> Role List</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th> userId</th>
+            <th> username</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- <tr *ngFor="let project of projects"> -->
+            <td> {{ user.userId}}</td>
+            <td> {{ user.username}}</td>
+            <!-- <td *ngIf="project.users!=undefined"> {{ project.users[0].userId}}</td> -->
+        
+            <!-- <tr *ngFor="let user of project.users"> -->
+
+                <!-- <tr *ngFor="let user of users"></tr> -->
+            
+                <select  [(ngModel)]="roleId" (change)="chosenRole(roleId)">
+                    <option *ngFor="let role of roleList" [ngValue]=role>
+                        {{role.roleId}}
+                    </option>
+                    <!-- {{user.userId}} -->
+                </select>
+                <!-- Selected Value : {{SelectedValue}} -->
+                <div>
+                    <input type="text" [(ngModel)] = "role.roleId">
+                    <!-- {{user.userId}} -->
+                    <button (click)="addRoleToUser(user)" class="btn btn-info">Save Role</button>
+                  </div>
+        <!-- </tr> -->
+    </tbody>
+</table>

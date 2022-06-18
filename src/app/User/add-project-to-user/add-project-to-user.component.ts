@@ -36,7 +36,7 @@ export class AddProjectToUserComponent implements OnInit {
     this.project=e;
   }
   addNewProjectToUser(user:User){
-    this.userService.assignProjectToUser(user.userId,this.project.projectId).subscribe(data=>{
+    this.userService.assignProjectToUser(user.username,this.project.projectId).subscribe(data=>{
       console.log(data);
     },error=>console.log(error));
     this.navigateToProfile(this.userId);

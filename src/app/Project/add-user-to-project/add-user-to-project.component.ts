@@ -13,12 +13,12 @@ import { ProjectService } from '../project.service';
 })
 export class AddUserToProjectComponent implements OnInit {
   userId:Guid;
+  username: String;
   projectId:Guid;
   user: User = new User();
   userList: User[];
   project: Project= new Project();
 
-  //project: Project= new Project();
   constructor(private projectService: ProjectService, private userService: UserService,
     private router: Router,
     private route: ActivatedRoute,
@@ -48,7 +48,7 @@ export class AddUserToProjectComponent implements OnInit {
   }
 
   addNewUserToProject(project: Project){
-    this.projectService.assignUserToProject(project.projectId, this.user.userId).subscribe(data=>{
+    this.projectService.assignUserToProject(project.projectId, this.user.username).subscribe(data=>{
       console.log(data);
       this.router.navigate(['/project-list']);
     }, error=>console.log(error));

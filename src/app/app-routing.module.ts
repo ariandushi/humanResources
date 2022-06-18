@@ -1,3 +1,7 @@
+import { AddRoleToUserComponent } from './User/add-role-to-user/add-role-to-user.component';
+import { RoleUserListComponent } from './Roles/role-user-list/role-user-list.component';
+import { RoleListComponent } from './Roles/role-list/role-list.component';
+import { AddRoleComponent } from './Roles/add-role/add-role.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddAddressComponent } from './Address/add-address/add-address.component';
@@ -47,6 +51,10 @@ const routes: Routes = [
   {path: 'update-project/:projectId', component:UpdateProjectComponent},
   {path: 'user-projects-list', component:UserProjectsListComponent},
   {path: 'project-user-list/:projectId', component:ProjectUserListComponent},
+  {path: 'add-role', component: AddRoleComponent},
+  {path: 'role-list', component: RoleListComponent},
+  {path: 'role-user-list', component: RoleUserListComponent},
+  {path: 'add-role-to-user/:userId', component: AddRoleToUserComponent},
 
   // {path: 'project-user-list',
   //       children:[

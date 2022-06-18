@@ -1,0 +1,12 @@
+<div class="col-md-8 offset-md-3">
+    <h3>Add Role</h3>
+    <form (ngSubmit)="onSubmit()">
+    
+        <div class="form-group">
+            <label> Role Name</label>
+            <input type="text" class="form-control" id="roleName" 
+                [(ngModel)] = "role.roleName" name="roleName">
+        </div>
+        <button class="btn btn-success" type="submit">Submit</button>
+    </form>
+    </div>

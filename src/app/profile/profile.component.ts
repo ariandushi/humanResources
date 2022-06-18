@@ -16,7 +16,6 @@ import { ProjectService } from '../Project/project.service';
 import { DayOffService } from '../dayOff/day-off.service';
 import { DayOff } from '../dayOff/dayOff';
 
-
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -49,7 +48,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.userId = this.route.snapshot.params['userId'];
     //debugger;
-    this.userService.getUserProfile(this.userId).subscribe(data => {
+    this.userService.getUserById(this.userId).subscribe(data => {
       
       this.user = data;
       //this.user.addressID
@@ -74,11 +73,6 @@ export class ProfileComponent implements OnInit {
       this.dayOff1=data;
     }, error=> console.log(error));
   }
- /* private getUser(userId: string=uuid()){
-    this.userService.getUserById(this.userId).subscribe(data=>{
-      this.user=data;
-    })
-  }*/
   updateUser(userId:Guid){
     this.router.navigate(['update-user', userId]);
   }
@@ -96,12 +90,6 @@ export class ProfileComponent implements OnInit {
       this.experience=data;
     }, error=>console.log(error));
   }
-  // getAddressById(){
-  //   this.addressID = this.route.snapshot.params['addressID'];
-  //   this.addressService.getAddressByAddressId(this.addressID).subscribe(data=>{
-  //     this.address=data;
-  //   }, error=>console.log(error));
-  // }
 
   addAddress( userId:Guid){
     // this.addressService.getAddressByAddressId(addressID).subscribe(res => {
@@ -141,11 +129,4 @@ export class ProfileComponent implements OnInit {
   placeDayOff(userId:Guid){
     this.router.navigate(['place-day-off-request', userId]);
   }
-  // show:boolean = false;
-  // addNewAddress(address: Address){
-  //   this.show=true;
-  // }
-
-
-
 }

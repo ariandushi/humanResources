@@ -10,7 +10,7 @@ import { Guid } from 'guid-typescript';
 })
 export class ExperienceService {
 
-  private baseURL="http://localhost:8080";
+  private baseURL="http://localhost:8080/hr_management/experience";
 
   constructor(private httpClient: HttpClient) { }
 
@@ -18,10 +18,10 @@ export class ExperienceService {
     return this.httpClient.post(`${this.baseURL+"/addExperiences"}`, experience);
   }
   getExperienceByUserId(userId: Guid): Observable<Experience[]>{
-    return this.httpClient.get<Experience[]>(`${this.baseURL+"/experiences/getExperiencesByUserId"}/${userId}`);
+    return this.httpClient.get<Experience[]>(`${this.baseURL+"/getExperiencesByUserId"}/${userId}`);
   }
   getExperienceByExpId(expId: Guid): Observable<Experience>{
-    return this.httpClient.get<Experience>(`${this.baseURL+"/experiences/getExperiencesByExpId"}/${expId}`);
+    return this.httpClient.get<Experience>(`${this.baseURL+"/getExperiencesByExpId"}/${expId}`);
   }
  /* getExperienceByExpId(expId: string = uuid()): Observable<Experience>{
     return this.httpClient.get<Experience>(`${this.baseURL+"/experiences"}/${expId}`);
@@ -30,10 +30,10 @@ export class ExperienceService {
     return this.httpClient.get<Experience[]>(`${this.baseURL+"/experiences"}`);
   }
   updateExperienceByExpId(expId:Guid, experience: Experience): Observable<Object>{
-    return this.httpClient.put(`${this.baseURL+"/experiences/updateExperience"}/${expId}`, experience);
+    return this.httpClient.put(`${this.baseURL+"/updateExperience"}/${expId}`, experience);
   }
   deleteExperience(expId: Guid): Observable<Experience>{
-    return this.httpClient.delete<Experience>(`${this.baseURL+"/experiences/deleteExperience"}/${expId}`);
+    return this.httpClient.delete<Experience>(`${this.baseURL+"/deleteExperience"}/${expId}`);
   }
 
 }

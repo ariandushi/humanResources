@@ -6,6 +6,7 @@ import { v4 as uuid } from 'uuid';
 import { Guid } from 'guid-typescript';
 import { Project } from 'src/app/Project/project';
 import { ProjectService } from 'src/app/Project/project.service';
+import { Role } from 'src/app/Roles/role';
 
 @Component({
   selector: 'app-user-list',
@@ -20,6 +21,9 @@ export class UserListComponent implements OnInit {
   user:User;
   project: Project=new Project();
   projects: Project[];
+  roleName: String;
+  role: Role=new Role();
+  roles: Role[];
   constructor(private userService: UserService, private router: Router, private projectService: ProjectService) { }
 
   ngOnInit(): void {
@@ -65,7 +69,7 @@ export class UserListComponent implements OnInit {
 
   addProjectToUser(user:User){
     console.log(this.user);
-    this.userService.assignProjectToUser(user.userId, this.project.projectId ).subscribe(data=>{
+    this.userService.assignProjectToUser(user.username, this.project.projectId ).subscribe(data=>{
       console.log(data);
       this.router.navigate(['/user-list']);
     }, error=>console.log(error));
@@ -73,9 +77,19 @@ export class UserListComponent implements OnInit {
   chosenProject(e:any){
     this.project=e;
   }
+  addRoleToUser(user:User){
+    console.log(this.user);
+    this.userService.assignRoleToUser(user.userId, this.role.roleName ).subscribe(data=>{
+      console.log(data);
+      this.router.navigate(['/user-list']);
+    }, error=>console.log(error));
+  }
+  chosenRole(e:any){
+    this.role=e;
+  }
   addNewProjectToUser(user:User){
     console.log(this.user);
-    this.userService.assignProjectToUser(user.userId, this.project.projectId).subscribe(data=>{
+    this.userService.assignProjectToUser(user.username, this.project.projectId).subscribe(data=>{
       console.log(data);
       this.router.navigate(['/user-list']);
     }, error=>console.log(error));
