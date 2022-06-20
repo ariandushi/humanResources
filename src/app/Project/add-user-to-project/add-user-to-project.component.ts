@@ -13,6 +13,7 @@ import { ProjectService } from '../project.service';
 })
 export class AddUserToProjectComponent implements OnInit {
   userId:Guid;
+  username: string;
   projectId:Guid;
   user: User = new User();
   userList: User[];
@@ -48,7 +49,7 @@ export class AddUserToProjectComponent implements OnInit {
   }
 
   addNewUserToProject(project: Project){
-    this.projectService.assignUserToProject(project.projectId, this.user.userId).subscribe(data=>{
+    this.projectService.assignUserToProject(project.projectId, this.user.username).subscribe(data=>{
       console.log(data);
       this.router.navigate(['/project-list']);
     }, error=>console.log(error));

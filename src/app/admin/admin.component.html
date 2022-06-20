@@ -22,21 +22,32 @@
             <td> {{ dayOff.dayOffAmount}}</td>
             <td> {{ dayOff.leaveDaysLeft}}</td>
 
+
             <td>
-                <select name="Status" (change)="changeStatus(theStatus)">
+                <select name="Status" (change)="changeStatus(theStatus)"
+                
+               > 
                     <option *ngFor="let statusType of statusTypes"
-                    [value]="statusType">
+                    [ngValue]="statusType" onclick="getThis(e)">
                         {{statusType}}
                     </option>
                 </select>
-                <div>
-                    <input type="text" [(ngModel)] = "statusTypes">
-                    <!-- {{user.userId}} -->
-                    <button (click)="updateStatus(dayOff)" class="btn btn-info">Edit Request</button>
-                  </div>
+                <!-- <div *ngFor="let enum of statusTypes">
+                    <label for="enum_answer_{{enum.name}}">
+                      <input id="enum_answer_{{enum.name}}" [value]='enum.name' type="radio" name="enums" [(ngModel)]="user.status>
+                      {{enum.name}}
+                    </label>
+                  </div> -->
 
-            </td>
+
+                <!-- <div>
+                    <input type="text" [(ngModel)] = "status">
+                    {{theStatus}}
+                    <button (click)="updateStatus(dayOff)" class="btn btn-info">Edit Request</button>
+                  </div>    -->
+        </td>
         </tr>
+    
         </div>
         <!-- <tr *ngFor="let user of users">
             <td> {{ user.userId}}</td>

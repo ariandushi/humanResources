@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from './user';
 import { Guid } from 'guid-typescript';
-import { UserAuthService } from '../_services/user-auth.service';
+import { UserAuthService } from '../LoginFiles/_services/user-auth.service';
 import { Project } from '../Project/project';
 
 @Injectable({
@@ -11,9 +11,11 @@ import { Project } from '../Project/project';
 })
 export class UserService {
   
-  requestHeader= new HttpHeaders({'No-Auth':'True'})
-  private baseURL="http://localhost:8080/api/v1/hr_management_system/users";
-  constructor(private httpClient: HttpClient, private userAuthService:UserAuthService) { }
+  requestHeader= new HttpHeaders()
+  private baseURL="http://localhost:8080/hr_management/user";
+  constructor(private httpClient: HttpClient,
+     private userAuthService:UserAuthService
+     ) { }
 
   getUsersList(): Observable<User[]>{
     return this.httpClient.get<User[]>(`${this.baseURL+"/getAll"}`);
@@ -39,7 +41,7 @@ export class UserService {
     return this.httpClient.get<User[]>(`${this.baseURL+"/getUsersByProject"}/${projectId}`);
   }
   public login(loginData: any){
-    return this.httpClient.post(this.baseURL+"/login",loginData, {headers:this.requestHeader});
+    return this.httpClient.post(this.baseURL+'/login',loginData, {headers:this.requestHeader});
   }
   public forUser(){
     return this.httpClient.get(this.baseURL+"/forUser", {responseType:'text'});
@@ -49,7 +51,7 @@ export class UserService {
   }
 
 
-  // roleMatch(allowedRoles): boolean {
+  // roleMatch(allowedRoles: any): boolean {
   //   var isMatch = false;
   //   var userRoles: string[] = JSON.parse(localStorage.getItem('userRoles'));
   //   allowedRoles.forEach(element => {
@@ -62,22 +64,24 @@ export class UserService {
 
   // }
 
-  // public roleMatch(allowedRoles):boolean{
-  //   let isMatch=false;
-  //   const userRoles:any=this.userAuthService.getRoles();
-  //   if(userRoles !=null && userRoles){
-  //     for(let i = 0; i < userRoles.length; i++){
-  //       for(let j=0; j<allowedRoles.length; j++){
-  //         if(userRoles[i].roleName === allowedRoles[j]){
-  //           isMatch=true;
-  //           return isMatch;
-  //         }else{
-  //           return isMatch;
-  //         }
-  //       }
-  //     }
-  //   }
-  // }
+  public roleMatch(allowedRoles):boolean{
+    let isMatch: boolean = false;
+    const userRoles:any=this.userAuthService.getRoles();
+    if(userRoles !=null && userRoles){
+      for(let i = 0; i < userRoles.length; i++){
+        for(let j=0; j<allowedRoles.length; j++){
+          if(userRoles[i].roleName === allowedRoles[j]){
+            isMatch=true;
+            return isMatch;
+          }else
+          {
+            return isMatch;
+          }
+        }
+      }
+    }
+    return isMatch;
+  }
 
 
 

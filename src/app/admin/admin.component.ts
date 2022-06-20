@@ -14,7 +14,7 @@ import { UserService } from '../User/user.service';
 })
 export class AdminComponent implements OnInit {
 
-  public Status = Status;
+  public status: string;
   public statusTypes = Object.values(Status);
   theStatus: Status;
   daysOff: DayOff[];
@@ -32,6 +32,8 @@ export class AdminComponent implements OnInit {
       this.users=data;
     },error=>console.log(error));
     this.getDaysOff();
+    // this.status = 'klajid';
+    // console.log(this.statusTypes)
   }
 
   getDaysOff(){
@@ -41,11 +43,16 @@ export class AdminComponent implements OnInit {
   }
 
   changeStatus(e:any){
-    this.daysOff=e;
+    this.dayOff=e;
   }
-  updateStatus(dayOff:DayOff){
-    this.dayOffService.approveDayOff(this.user.userId,this.dayOff.dayOffId).subscribe(data=>{
-      console.log(data);
-    },error=>console.log(error));
+  // updateStatus(dayOff:DayOff){
+  //   this.dayOffService.approveDayOff(this.user.userId,this.dayOff.dayOffId).subscribe(data=>{
+  //     console.log(data);
+  //   },error=>console.log(error));
+  // }
+
+  getThis(e){
+    this.status = Status.PENDING
+    // console.log(status);
   }
 }

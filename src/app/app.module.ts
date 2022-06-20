@@ -31,10 +31,10 @@ import { AddProjectToUserComponent } from './User/add-project-to-user/add-projec
 import { UserProjectsListComponent } from './User/user-projects-list/user-projects-list.component';
 import { AdminComponent } from './admin/admin.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './LoginFiles/login/login.component';
 import { HeaderComponent } from './header/header.component';
-// import { AuthGuard } from './_auth/auth.guard';
-import { AuthInterceptor } from './_auth/auth.interceptor';
+import { AuthGuard } from './LoginFiles/_auth/auth.guard';
+import { AuthInterceptor } from './LoginFiles/_auth/auth.interceptor';
 import { UserService } from './User/user.service';
 import { UserComponent } from './User/user/user.component';
 import { PlaceDayOffRequestComponent } from './dayOff/place-day-off-request/place-day-off-request.component';
@@ -42,6 +42,8 @@ import { ProjectUserListComponent } from './Project/project-user-list/project-us
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import { MatCardModule } from '@angular/material/card';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -78,7 +80,6 @@ import {MatNativeDateModule} from '@angular/material/core';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    AppRoutingModule,
     MatToolbarModule,
     MatSidenavModule,
     MatButtonModule,
@@ -87,14 +88,16 @@ import {MatNativeDateModule} from '@angular/material/core';
     FormsModule,
     MatFormFieldModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatCardModule,
+    ReactiveFormsModule
   ],
   providers: [
-  //   AuthGuard,
-  //  { provide: HTTP_INTERCEPTORS,
-  //   useClass:AuthInterceptor,
-  //   multi:true
-  // },
+    AuthGuard,
+   { provide: HTTP_INTERCEPTORS,
+    useClass:AuthInterceptor,
+    multi:true
+  },
   UserService
   ],
   bootstrap: [AppComponent]

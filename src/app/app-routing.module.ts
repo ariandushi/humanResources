@@ -9,7 +9,7 @@ import { PlaceDayOffRequestComponent } from './dayOff/place-day-off-request/plac
 import { AddExperienceComponent } from './Experience/add-experience/add-experience.component';
 import { UpdateExperienceComponent } from './Experience/update-experience/update-experience.component';
 import { UserExperienceComponent } from './Experience/user-experience/user-experience.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './LoginFiles/login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AddProjectComponent } from './Project/add-project/add-project.component';
 import { AddUserToProjectComponent } from './Project/add-user-to-project/add-user-to-project.component';
@@ -21,7 +21,7 @@ import { AddUserComponent } from './User/add-user/add-user.component';
 import { UpdateUserComponent } from './User/update-user/update-user.component';
 import { UserListComponent } from './User/user-list/user-list.component';
 import { UserProjectsListComponent } from './User/user-projects-list/user-projects-list.component';
-// import { AuthGuard } from './_auth/auth.guard';
+import { AuthGuard } from './LoginFiles/_auth/auth.guard';
 
 
 const routes: Routes = [
@@ -66,9 +66,9 @@ const routes: Routes = [
   {path: 'add-certifications/:userId', component:AddCertificationsComponent},
   {path: 'update-certifications/:userId', component:UpdateCertificationsComponent},
   {path: 'login', component:LoginComponent},
-  // {path: 'admin', component:AdminComponent, canActivate:[AuthGuard], data:{roles:['Admin']}},
+  {path: 'admin', component:AdminComponent, canActivate:[AuthGuard], data:{roles:['Admin']}},
   {path: 'place-day-off-request/:userId', component:PlaceDayOffRequestComponent},
-  {path: 'admin', component:AdminComponent},
+  {path: 'admin1', component:AdminComponent},
   {path:'', redirectTo:'users', pathMatch:'full'}
 ];
 

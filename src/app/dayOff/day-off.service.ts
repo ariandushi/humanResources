@@ -10,7 +10,7 @@ import { DayOff } from './dayOff';
 })
 export class DayOffService {
 
-  private baseURL="http://localhost:8080/hr_management";
+  private baseURL="http://localhost:8080/hr_management/dayOff";
   constructor(private httpClient: HttpClient) { }
 
   placeDayOffRequest(dayOff: DayOff, userId:Guid): Observable<Object>{
@@ -25,7 +25,7 @@ export class DayOffService {
   // approveDayOff(status: Status, dayOffId:Guid):Observable<Object>{
   //   return this.httpClient.patch(`${this.baseURL+"/approveDayOff"}/${dayOffId}`, status);
   // }
-  approveDayOff( userId: Guid,dayOffId:Guid):Observable<Object>{
-    return this.httpClient.patch(`${this.baseURL+"/approveDayOff"}/${userId}/dayOffId/${dayOffId}`, null);
-  }
-}
+//   approveDayOff( ):Observable<Object>{
+//     return this.httpClient.patch(`${this.baseURL+"/approveDayOff"}/${userId}/dayOffId/${dayOffId}`, null);
+//   }
+ }

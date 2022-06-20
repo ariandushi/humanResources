@@ -63,7 +63,7 @@ export class ProjectListComponent implements OnInit {
   // }
   addNewUserToProject(project: Project){
     console.log(this.project);
-    this.projectService.assignUserToProject(project.projectId, this.user.userId).subscribe(data=>{
+    this.projectService.assignUserToProject(project.projectId, this.user.username).subscribe(data=>{
       console.log(data);
       this.router.navigate(['/project-list']);
     }, error=>console.log(error));
@@ -82,5 +82,8 @@ export class ProjectListComponent implements OnInit {
     window.location.reload();
   }
 
+  addProject(){
+    this.router.navigate(["/add-project"]);
+  }
  
 }

@@ -24,15 +24,15 @@
 
                 <!-- <tr *ngFor="let user of users"></tr> -->
             
-                <select  [(ngModel)]="userId" (change)="chosenUser(userId)">
+                <select  [(ngModel)]="username" (change)="chosenUser(username)">
                     <option *ngFor="let user of userList" [ngValue]=user>
-                        {{user.userId}}
+                        {{user.username}}
                     </option>
                     <!-- {{user.userId}} -->
                 </select>
                 <!-- Selected Value : {{SelectedValue}} -->
                 <div>
-                    <input type="text" [(ngModel)] = "user.userId">
+                    <input type="text" [(ngModel)] = "user.username">
                     <!-- {{user.userId}} -->
                     <button (click)="addNewUserToProject(project)" class="btn btn-info">Save User</button>
                   </div>

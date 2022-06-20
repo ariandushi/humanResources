@@ -29,15 +29,15 @@
   <a routerLink="admin" routerLinkActive="active" class="nav-link" *ngIf="userService.roleMatch(['User'])">User Panel</a>
 </li> -->
 <li class = "nav-item">
-  <a routerLink="add-project" routerLinkActive="active" class="nav-link" >Add Project</a>
+  <a routerLink="project-list" routerLinkActive="active" class="nav-link" >Project List</a>
 </li>
 <li class = "nav-item">
   <a routerLink="user-address" routerLinkActive="active" class="nav-link" >Address List</a>
 </li>
     
   </ul>
-    <button *ngIf="!isLoggedIn()" type="button" class="btn btn-success" routerLink="/login">Login</button>
-    <button  *ngIf="isLoggedIn()" type="button" class="btn btn-danger" (click)="logout()">Logout</button>
+    <!-- <button *ngIf="!isLoggedIn()" type="button" class="btn btn-success" routerLink="/login">Login</button> -->
+    <!-- <button  *ngIf="isLoggedIn()" type="button" class="btn btn-danger" (click)="logout()">Logout</button> -->
 
     </nav>
   </mat-toolbar>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../User/user.service';
-import { UserAuthService } from '../_services/user-auth.service';
+import { UserAuthService } from '../LoginFiles/_services/user-auth.service';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +10,9 @@ import { UserAuthService } from '../_services/user-auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private userAuthService: UserAuthService, private router: Router,public userService:UserService) { }
+  constructor(
+    private userAuthService: UserAuthService,
+     private router: Router,public userService:UserService) { }
 
   ngOnInit(): void {
   }
