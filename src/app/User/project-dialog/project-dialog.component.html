@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>Assign Project</h2>
+<mat-dialog-content class="mat-typography">
+   <select>
+    <option *ngFor="let project of projects" [value]="project.projectId">
+    {{ project.projectName }}
+    </option>
+   </select>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Save</button>
+  </mat-dialog-actions>

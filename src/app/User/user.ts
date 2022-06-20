@@ -3,6 +3,7 @@ import { v4 as uuid } from 'uuid';
 import { Guid } from 'guid-typescript';
 import { Project } from '../Project/project';
 import { DayOff } from '../dayOff/dayOff';
+import { Role } from '../Roles/role';
 
 export class User {
     userId: Guid;
@@ -17,14 +18,7 @@ export class User {
     startingDay: DatePipe;
     terminationDay: DatePipe;
     secondContact: string;
-    userStatus: boolean;
-    project: Project;
-
-    // projectId: Guid;
-    // projectName: string;
-    // startTime: string;
-    // endTime:string;
-    // description: string;
-
-   // mySet: Set<Roles> = new Set<Roles>();
+    usersStatus: boolean;
+    project: Project[];
+    roles: Role[];
 }

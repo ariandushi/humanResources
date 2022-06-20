@@ -31,8 +31,8 @@ export class ProjectService {
   getProjectsByUserId(userId: Guid): Observable<Project[]>{
     return this.httpClient.get<Project[]>(`${this.baseURL+"/getByUserId"}/${userId}`);
   }
-  assignUserToProject(projectId:Guid, username: String):Observable<Object>{
-    return this.httpClient.patch(`${this.baseURL+"/assignUser"}/${projectId}/username/${username}`, null);
+  assignUserToProject(projectId:Guid, userId: Guid):Observable<Object>{
+    return this.httpClient.patch(`${this.baseURL+"/assignUser"}/${projectId}/userId/${userId}`, null);
   }
   deleteProject(projectId:Guid):Observable<Object>{
     return this.httpClient.delete(`${this.baseURL+"/deleteProject"}/${projectId}`);

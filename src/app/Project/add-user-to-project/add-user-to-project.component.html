@@ -1,41 +1,12 @@
-<h2> User List</h2>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th> projectId</th>
-            <th> projectName</th>
-            <th> Start Time</th>
-            <th> End Time</th>
-            <th> Description</th>
-            <th> User</th>
-            <th> Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        <!-- <tr *ngFor="let project of projects"> -->
-            <td> {{ project.projectId}}</td>
-            <td> {{ project.projectName}}</td>
-            <td> {{ project.startTime}}</td>
-            <td> {{ project.endTime}}</td>
-            <td> {{ project.description}}</td>
-            <!-- <td *ngIf="project.users!=undefined"> {{ project.users[0].userId}}</td> -->
-        
-            <!-- <tr *ngFor="let user of project.users"> -->
-
-                <!-- <tr *ngFor="let user of users"></tr> -->
-            
-                <select  [(ngModel)]="userId" (change)="chosenUser(userId)">
-                    <option *ngFor="let user of userList" [ngValue]=user>
-                        {{user.userId}}
-                    </option>
-                    <!-- {{user.userId}} -->
-                </select>
-                <!-- Selected Value : {{SelectedValue}} -->
-                <div>
-                    <input type="text" [(ngModel)] = "user.userId">
-                    <!-- {{user.userId}} -->
-                    <button (click)="addNewUserToProject(project)" class="btn btn-info">Save User</button>
-                  </div>
-        <!-- </tr> -->
-    </tbody>
-</table>
+<h2 mat-dialog-title>Install Angular</h2>
+<mat-dialog-content class="mat-typography">
+   <select [(ngModel)]="userId">
+    <option *ngFor="let user of users" [value]="user.userId">
+    {{ user.username }}
+    </option>
+   </select>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="saveUser(project)">Save</button>
+  </mat-dialog-actions>

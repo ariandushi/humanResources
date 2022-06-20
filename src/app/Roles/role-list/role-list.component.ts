@@ -35,16 +35,16 @@ export class RoleListComponent implements OnInit {
   chosenUser(e:any){
     this.user = e;
   }
-  navigateToRoleList(){
-    this.router.navigate(['/roles']);
-  }
+
   showUsers(roleId:Guid){
     this.router.navigate([`/role-user-list`, roleId]);
   }
   deleteRole(roleId:Guid){
     this.roleService.deleteRole(roleId).subscribe(data=>{
       console.log(data);
-      this.roleService.getRoleList();
+      this.roleService.getRoleList().subscribe(data=>{
+        this.roles=data;
+      });
     },error=>console.log(error));
   }
 

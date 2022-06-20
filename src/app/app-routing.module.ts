@@ -1,4 +1,3 @@
-import { AddRoleToUserComponent } from './User/add-role-to-user/add-role-to-user.component';
 import { RoleUserListComponent } from './Roles/role-user-list/role-user-list.component';
 import { RoleListComponent } from './Roles/role-list/role-list.component';
 import { AddRoleComponent } from './Roles/add-role/add-role.component';
@@ -53,8 +52,7 @@ const routes: Routes = [
   {path: 'project-user-list/:projectId', component:ProjectUserListComponent},
   {path: 'add-role', component: AddRoleComponent},
   {path: 'role-list', component: RoleListComponent},
-  {path: 'role-user-list', component: RoleUserListComponent},
-  {path: 'add-role-to-user/:userId', component: AddRoleToUserComponent},
+  {path: 'role-user-list/:roleId', component: RoleUserListComponent},
 
   // {path: 'project-user-list',
   //       children:[

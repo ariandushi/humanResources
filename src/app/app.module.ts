@@ -45,7 +45,10 @@ import {MatNativeDateModule} from '@angular/material/core';
 import { RoleListComponent } from './Roles/role-list/role-list.component';
 import { AddRoleComponent } from './Roles/add-role/add-role.component';
 import { RoleUserListComponent } from './Roles/role-user-list/role-user-list.component';
-import { AddRoleToUserComponent } from './User/add-role-to-user/add-role-to-user.component';
+import {MatMenuModule} from '@angular/material/menu';
+import { ProjectDialogComponent } from './User/project-dialog/project-dialog.component';
+import { RoleDialogComponent } from './User/role-dialog/role-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -78,7 +81,8 @@ import { AddRoleToUserComponent } from './User/add-role-to-user/add-role-to-user
     RoleListComponent,
     AddRoleComponent,
     RoleUserListComponent,
-    AddRoleToUserComponent
+    ProjectDialogComponent,
+    RoleDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -95,7 +99,9 @@ import { AddRoleToUserComponent } from './User/add-role-to-user/add-role-to-user
     FormsModule,
     MatFormFieldModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatMenuModule,
+    MatDialogModule
   ],
   providers: [
   //   AuthGuard,

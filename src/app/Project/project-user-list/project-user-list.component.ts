@@ -29,6 +29,7 @@ export class ProjectUserListComponent implements OnInit {
    }, error =>console.log(error));
 
    this.userService.getUsersByProjectId(this.projectId).subscribe(data=>{
+    console.log(data)
   this.users=data;
    },error=>console.log(error));
   }

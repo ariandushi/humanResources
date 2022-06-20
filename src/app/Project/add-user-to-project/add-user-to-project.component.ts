@@ -5,56 +5,39 @@ import { User } from 'src/app/User/user';
 import { UserService } from 'src/app/User/user.service';
 import { Project } from '../project';
 import { ProjectService } from '../project.service';
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Inject } from '@angular/core';
 
 @Component({
   selector: 'app-add-user-to-project',
   templateUrl: './add-user-to-project.component.html',
   styleUrls: ['./add-user-to-project.component.scss']
+
 })
 export class AddUserToProjectComponent implements OnInit {
   userId:Guid;
   username: String;
   projectId:Guid;
   user: User = new User();
-  userList: User[];
+  users: User[];
   project: Project= new Project();
 
-  constructor(private projectService: ProjectService, private userService: UserService,
-    private router: Router,
-    private route: ActivatedRoute,
-    ) { }
-
-
+  constructor(private projectService: ProjectService, private userService: UserService, private route: ActivatedRoute, @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit(): void {
-    this.projectId = this.route.snapshot.params['projectId'];
-    //this.user.projectId=this.projectId;
-    //debugger;
-    this.projectService.getProjectByProjectId(this.projectId).subscribe(data => {
-      
-      this.project = data;
-    }, error =>console.log(error));
-
+    this. projectId = this.route.snapshot.params['projectId'];
+    this.projectService.getProjectByProjectId(this.projectId).subscribe(data=>{
+      this.project=data;
+    });
     this.userService.getUsersList().subscribe(data=>{
-      this.userList=data;
-    }, error=>console.log(error));
+      this.users=data;
+    });
   }
 
-  getUserUserId(userId:Guid){
-    this.userService.getUserById(userId).subscribe(data=>{
+  saveUser(project: Project){
+    // console.log("Project: ", this.data, this.userId)
+    this.projectService.assignUserToProject(project.projectId, this.user.userId).subscribe(data=>{
       console.log(data);
-      // this.projects.push(this.user)
-    },error=>console.log(error));
-  }
-
-  addNewUserToProject(project: Project){
-    this.projectService.assignUserToProject(project.projectId, this.user.username).subscribe(data=>{
-      console.log(data);
-      this.router.navigate(['/project-list']);
-    }, error=>console.log(error));
-  }
-
-  chosenUser(e:any){
-    this.user=e;
+    });
   }
 }

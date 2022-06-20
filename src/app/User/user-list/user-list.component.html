@@ -8,46 +8,40 @@
             <th> First Name</th>
             <th> Last Name</th>
             <th> Email</th>
-            <th> Actions</th>
+            <th> Roles</th>
+            <th> User Status</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let user of users">
             <td> {{ user.userId}}</td>
             <td> {{ user.username}}</td>
-        <!--   <td> {{ user.password}}</td>-->
             <td> {{ user.firstName}}</td>
             <td> {{ user.lastName}}</td>
             <td> {{ user.email}}</td>
+            <td> 
+                <ul>
+                    <li *ngFor="let role of user.roles">
+                        {{ role.roleName}}
+                    </li>
+                </ul>
+            </td>
+            <td> {{ user.usersStatus ? 'Active' : 'Inactive' }}</td>
             <td> {{ user.dob}}</td>
             <td> {{ user.leaveDaysLeft}}</td>
             <td> {{ user.mobile}}</td>
             <td> {{ user.startingDay}}</td>
             <td> {{ user.terminationDay}}</td>
             <td> {{ user.secondContact}}</td>
-            <td> {{ user.userStatus}}</td>
             <td>
-                <select  [(ngModel)]="projectId" (change)="chosenProject(projectId)">
-                    <option *ngFor="let project of projects" [ngValue]=project>
-                        {{project.projectId}}
-                    </option>
-                </select>
-                <div>
-                    <input type="text" [(ngModel)] = "project.projectId">
-                    <!-- {{user.userId}} -->
-                    <button (click)="addNewProjectToUser(user)" class="btn btn-info">Save Project</button>
-                    <button (click)="addRoleToUser(user)" class="btn btn-info">Save Role</button>
-                  </div>
-                <button (click)="updateUser(user.userId)" class="btn btn-info">Update</button>
-                <!-- <button (click)="deleteUser(user.userId)" class="btn btn-danger" style="margin-left: 10px">Delete</button> -->
-                <button (click)="navigateToProfile(user.userId)" class="btn btn-info " style="margin-left: 10px">Profile</button>
-
-                <button (click)="addProjectToUser(user)" class="btn btn-info " style="margin-left: 10px">Assign Project</button>
-
-                <button (click)="deleteUser(user.userId)" 
-                
-                class="btn btn-info " style="margin-left: 10px">Delete User</button>
-
+                <button mat-button [matMenuTriggerFor]="menu">Actions</button>
+<mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="openProjectDialog()">Assign Project</button>
+    <button mat-menu-item (click)="openRoleDialog(user.userId)">Assign Role</button>
+    <button mat-menu-item (click)="updateUser(user.userId)">Update</button>
+    <button mat-menu-item (click)="navigateToProfile(user.userId)">Profile</button>
+    <button mat-menu-item (click)="deleteUser(user.userId)">Delete User</button>
+</mat-menu>
             </td>
         </tr>
     </tbody>

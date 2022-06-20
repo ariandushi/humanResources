@@ -1,3 +1,4 @@
+import { RoleDialogComponent } from './../role-dialog/role-dialog.component';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../../User/user.service';
@@ -7,6 +8,8 @@ import { Guid } from 'guid-typescript';
 import { Project } from 'src/app/Project/project';
 import { ProjectService } from 'src/app/Project/project.service';
 import { Role } from 'src/app/Roles/role';
+import { MatDialog } from '@angular/material/dialog';
+import { ProjectDialogComponent } from '../project-dialog/project-dialog.component';
 
 @Component({
   selector: 'app-user-list',
@@ -14,6 +17,23 @@ import { Role } from 'src/app/Roles/role';
   styleUrls: ['./user-list.component.scss']
 })
 export class UserListComponent implements OnInit {
+
+  openRoleDialog(userId: Guid) {
+    const dialogRef = this.dialog.open(RoleDialogComponent, {data: {
+      userId,
+    }});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+      this.getUsers();
+    });
+  }
+  openProjectDialog() {
+    const dialogRef = this.dialog.open(ProjectDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 
   userId:Guid;
   projectId:Guid;
@@ -24,7 +44,7 @@ export class UserListComponent implements OnInit {
   roleName: String;
   role: Role=new Role();
   roles: Role[];
-  constructor(private userService: UserService, private router: Router, private projectService: ProjectService) { }
+  constructor(public dialog: MatDialog, private userService: UserService, private router: Router, private projectService: ProjectService) { }
 
   ngOnInit(): void {
     this.getUsers();
@@ -79,7 +99,7 @@ export class UserListComponent implements OnInit {
   }
   addRoleToUser(user:User){
     console.log(this.user);
-    this.userService.assignRoleToUser(user.userId, this.role.roleName ).subscribe(data=>{
+    this.userService.assignRoleToUser(user.userId, this.role.roleId ).subscribe(data=>{
       console.log(data);
       this.router.navigate(['/user-list']);
     }, error=>console.log(error));
