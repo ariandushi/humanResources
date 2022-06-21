@@ -23,18 +23,10 @@ export class UserExperienceComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId = this.route.snapshot.params['userId'];
-
     this.experienceService.getExperienceByUserId(this.userId).subscribe(data => {
       this.experiences = data;
     }, error=>console.log(error));
   }
-
-  /*private getExperienceByUserId(userId: string = uuid()){
-    this.experienceService.getExperienceByUserId(userId).subscribe(data=>{
-      console.log(data);
-      this.experiences=data;
-    });
-  }*/
   updateExperience(expId: Guid){
     this.router.navigate(['update-experience', expId]);
   }

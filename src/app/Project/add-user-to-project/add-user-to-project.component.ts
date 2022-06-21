@@ -16,27 +16,19 @@ import { Inject } from '@angular/core';
 })
 export class AddUserToProjectComponent implements OnInit {
   userId:Guid;
-  username: String;
-  projectId:Guid;
-  user: User = new User();
   users: User[];
-  project: Project= new Project();
 
   constructor(private projectService: ProjectService, private userService: UserService, private route: ActivatedRoute, @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit(): void {
-    this. projectId = this.route.snapshot.params['projectId'];
-    this.projectService.getProjectByProjectId(this.projectId).subscribe(data=>{
-      this.project=data;
-    });
     this.userService.getUsersList().subscribe(data=>{
       this.users=data;
-    });
-  }
+    })
+    }
 
-  saveUser(project: Project){
-    // console.log("Project: ", this.data, this.userId)
-    this.projectService.assignUserToProject(project.projectId, this.user.userId).subscribe(data=>{
+  saveUser(){
+    console.log("Project: ", this.userId, this.data.projecId)
+    this.projectService.assignUserToProject(this.data.projectId, this.userId).subscribe(data=>{
       console.log(data);
     });
   }

@@ -22,9 +22,7 @@ export class ProjectUserListComponent implements OnInit {
 
   ngOnInit(): void {
    this.projectId = this.route.snapshot.params['projectId'];
-
    this.projectService.getProjectByProjectId(this.projectId).subscribe(data=>{
-    
     this.project=data;
    }, error =>console.log(error));
 

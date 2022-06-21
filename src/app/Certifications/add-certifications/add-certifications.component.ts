@@ -24,22 +24,21 @@ export class AddCertificationsComponent implements OnInit {
   ngOnInit(): void {
     this.userId = this.route.snapshot.params['userId'];
     this.certification.userId=this.userId;
-    //debugger;
-    this.userService.getUserById(this.userId).subscribe(data => {
-      
+    this.userService.getUserById(this.userId).subscribe(data => { 
       this.user = data;
     }, error =>console.log(error));
   }
-
-  onSubmit(){
-    console.log(this.certification);
+  saveCertification(){
     this.certificationsService.addCertification(this.certification, this.userId).subscribe(data=>{
       console.log(data);
-      this.saveCertification(this.userId);
-    })
+      this.goToUserCertification(this.userId);
+    }, error=>console.log(error));
   }
-  saveCertification(userId:Guid){
+  goToUserCertification(userId:Guid){
     this.router.navigate(['profile', userId]);
   }
-
+  onSubmit(){
+    console.log(this.certification);
+    this.saveCertification();
+  }
 }

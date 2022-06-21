@@ -9,25 +9,25 @@ import { Certification } from './certification';
 })
 export class CertificationsService {
 
-  private baseURL="http://localhost:8080/hr_management/certification/";
+  private baseURL="http://localhost:8080/hr_management/certification";
   constructor(private httpClient: HttpClient) { }
 
   addCertification(certification: Certification, userId:Guid): Observable<Object>{
-    return this.httpClient.post(`${this.baseURL+"addNewCertification"}`, certification);
+    return this.httpClient.post(`${this.baseURL+"/addNewCertification"}`, certification);
   }
   getCertifications():Observable<Certification[]>{
-    return this.httpClient.get<Certification[]>(`${this.baseURL+"getAll"}`);
+    return this.httpClient.get<Certification[]>(`${this.baseURL+"/getAll"}`);
   }
-  getCertificationByCertificationId(certificationId:Guid): Observable<Certification>{
-    return this.httpClient.get<Certification>(`${this.baseURL+"getCertificationById"}/${certificationId}`);
+  getCertificationById(certificationId:Guid): Observable<Certification>{
+    return this.httpClient.get<Certification>(`${this.baseURL+"/getCertificationById"}/${certificationId}`);
   }
   getCertificationByUserId(userId:Guid): Observable<Certification[]>{
-    return this.httpClient.get<Certification[]>(`${this.baseURL+"getCertificationsByUserId"}/${userId}`);
+    return this.httpClient.get<Certification[]>(`${this.baseURL+"/getCertificationsByUserId"}/${userId}`);
   }
   editCertification(certificationId:Guid, certification:Certification):Observable<Object>{
-    return this.httpClient.put(`${this.baseURL+"editCertification"}/${certificationId}`, certification);
+    return this.httpClient.put(`${this.baseURL+"/editCertification"}/${certificationId}`, certification);
   }
   deleteCertification(certificationId:Guid):Observable<Certification>{
-    return this.httpClient.delete<Certification>(`${this.baseURL+"deleteCertification"}/${certificationId}`);
+    return this.httpClient.delete<Certification>(`${this.baseURL+"/deleteCertification"}/${certificationId}`);
   }
 }

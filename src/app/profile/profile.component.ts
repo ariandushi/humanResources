@@ -47,15 +47,11 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId = this.route.snapshot.params['userId'];
-    //debugger;
-    this.userService.getUserById(this.userId).subscribe(data => {
-      
+    this.userService.getUserById(this.userId).subscribe(data => { 
       this.user = data;
-      //this.user.addressID
     }, error =>console.log(error));
 
    // this.expId = this.route.snapshot.params['userId'];
-
     this.experienceService.getExperienceByUserId(this.userId).subscribe(data => {
      this.experiences=data
     }, error=>console.log(error));
@@ -63,12 +59,15 @@ export class ProfileComponent implements OnInit {
     this.certificationsService.getCertificationByUserId(this.userId).subscribe(data => {
       this.certifications = data;
     }, error=>console.log(error));
+
     this.projectService.getProjectsByUserId(this.userId).subscribe(data=>{
       this.projects=data;
     }, error=> console.log(error));
+
     this.addressService.getAddressByUserId(this.userId).subscribe(data=>{
       this.addresses=data;
     }, error=> console.log(error));
+
     this.dayOffService.showDayOffRequestByUserId(this.userId).subscribe(data=>{
       this.dayOff1=data;
     }, error=> console.log(error));
@@ -78,6 +77,17 @@ export class ProfileComponent implements OnInit {
   }
   navigateToProfile(userId:Guid){
     this.router.navigate(['profile', userId]);
+  }
+  addCertification(userId:Guid){
+    this.router.navigate(['add-certifications', userId]);
+  }
+  updateCertificationByCertificationId(certificationID:Guid){
+    this.router.navigate(['update-certification', certificationID]);
+  }
+  deleteCertification(certificationID:Guid){
+    this.certificationsService.deleteCertification(certificationID).subscribe(data=>{
+      this.certification=data;
+    }, error=>console.log(error));
   }
   addExperience(userId:Guid){
     this.router.navigate(['add-experience', userId]);
@@ -108,18 +118,6 @@ export class ProfileComponent implements OnInit {
 
   onClick(){
     this.isButtonVisible=!this.isButtonVisible;
-  }
-
-  addCertification(userId:Guid){
-    this.router.navigate(['add-certifications', userId]);
-  }
-  updateCertificationByCertificationId(certificationID:Guid){
-    this.router.navigate(['update-certification', certificationID]);
-  }
-  deleteCertification(certificationID:Guid){
-    this.certificationsService.deleteCertification(certificationID).subscribe(data=>{
-      this.certification=data;
-    }, error=>console.log(error));
   }
 
   addProjectToUser(userId:Guid){

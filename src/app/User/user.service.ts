@@ -35,7 +35,10 @@ export class UserService {
     return this.httpClient.patch(`${this.baseURL+"/assignProject"}/${username}/projectId/${projectId}`, null);
   }
   assignRoleToUser(userId: Guid, roleId: Guid): Observable<Object>{
-    return this.httpClient.patch(`${this.baseURL+"/assignRole"}/${userId}/roleId/${roleId}`, null);
+    return this.httpClient.patch(`${this.baseURL+"/assignRole"}/${userId}/roleId/${roleId}`, null, {
+      headers: new HttpHeaders({'Content-Type':'application/json; charset=utf-8'}),
+      observe: 'body'
+    });
   }
 
   getUsersByProjectId(projectId:Guid):Observable<User[]>{

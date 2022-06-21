@@ -38,6 +38,7 @@
 <mat-menu #menu="matMenu">
     <button mat-menu-item (click)="openProjectDialog()">Assign Project</button>
     <button mat-menu-item (click)="openRoleDialog(user.userId)">Assign Role</button>
+    <!-- <button mat-menu-item (click)="openRoleDialog(user.userId)">Remove Role</button> -->
     <button mat-menu-item (click)="updateUser(user.userId)">Update</button>
     <button mat-menu-item (click)="navigateToProfile(user.userId)">Profile</button>
     <button mat-menu-item (click)="deleteUser(user.userId)">Delete User</button>

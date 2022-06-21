@@ -70,7 +70,7 @@ const routes: Routes = [
   {path: 'add-address/:userId', component:AddAddressComponent},
   {path: 'user-address', component:UserAddressComponent},
   {path: 'add-certifications/:userId', component:AddCertificationsComponent},
-  {path: 'update-certifications/:userId', component:UpdateCertificationsComponent},
+  {path: 'update-certification/:userId', component:UpdateCertificationsComponent},
   {path: 'login', component:LoginComponent},
   // {path: 'admin', component:AdminComponent, canActivate:[AuthGuard], data:{roles:['Admin']}},
   {path: 'place-day-off-request/:userId', component:PlaceDayOffRequestComponent},

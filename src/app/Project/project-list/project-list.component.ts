@@ -1,3 +1,4 @@
+import { UserAuthService } from './../../_services/user-auth.service';
 import { AddUserToProjectComponent } from './../add-user-to-project/add-user-to-project.component';
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
@@ -24,8 +25,12 @@ export class ProjectListComponent implements OnInit {
   currentUser : User;
   projectId:Guid;
   currentProject: Project;
+
   constructor(private projectService: ProjectService,
-    private router: Router, private userService:UserService, public dialog: MatDialog) { }
+    private router: Router, 
+    private userService:UserService,
+    public dialog: MatDialog,
+    private authService: UserAuthService) { }
 
   ngOnInit(): void {
     this.projectService.getProjectList().subscribe(data=>{
@@ -36,10 +41,6 @@ export class ProjectListComponent implements OnInit {
     })
   }
 
-  // SelectedValue: Guid;
-  // chosenUser(e:any){
-  //   this.user=e;
-  // }
   updateProject(projectId:Guid){
     this.router.navigate([`update-project`, projectId])
   }
@@ -53,22 +54,6 @@ export class ProjectListComponent implements OnInit {
         this.projects=data;})
     });
   }
-  // getUserUserId(userId:Guid){
-  //   this.userService.getUserById(userId).subscribe(data=>{
-  //     console.log(data);
-  //   },error=>console.log(error));
-  // }
-  // setNewUser(user: User): void{
-  //   console.log(user);
-  //   this.currentUser=user;
-  // }
-  // addNewUserToProject(project: Project){
-  //   console.log(this.project);
-  //   this.projectService.assignUserToProject(project.projectId, this.user.username).subscribe(data=>{
-  //     console.log(data);
-  //     this.router.navigate(['/project-list']);
-  //   }, error=>console.log(error));
-  // }
   showUsers(projectId:Guid){
     this.router.navigate([`/project-user-list`, projectId]);
   }
@@ -79,4 +64,6 @@ export class ProjectListComponent implements OnInit {
         this.projects=data;})
     },error=>console.log(error));
   }
+
+  isAdmin = () => this.authService.isAdmin();
 }

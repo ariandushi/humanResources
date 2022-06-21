@@ -10,7 +10,7 @@ export class UserAuthService {
   public setRoles(roles:[]){
     localStorage.setItem("roles",JSON.stringify(roles));
   }
-  public getRoles():[]{
+  public getRoles(): any[]{
     // ! -> not null
     return JSON.parse(localStorage.getItem('roles')!);
   }
@@ -25,5 +25,10 @@ export class UserAuthService {
   }
   public isLoggedIn(){
     return this.getRoles() && this.getToken();
+  }
+
+  public isAdmin () {
+    const roles = this.getRoles();
+    return roles.find(role => role.roleName === 'ADMIN') !== undefined;
   }
 }

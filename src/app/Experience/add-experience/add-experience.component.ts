@@ -15,9 +15,9 @@ import { Guid } from 'guid-typescript';
 export class AddExperienceComponent implements OnInit {
 
   userId:Guid;
+  user: User=new User();
   expId:Guid;
   experience: Experience = new Experience();
-  user: User=new User();
   constructor(private experienceService: ExperienceService, private router: Router,
     private userService:UserService,
     private route: ActivatedRoute) { }
@@ -25,28 +25,22 @@ export class AddExperienceComponent implements OnInit {
   ngOnInit(): void {
     this.userId = this.route.snapshot.params['userId'];
     this.experience.userId=this.userId;
-    //debugger;
     this.userService.getUserById(this.userId).subscribe(data => {
-      
       this.user = data;
     }, error =>console.log(error));
   }
-  
   saveExperience(){
     this.experienceService.addExperience(this.experience, this.userId).subscribe(data=>{
       console.log(data);
       this.goToUserExperience(this.userId);
     }, error=>console.log(error));
   }
-
   goToUserExperience(userId:Guid){
     this.router.navigate(['profile', userId]);
   }
-  onSubmit(){
-    
+  onSubmit(){    
     console.log(this.experience);
     this.saveExperience();
-    
   }
 
 }
