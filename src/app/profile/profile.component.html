@@ -188,15 +188,14 @@
                                 </div>
                               </div>
                             </div>
-                            <tr *ngFor="let address of addresses">
-                              <h6 class="d-flex align-items-center mb-3"  *ngIf="isButtonVisible">State</h6>
+                            
+                              <h6 class="d-flex align-items-center mb-3" >State</h6>
                               <!-- <td *ngIf="isButtonVisible"> {{address.addressID}}</td> -->
-                              <td *ngIf="isButtonVisible"> {{address.state}}</td>
-                              <h6 class="d-flex align-items-center mb-3"  *ngIf="isButtonVisible">City</h6>
-                              <td *ngIf="isButtonVisible"> {{address.city}}</td>
-                              <h6 class="d-flex align-items-center mb-3"  *ngIf="isButtonVisible">Postal Code</h6>
-                              <td *ngIf="isButtonVisible"> {{address.postalCode}}</td>
-                            </tr>
+                              <td> {{address.state}}</td>
+                              <h6 class="d-flex align-items-center mb-3"  >City</h6>
+                              <td> {{address.city}}</td>
+                              <h6 class="d-flex align-items-center mb-3"  >Postal Code</h6>
+                              <td> {{address.postalCode}}</td>
                     <div class="row">
                       <div class="col-sm-12">
                        <button (click)="updateUser(user.userId)" class="btn btn-info">Edit Profile</button>

@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { UserService } from '../../User/user.service';
 import { UserAuthService } from '../_services/user-auth.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Guid } from 'guid-typescript';
 import { User } from '../../User/user';
+import { IUser } from './IUser';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +15,14 @@ import { User } from '../../User/user';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+
+  helper = new JwtHelperService();
+
+  currentUser: IUser = {
+    username: null!,
+    roles: null!,
+    userId:null!,
+  };
 
   form = new FormGroup({
     username: new FormControl(null, Validators.required),
@@ -34,23 +44,38 @@ export class LoginComponent implements OnInit {
   login(loginForm: NgForm){
 
     this.userService.login(loginForm.value).subscribe((response=>{
-     
-     let res: any = response
-     localStorage.setItem("jwtToken", res.jwt)
-     this.userAuthService.setRoles(res.user.roles)
-     const role= res.user.roles[0].roleName;
+
+      let res: any = response;
+      // this.currentUser.username = decodedToken.username;
+     localStorage.setItem("jwtToken", res.jwt);
+     const decodedToken = this.helper.decodeToken(res.jwt);
+     console.log(decodedToken);
+     this.currentUser.username=decodedToken.sub;
+     this.currentUser.userId=decodedToken.userId;
+     this.currentUser.roles=decodedToken.Roles;
+     this.userAuthService.setRoles(decodedToken.Roles)
+     const role= decodedToken.Roles[0];
+     //const role = this.currentUser.role
+    //  this.userAuthService.setUserId(res.user.userId);
+
+    this.router.navigate(['profile', this.currentUser.userId]);
+    
+    //  this.navigateToProfile(decodedToken.userId);
+    // if(role=== 'Admin'){
+    //   this.router.navigate(['/admin']);
+    //   // this.userAuthService.getUserId();
+    //   //  this.userId= this.route.snapshot.params['userId'];
+    //   //  this.navigateToProfile(this.userId);
+    // }else{
+    //   this.router.navigate(['/project-list']);
+    // }
     //  if(role=== 'Admin'){
     //     this.router.navigate(['/users']);
     //  }else{
     //         this.router.navigate(['/project-list']);
     //       }
-
-
-    // this.userId= this.route.snapshot.params['userId'];
-    // this.navigateToProfile(this.userId);
     }));
-  }
-
+  }  
   navigateToProfile(userId:Guid){
     this.router.navigate(['profile', userId]);
   }

@@ -57,9 +57,9 @@ export class UserListComponent implements OnInit {
     this.router.navigate(['update-certifications', userId]);
   }
   addUser(){
-    this.userService.addUser(this.user).subscribe(data=>{
-      console.log(data);
-    }, error=> console.log(error));
+    // this.userService.addUser(this.user).subscribe(data=>{
+    //   console.log(data);
+    // }, error=> console.log(error));
     this.router.navigate(["/add-user"]);
   }
 

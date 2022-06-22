@@ -9,7 +9,7 @@ import { Certification } from './certification';
 })
 export class CertificationsService {
 
-  private baseURL="http://localhost:8080/api/v1/hr_management_system/certifications/";
+  private baseURL="http://localhost:8080/hr_management/certification/";
   constructor(private httpClient: HttpClient) { }
 
   addCertification(certification: Certification, userId:Guid): Observable<Object>{

@@ -35,6 +35,12 @@ export class UserAuthService {
 //       }));
 }
 
+  public setUserId(userId){
+    localStorage.setItem('userId',JSON.stringify(userId));
+  }
+  public getUserId(){
+    return JSON.parse(localStorage.getItem('userId')!);
+  }
   public setRoles(roles:[]){
     localStorage.setItem('roles',JSON.stringify(roles));
   }

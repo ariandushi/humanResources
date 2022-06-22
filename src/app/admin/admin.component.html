@@ -24,34 +24,29 @@
 
 
             <td>
-                <select name="Status" (change)="changeStatus(theStatus)"
-                
-               > 
-                    <option *ngFor="let statusType of statusTypes"
-                    [ngValue]="statusType" onclick="getThis(e)">
-                        {{statusType}}
-                    </option>
-                </select>
-                <!-- <div *ngFor="let enum of statusTypes">
-                    <label for="enum_answer_{{enum.name}}">
-                      <input id="enum_answer_{{enum.name}}" [value]='enum.name' type="radio" name="enums" [(ngModel)]="user.status>
-                      {{enum.name}}
-                    </label>
-                  </div> -->
+                <form #statusForm="ngForm" (ngSubmit)="onClickSend(statusForm.value)">
+                    <label>Reject Reason</label>
+                    <input type="text" name="rejectReason" ngModel>
+
+                    <label>User Id</label>
+                    <input type="text" name="userId" [(ngModel)]="user.userId">
+                    
+                    <label>Day Off</label>
+                    <input type="text" name="dayOffId" [(ngModel)]="dayOff.dayOffId">
+
+                    <label>Status</label>
+                    <input type="text" name="status"  ngModel>
+
+                    <input type="submit" value="Send Request">
+                    
+                </form>
+                <button (click)="approveRequest()" class="btn btn-info">Approve</button>
+                <!-- <button (click)="rejectRequest(user.userId)" class="btn btn-info">Reject</button> -->
 
 
-                <!-- <div>
-                    <input type="text" [(ngModel)] = "status">
-                    {{theStatus}}
-                    <button (click)="updateStatus(dayOff)" class="btn btn-info">Edit Request</button>
-                  </div>    -->
         </td>
         </tr>
     
         </div>
-        <!-- <tr *ngFor="let user of users">
-            <td> {{ user.userId}}</td>
-            <td> {{ user.leaveDaysLeft}}</td>
-        </tr> -->
     </tbody>
 </table>

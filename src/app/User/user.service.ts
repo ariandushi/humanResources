@@ -26,9 +26,9 @@ export class UserService {
   getUserById(userId: Guid): Observable<User>{
     return this.httpClient.get<User>(`${this.baseURL+"/userId"}/${userId}`);
   }
-  getUserProfile(userId: Guid): Observable<User>{
-    return this.httpClient.get<User>(`${this.baseURL+"/userProfile"}/${userId}`);
-  }
+  // getUserProfile(userId: Guid): Observable<User>{
+  //   return this.httpClient.get<User>(`${this.baseURL+"/userProfile"}/${userId}`);
+  // }
   updateUser(userId: Guid, user: User): Observable<Object>{
     return this.httpClient.put(`${this.baseURL+"/updateUser"}/${userId}`, user);
   }

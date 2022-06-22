@@ -10,7 +10,7 @@ import { Guid } from 'guid-typescript';
 })
 export class ExperienceService {
 
-  private baseURL="http://localhost:8080";
+  private baseURL="http://localhost:8080/hr_management/experience";
 
   constructor(private httpClient: HttpClient) { }
 

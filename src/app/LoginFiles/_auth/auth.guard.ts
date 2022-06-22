@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { Guid } from 'guid-typescript';
 import { Observable } from 'rxjs';
 import { UserService } from '../../User/user.service';
 import { UserAuthService } from '../_services/user-auth.service';
@@ -24,6 +25,13 @@ export class AuthGuard implements CanActivate {
           return false;
         }
        }
+      //  const uId= route.data["userId"] as Guid;
+      //  if(uId){
+      //   console.log(uId);
+      //   this.router.navigate(['profile', uId]);
+      //  }else{
+      //   return false;
+      //  }
       }
       this.router.navigate(['/users']);
       return false;

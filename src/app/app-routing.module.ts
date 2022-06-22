@@ -69,7 +69,7 @@ const routes: Routes = [
   {path: 'admin', component:AdminComponent, canActivate:[AuthGuard], data:{roles:['Admin']}},
   {path: 'place-day-off-request/:userId', component:PlaceDayOffRequestComponent},
   {path: 'admin1', component:AdminComponent},
-  {path:'', redirectTo:'users', pathMatch:'full'}
+  {path:'', redirectTo:'login', pathMatch:'full'}
 ];
 
 @NgModule({

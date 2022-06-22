@@ -15,6 +15,7 @@ import { Project } from '../Project/project';
 import { ProjectService } from '../Project/project.service';
 import { DayOffService } from '../dayOff/day-off.service';
 import { DayOff } from '../dayOff/dayOff';
+import { IUser } from '../LoginFiles/login/IUser';
 
 
 @Component({
@@ -23,6 +24,14 @@ import { DayOff } from '../dayOff/dayOff';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
+
+
+  currentUser: IUser = {
+    username: null!,
+    roles: null!,
+    userId:null!,
+  };
+
   isButtonVisible:boolean = false;
   userId:Guid;
   addressId:Guid;
@@ -30,7 +39,6 @@ export class ProfileComponent implements OnInit {
   certificationID:Guid;
   addressID:Guid;
   address: Address=new Address();
-  addresses: Address[];
   user: User=new User();
   experience: Experience=new Experience();
   experiences: Experience[];
@@ -48,8 +56,9 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId = this.route.snapshot.params['userId'];
+    console.log(this.userId);
     //debugger;
-    this.userService.getUserProfile(this.userId).subscribe(data => {
+    this.userService.getUserById(this.userId).subscribe(data => {
       
       this.user = data;
       //this.user.addressID
@@ -57,22 +66,27 @@ export class ProfileComponent implements OnInit {
 
    // this.expId = this.route.snapshot.params['userId'];
 
-    this.experienceService.getExperienceByUserId(this.userId).subscribe(data => {
-     this.experiences=data
-    }, error=>console.log(error));
 
-    this.certificationsService.getCertificationByUserId(this.userId).subscribe(data => {
-      this.certifications = data;
-    }, error=>console.log(error));
-    this.projectService.getProjectsByUserId(this.userId).subscribe(data=>{
-      this.projects=data;
-    }, error=> console.log(error));
+
+    // this.experienceService.getExperienceByUserId(this.userId).subscribe(data => {
+    //  this.experiences=data
+    // }, error=>console.log(error));
+
+    // this.certificationsService.getCertificationByUserId(this.userId).subscribe(data => {
+    //   this.certifications = data;
+    // }, error=>console.log(error));
+    // this.projectService.getProjectsByUserId(this.userId).subscribe(data=>{
+    //   this.projects=data;
+    // }, error=> console.log(error));
     this.addressService.getAddressByUserId(this.userId).subscribe(data=>{
-      this.addresses=data;
+      this.address=data;
+      console.log(this.address);
     }, error=> console.log(error));
     this.dayOffService.showDayOffRequestByUserId(this.userId).subscribe(data=>{
       this.dayOff1=data;
     }, error=> console.log(error));
+
+    
   }
  /* private getUser(userId: string=uuid()){
     this.userService.getUserById(this.userId).subscribe(data=>{

@@ -44,7 +44,6 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,6 +72,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     UserComponent,
     PlaceDayOffRequestComponent,
     ProjectUserListComponent
+    
   ],
   imports: [
     BrowserModule,
