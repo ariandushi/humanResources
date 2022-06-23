@@ -2,6 +2,7 @@ import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Guid } from 'guid-typescript';
+import { Task } from 'src/app/Tasks/task';
 import { User } from 'src/app/User/user';
 import { UserService } from 'src/app/User/user.service';
 import { Project } from '../project';
@@ -22,6 +23,8 @@ export class ProjectListComponent implements OnInit {
   currentUser : User;
   projectId:Guid;
   currentProject: Project;
+  taskId:Guid;
+  task:Task=new Task();
   constructor(private projectService: ProjectService,
     private router: Router, private userService:UserService,
     private route: ActivatedRoute) { }
@@ -84,6 +87,10 @@ export class ProjectListComponent implements OnInit {
 
   addProject(){
     this.router.navigate(["/add-project"]);
+  }
+  showTasks(projectId:Guid){
+    this.router.navigate([`task-list`, projectId]);
+
   }
  
 }

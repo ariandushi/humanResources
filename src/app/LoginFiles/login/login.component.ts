@@ -8,6 +8,7 @@ import { Guid } from 'guid-typescript';
 import { User } from '../../User/user';
 import { IUser } from './IUser';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { RoleService } from 'src/app/Roles/role.service';
 
 @Component({
   selector: 'app-login',
@@ -33,7 +34,7 @@ export class LoginComponent implements OnInit {
   user: User= new User();
   
   
-  constructor(private userService: UserService, private userAuthService:UserAuthService, private router:Router,
+  constructor(private userService: UserService, private userAuthService:UserAuthService, private router:Router, private roleService : RoleService,
     // private apiService: ApiServiceService, private authService: AuthService, 
     private route : ActivatedRoute) { }
 
@@ -53,8 +54,20 @@ export class LoginComponent implements OnInit {
      this.currentUser.username=decodedToken.sub;
      this.currentUser.userId=decodedToken.userId;
      this.currentUser.roles=decodedToken.Roles;
-     this.userAuthService.setRoles(decodedToken.Roles)
+     this.userAuthService.setRoles(decodedToken.Roles);
+     console.log(decodedToken.Roles);
+
+    const getRole= this.roleService.getRoleById(decodedToken.Roles).subscribe(data=>{
+      if(data.roleName=='Admin'){
+        this.router.navigate(['admin']);
+      }
+    });
+     
+
+     console.log(decodedToken.Roles);
      const role= decodedToken.Roles[0];
+     console.log(role)
+     this.userAuthService.getRoles();
      //const role = this.currentUser.role
     //  this.userAuthService.setUserId(res.user.userId);
 
@@ -76,6 +89,7 @@ export class LoginComponent implements OnInit {
     //       }
     }));
   }  
+  
   navigateToProfile(userId:Guid){
     this.router.navigate(['profile', userId]);
   }
@@ -117,4 +131,29 @@ export class LoginComponent implements OnInit {
 
 //     }
 //   }
+
+
+
+
+// public roleMatch(allowedRoles):boolean{
+//   let isMatch: boolean = false;
+//   // const userRoles:any=this.userAuthService.getRoles();
+//   const userRoles:any=this.roleService.getRoleById(decodedToken.Roles)
+
+//   if(userRoles !=null && userRoles){
+//     for(let i = 0; i < userRoles.length; i++){
+//       for(let j=0; j<allowedRoles.length; j++){
+//         if(userRoles[i].roleName === allowedRoles[j]){
+//           isMatch=true;
+//           return isMatch;
+//         }else
+//         {
+//           return isMatch;
+//         }
+//       }
+//     }
+//   }
+//   return isMatch;
+// }
+
 }

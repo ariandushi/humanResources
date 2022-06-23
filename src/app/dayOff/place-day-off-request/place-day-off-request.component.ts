@@ -29,6 +29,7 @@ export class PlaceDayOffRequestComponent implements OnInit {
   }
 
   placeDayOffRequest(){
+    debugger;
     this.dayOffService.placeDayOffRequest(this.dayOff).subscribe(data=>{
       console.log(data);
       this.goToUserProfile(this.userId);

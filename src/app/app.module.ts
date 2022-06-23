@@ -36,7 +36,6 @@ import { HeaderComponent } from './header/header.component';
 import { AuthGuard } from './LoginFiles/_auth/auth.guard';
 import { AuthInterceptor } from './LoginFiles/_auth/auth.interceptor';
 import { UserService } from './User/user.service';
-import { UserComponent } from './User/user/user.component';
 import { PlaceDayOffRequestComponent } from './dayOff/place-day-off-request/place-day-off-request.component';
 import { ProjectUserListComponent } from './Project/project-user-list/project-user-list.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -44,6 +43,13 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
 import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DayOffRequestsComponent } from './dayOff/day-off-requests/day-off-requests.component';
+import { AssignTaskComponent } from './Tasks/assign-task/assign-task.component';
+import { TaskListComponent } from './tasks/task-list/task-list.component';
+import { RoleListComponent } from './Roles/role-list/role-list.component';
+import { RoleUserListComponent } from './Roles/role-user-list/role-user-list.component';
+import { AddRoleComponent } from './Roles/add-role/add-role.component';
+import { ChangePasswordComponent } from './User/change-password/change-password.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -69,9 +75,15 @@ import { ReactiveFormsModule } from '@angular/forms';
     ForbiddenComponent,
     LoginComponent,
     HeaderComponent,
-    UserComponent,
     PlaceDayOffRequestComponent,
-    ProjectUserListComponent
+    ProjectUserListComponent,
+    DayOffRequestsComponent,
+    AssignTaskComponent,
+    TaskListComponent,
+    RoleListComponent,
+    RoleUserListComponent,
+    AddRoleComponent,
+    ChangePasswordComponent
     
   ],
   imports: [

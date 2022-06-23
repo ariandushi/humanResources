@@ -9,6 +9,7 @@ export class Project{
     startTime: string;
     endTime:string;
     description: string;
+    user: User;
 //    mySet: Set<User> = new Set<User>();
 //   users: User[];
 }

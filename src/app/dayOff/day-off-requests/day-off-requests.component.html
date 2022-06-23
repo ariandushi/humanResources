@@ -12,9 +12,8 @@
         </tr>
     </thead>
     <tbody>
-        <div *ngFor="let user of users">
-        <tr *ngFor="let dayOff of daysOff">
-            <td > {{ user.username}}</td>
+        <!-- <tr *ngFor="let dayOff of daysOff"> -->
+            <td> {{ dayOff.dayOffId}}</td>
             <td> {{ dayOff.startDate}}</td>
             <td> {{ dayOff.endDate}}</td>
             <td> {{ dayOff.reason}}</td>
@@ -46,13 +45,10 @@
                     <button class="btn btn-success" type="submit">Submit</button>
                 </form>
                 <!-- <button (click)="rejectRequest(user.userId)" class="btn btn-info">Reject</button> -->
-                 <button (click)="navToRequests(dayOff.dayOffId)" class="btn btn-info">Nav</button>
 
 
 
         </td>
-        </tr>
-    
-        </div>
+        <!-- </tr> -->
     </tbody>
 </table>

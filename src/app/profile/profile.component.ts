@@ -58,7 +58,7 @@ export class ProfileComponent implements OnInit {
     this.userId = this.route.snapshot.params['userId'];
     console.log(this.userId);
     //debugger;
-    this.userService.getUserById(this.userId).subscribe(data => {
+    this.userService.getWholeUserByUserId(this.userId).subscribe(data => {
       
       this.user = data;
       //this.user.addressID
@@ -82,9 +82,9 @@ export class ProfileComponent implements OnInit {
       this.address=data;
       console.log(this.address);
     }, error=> console.log(error));
-    this.dayOffService.showDayOffRequestByUserId(this.userId).subscribe(data=>{
-      this.dayOff1=data;
-    }, error=> console.log(error));
+    // this.dayOffService.showDayOffRequestByUserId(this.userId).subscribe(data=>{
+    //   this.dayOff1=data;
+    // }, error=> console.log(error));
 
     
   }
@@ -160,6 +160,8 @@ export class ProfileComponent implements OnInit {
   //   this.show=true;
   // }
 
-
+  changePassword(userId:Guid){
+    this.router.navigate(['change-password', userId]);
+  }
 
 }

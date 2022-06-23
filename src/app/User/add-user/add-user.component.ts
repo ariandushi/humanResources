@@ -32,4 +32,7 @@ export class AddUserComponent implements OnInit {
     this.saveUser();
   }
 
+  changeStatus(v){
+    this.user.userStatus=v.value;
+  }
 }

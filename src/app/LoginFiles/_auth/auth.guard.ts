@@ -3,35 +3,32 @@ import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTr
 import { Guid } from 'guid-typescript';
 import { Observable } from 'rxjs';
 import { UserService } from '../../User/user.service';
+import { LoginComponent } from '../login/login.component';
 import { UserAuthService } from '../_services/user-auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  constructor(private userAuthService: UserAuthService, private router: Router, private userService: UserService){}
+  constructor(private userAuthService: UserAuthService, private router: Router, private userService: UserService, private loginComp: LoginComponent){}
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       if(this.userAuthService.getToken() !== null){
         console.log(route.data["jwt"]);
-       const role = route.data["roles"] as Array<string>;
+        console.log(route.data["roles"]);
+
+       const role = route.data['roles'] as Array<string>;
        if(role){
         const match=this.userService.roleMatch(role);
         if(match){
           return true;
         }else{
-          this.router.navigate(['/login']);
+          this.router.navigate(['/users']);
           return false;
         }
        }
-      //  const uId= route.data["userId"] as Guid;
-      //  if(uId){
-      //   console.log(uId);
-      //   this.router.navigate(['profile', uId]);
-      //  }else{
-      //   return false;
-      //  }
+    
       }
       this.router.navigate(['/users']);
       return false;

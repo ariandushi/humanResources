@@ -15,16 +15,16 @@ import { UserService } from '../User/user.service';
 })
 export class AdminComponent implements OnInit {
 
-  public statusTypes = Object.values(DayOffStatus);
-  statusi: StatusDto;
-  theStatus: DayOffStatus;
+  // public statusTypes = Object.values(DayOffStatus);
+  statusDTO: StatusDto = new StatusDto();
   daysOff: DayOff[];
   userId:Guid;
   dayOffId:Guid;
   user:User=new User();
   users: User[];
   dayOff: DayOff=new DayOff();
-  constructor(private dayOffService:DayOffService, private route: ActivatedRoute,private userService: UserService) { }
+  constructor(private dayOffService:DayOffService, private route: ActivatedRoute,private userService: UserService,
+    private router: Router) { }
 
   ngOnInit(): void {
     // this.userId = this.route.snapshot.params['userId'];
@@ -49,13 +49,30 @@ export class AdminComponent implements OnInit {
   //   },error=>console.log(error));
   // }
   approveRequest(){
-    this.dayOffService.approveDayOff(this.statusi).subscribe(data=>{
-      console.log(this.statusi);
+    debugger;
+    this.dayOffService.approveDayOff(this.statusDTO).subscribe(data=>{
+    debugger;  
+      // console.log(this.statusi);
       console.log(data);
     })
   }
-  onClickSend(statusi: {rejectReason: string, userId: Guid, dayOffId: Guid, status : DayOffStatus;}){
-    console.log(statusi);
-  }
+  // onClickSend(statusi: {rejectReason: string, userId: Guid, dayOffId: Guid, status : DayOffStatus;}){
+  //   console.log(statusi);
+  // }
 
+  public approveStatus(v){
+    this.statusDTO.requestStatus=v.value;
+  }
+  navToDayOffId(dayOffId){
+    this.dayOffService.getDayOffById(dayOffId).subscribe(data=>{
+
+     });
+     this.navToRequests(dayOffId);
+  }
+  navToRequests(dayOffId:Guid){
+    // this.dayOffService.getDayOffById(dayOffId).subscribe(data=>{
+      
+    // })
+    this.router.navigate(['day-off-requests', dayOffId])
+  }
 }

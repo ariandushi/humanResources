@@ -22,8 +22,11 @@ export class DayOffService {
   showDayOffRequestByUserId(userId:Guid): Observable<DayOff[]>{
     return this.httpClient.get<DayOff[]>(`${this.baseURL}/${userId}`);
   }
-  approveDayOff(statusi: StatusDto):Observable<Object>{
-    return this.httpClient.patch(`${this.baseURL+"/approveDayOff"}`, statusi);
+  approveDayOff(statusDTO: StatusDto):Observable<Object>{
+    return this.httpClient.patch(`${this.baseURL+"/approveDayOff"}`, statusDTO);
+  }
+  getDayOffById(dayOffId:Guid): Observable<DayOff>{
+    return this.httpClient.get<DayOff>(`${this.baseURL+"/getDayOff"}/${dayOffId}`);
   }
 //   approveDayOff( ):Observable<Object>{
 //     return this.httpClient.patch(`${this.baseURL+"/approveDayOff"}/${userId}/dayOffId/${dayOffId}`, null);
