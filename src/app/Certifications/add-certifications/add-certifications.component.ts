@@ -29,7 +29,7 @@ export class AddCertificationsComponent implements OnInit {
     }, error =>console.log(error));
   }
   saveCertification(){
-    this.certificationsService.addCertification(this.certification, this.userId).subscribe(data=>{
+    this.certificationsService.addCertification(this.certification).subscribe(data=>{
       console.log(data);
       this.goToUserCertification(this.userId);
     }, error=>console.log(error));

@@ -4,6 +4,9 @@ body{
     text-align: left;
     background-color: #e2e8f0;    
 }
+.container{
+    display: grid;
+}
 .main-body {
     padding: 15px;
 }
@@ -21,6 +24,9 @@ body{
     background-clip: border-box;
     border: 0 solid rgba(0,0,0,.125);
     border-radius: .25rem;
+}
+#details{
+
 }
 
 .card-body {
@@ -73,3 +79,29 @@ body{
     margin:10px;
 }
 
+
+// .container{
+//     display: grid;
+//     border: 10px solid blue;
+//     height: 100vh;
+//     grid-template-columns: 1fr 2fr;
+// }
+// .container-item{
+//     background-color: aqua;
+//     border: 4px solid red;
+//     padding: 20px;
+// }
+// .item1{
+//     grid-column-start: 1;
+//     grid-column-end: 2;
+// }
+// .item2{
+//     grid-column-start: 1;
+//     grid-column-end: 2;
+// }
+// .item3{
+//     grid-column-start: 2;
+//     grid-column-end: 4;
+//     grid-row-start: 1;
+//     grid-row-end: 4;
+// }

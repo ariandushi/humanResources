@@ -14,7 +14,7 @@ export class ExperienceService {
 
   constructor(private httpClient: HttpClient) { }
 
-  addExperience(experience: Experience, userId:Guid):Observable<Object>{
+  addExperience(experience: Experience):Observable<Object>{
     return this.httpClient.post(`${this.baseURL+"/addExperiences"}`, experience);
   }
   getExperienceByUserId(userId: Guid): Observable<Experience[]>{
@@ -23,9 +23,6 @@ export class ExperienceService {
   getExperienceByExpId(expId: Guid): Observable<Experience>{
     return this.httpClient.get<Experience>(`${this.baseURL+"/getExperiencesByExpId"}/${expId}`);
   }
- /* getExperienceByExpId(expId: string = uuid()): Observable<Experience>{
-    return this.httpClient.get<Experience>(`${this.baseURL+"/experiences"}/${expId}`);
-  }*/
   getExperiences(): Observable<Experience[]>{
     return this.httpClient.get<Experience[]>(`${this.baseURL+"/experiences"}`);
   }

@@ -37,7 +37,9 @@
             </select>
             {{user}} -->
             <button (click)="addUserToProject(project.projectId)" class="btn btn-info">Add User To Project</button>
+            <button (click)="addTask(project.projectId)" class="btn btn-info">Add Task</button>
             <button (click)="showUsers(project.projectId)" class="btn btn-info"> Show Users</button>
+            <button (click)="showTasks(project.projectId)" class="btn btn-info"> Show Tasks</button>
             <button (click)="deleteProject(project.projectId)" class="btn btn-info"> Delete Project</button>
 
         </tr>

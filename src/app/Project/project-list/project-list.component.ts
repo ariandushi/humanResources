@@ -57,6 +57,12 @@ export class ProjectListComponent implements OnInit {
   showUsers(projectId:Guid){
     this.router.navigate([`/project-user-list`, projectId]);
   }
+  addTask(projectId: Guid){
+    this.router.navigate([`/add-task`, projectId]);
+  }
+  showTasks(projectId:Guid){
+    this.router.navigate([`/project-task`, projectId]);
+  }
   deleteProject(projectId:Guid){
     this.projectService.deleteProject(projectId).subscribe(data=>{
       console.log(data);
@@ -65,5 +71,5 @@ export class ProjectListComponent implements OnInit {
     },error=>console.log(error));
   }
 
-  isAdmin = () => this.authService.isAdmin();
+  // isAdmin = () => this.authService.isAdmin();
 }

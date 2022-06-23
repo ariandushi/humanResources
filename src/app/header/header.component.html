@@ -1,12 +1,4 @@
 <mat-toolbar class="mat-elevation-z8">
-    <button
-      mat-icon-button
-      *ngIf="sidenav.mode === 'over'"
-      (click)="sidenav.toggle()"
-    >
-      <mat-icon *ngIf="!sidenav.opened"> menu </mat-icon>
-      <mat-icon *ngIf="sidenav.opened"> close </mat-icon>
-    </button>
     HR Management
     <nav class="navbar navbar-expand-sm  navbar-dark">
     <ul class = "navbar-nav">
@@ -39,22 +31,12 @@
       <li><a routerLink="add-role" routerLinkActive="active" class="dropdown-item" >Add Role</a></li>
       <li><a class="dropdown-item" href="#">Something else here</a></li>
     </ul>
-  </li>
-<!-- <li class = "nav-item">
-  <a routerLink="/admin" routerLinkActive="active" class="nav-link" *ngIf="userService.roleMatch(['Admin'])">Admin Panel</a>
-</li> -->
-<!-- <li class = "nav-item">
-  <a routerLink="admin" routerLinkActive="active" class="nav-link" *ngIf="userService.roleMatch(['User'])">User Panel</a>
-</li> -->
-    
+  </li>  
   </ul>
-    <button *ngIf="!isLoggedIn()" type="button" class="btn btn-success" routerLink="/login">Login</button>
-    <button  *ngIf="isLoggedIn()" type="button" class="btn btn-danger" (click)="logout()">Logout</button>
-
+    <button  *ngIf="isLoggedIn()" type="button" class="btn btn-danger" (click)="logout()"> Logout </button>
     </nav>
   </mat-toolbar>
-  
-  <mat-sidenav-container>
+  <!-- <mat-sidenav-container>
     <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
       <img
         class="avatar mat-elevation-z8"
@@ -91,4 +73,4 @@
         <router-outlet></router-outlet>
       </div>
     </mat-sidenav-content>
-  </mat-sidenav-container>
+  </mat-sidenav-container> -->

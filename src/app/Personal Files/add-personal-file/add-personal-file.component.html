@@ -1,0 +1,28 @@
+<div class="col-md-8 offset-md-3">
+    <h3>Add Personal File</h3>
+    <form (ngSubmit)="onSubmit()">
+    
+      
+        <div class="form-group">
+            <label>userid</label>
+            <input type="text" class="form-control" id="userId" 
+                [(ngModel)] = "personalFile.userId" name="userId">
+        </div>
+        <div class="form-group">
+            <label>Id Card</label>
+            <input type="text" class="form-control" id="idCard" 
+                [(ngModel)] = "personalFile.idCard" name="idCard">
+        </div>
+        <div class="form-group">
+            <label>Degree</label>
+            <input type="text" class="form-control" id="degree" 
+                [(ngModel)] = "personalFile.degree" name="degree">
+        </div>
+        <div class="form-group">
+            <label>Working Skills</label>
+            <input type="text" class="form-control" id="workingSkills" 
+                [(ngModel)] = "personalFile.workingSkills" name="workingSkills">
+        </div>
+        <button class="btn btn-success" type="submit">Submit</button>
+    </form>
+    </div>

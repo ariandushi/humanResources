@@ -30,7 +30,7 @@ export class AddExperienceComponent implements OnInit {
     }, error =>console.log(error));
   }
   saveExperience(){
-    this.experienceService.addExperience(this.experience, this.userId).subscribe(data=>{
+    this.experienceService.addExperience(this.experience).subscribe(data=>{
       console.log(data);
       this.goToUserExperience(this.userId);
     }, error=>console.log(error));

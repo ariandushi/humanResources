@@ -1,34 +1,65 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { BehaviorSubject, map, Observable } from 'rxjs';
+import { User } from '../User/user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserAuthService {
 
-  constructor() { }
+  public userSubject: BehaviorSubject<User>;
+  public user : Observable<User>;
+  private baseURL="http://localhost:8080/hr_management/users";
+  private currentUserSubject: BehaviorSubject<any>;
+
+  constructor(
+    private router: Router,
+    private httpClient: HttpClient
+  ) {
+    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')!));
+
+  // this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')!));
+  // this.user = this.userSubject.asObservable();}
+
+
+//   public get userValue(): User {
+//     return this.userSubject.value;
+// }
+
+// login(username: string, password: string) {
+//   return this.httpClient.post<any>(`${this.baseURL}/authenticate`, { username, password })
+//       .pipe(map(user => {
+//           // store user details and jwt token in local storage to keep user logged in between page refreshes
+//           localStorage.setItem('user', JSON.stringify(user));
+//           this.userSubject.next(user);
+//           return user;
+//       }));
+}
+
+public get currentUserValue(): any {
+  return this.currentUserSubject.value;
+}
 
   public setRoles(roles:[]){
-    localStorage.setItem("roles",JSON.stringify(roles));
+    localStorage.setItem('roles',JSON.stringify(roles));
   }
-  public getRoles(): any[]{
+  public getRoles():[]{
     // ! -> not null
     return JSON.parse(localStorage.getItem('roles')!);
+    
   }
   public setToken(jwtToken:string){
-    localStorage.setItem("jwtToken", jwtToken);
+    localStorage.setItem('jwtToken', jwtToken);
   }
   public getToken():string{
-    return localStorage.getItem("jwtToken")!;
+    return localStorage.getItem('jwtToken')!;
   }
   public clear(){
     localStorage.clear;
   }
   public isLoggedIn(){
     return this.getRoles() && this.getToken();
-  }
-
-  public isAdmin () {
-    const roles = this.getRoles();
-    return roles.find(role => role.roleName === 'ADMIN') !== undefined;
   }
 }

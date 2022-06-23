@@ -1,3 +1,7 @@
+import { PersonalFilesService } from './../Personal Files/personal-files.service';
+import { PersonalFile } from './../Personal Files/personalFile';
+import { EducationService } from './../Education/education.service';
+import { Education } from './../Education/education';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { v4 as uuid } from 'uuid';
@@ -27,6 +31,8 @@ export class ProfileComponent implements OnInit {
   addressId:Guid;
   expId:Guid;
   certificationID:Guid;
+  educationId: Guid;
+  personalFileId: Guid;
   addressID:Guid;
   address: Address=new Address();
   addresses: Address[];
@@ -39,10 +45,15 @@ export class ProfileComponent implements OnInit {
   projects: Project[];
   dayOff:DayOff= new DayOff();
   dayOff1: DayOff[];
+  education: Education=new Education();
+  educations: Education[];
+  personalFile: PersonalFile = new PersonalFile();
+  personalFiles: PersonalFile[];
   constructor(private userService: UserService, private router: Router,
      public route: ActivatedRoute,
      private experienceService: ExperienceService, private addressService:AddressService,
-     private certificationsService: CertificationsService,
+     private certificationsService: CertificationsService, private educationService: EducationService,
+     private personalFileService: PersonalFilesService,
      private projectService: ProjectService, private dayOffService: DayOffService) { }
 
   ngOnInit(): void {
@@ -58,6 +69,17 @@ export class ProfileComponent implements OnInit {
 
     this.certificationsService.getCertificationByUserId(this.userId).subscribe(data => {
       this.certifications = data;
+      console.log(data);
+    }, error=>console.log(error));
+
+    this.educationService.getEducationByUserId(this.userId).subscribe(data => {
+      this.educations = data;
+      console.log(data);
+    }, error=>console.log(error));
+
+    this.personalFileService.getPersonalFileByUserId(this.userId).subscribe(data => {
+      this.personalFiles = data;
+      console.log(data);
     }, error=>console.log(error));
 
     this.projectService.getProjectsByUserId(this.userId).subscribe(data=>{
@@ -87,6 +109,28 @@ export class ProfileComponent implements OnInit {
   deleteCertification(certificationID:Guid){
     this.certificationsService.deleteCertification(certificationID).subscribe(data=>{
       this.certification=data;
+    }, error=>console.log(error));
+  }
+  addEducation(userId:Guid){
+    this.router.navigate(['add-education', userId]);
+  }
+  updateEducationById(educationId:Guid){
+    this.router.navigate(['update-education', educationId]);
+  }
+  deleteEducation(educationId:Guid){
+    this.educationService.deleteEducation(educationId).subscribe(data=>{
+      this.education=data;
+    }, error=>console.log(error));
+  }
+  addPersonalFile(userId:Guid){
+    this.router.navigate(['add-personal-file', userId]);
+  }
+  updatePersonalFileById(personalFileId:Guid){
+    this.router.navigate(['update-personal-file', personalFileId]);
+  }
+  deletePersonalFile(perosnalFileId:Guid){
+    this.personalFileService.deletePersonalFile(this.personalFileId).subscribe(data=>{
+      this.personalFile=data;
     }, error=>console.log(error));
   }
   addExperience(userId:Guid){

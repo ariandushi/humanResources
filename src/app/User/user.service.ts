@@ -101,4 +101,21 @@ export class UserService {
   /*updateUserUsername(username, user: User): Observable<Object>{
     return this.httpClient.put(`${this.baseURL+"updateUserByUsername/"}${username}`, user);
   }*/
+  public roleMatch(allowedRoles: string | any[]):boolean{
+    let isMatch: boolean = false;
+    const userRoles:any=this.userAuthService.getRoles();
+    if(userRoles !=null && userRoles){
+      for(let i = 0; i < userRoles.length; i++){
+        for(let j=0; j<allowedRoles.length; j++){
+          if(userRoles[i].roleName === allowedRoles[j]){
+            isMatch=true;
+            return isMatch;
+          }else
+          {
+            return isMatch;
+          }
+        }
+      }
+    }
+    return isMatch;}
 }

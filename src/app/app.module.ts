@@ -48,6 +48,17 @@ import {MatMenuModule} from '@angular/material/menu';
 import { ProjectDialogComponent } from './User/project-dialog/project-dialog.component';
 import { RoleDialogComponent } from './User/role-dialog/role-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
+import { AddEducationComponent } from './Education/add-education/add-education.component';
+import { UpdateEducationComponent } from './Education/update-education/update-education.component';
+import { UserEducationComponent } from './Education/user-education/user-education.component';
+import { AddPersonalFileComponent } from './Personal Files/add-personal-file/add-personal-file.component';
+import { UpdatePersonalFileComponent } from './Personal Files/update-personal-file/update-personal-file.component';
+import { UserPersonalFileComponent } from './Personal Files/user-personal-file/user-personal-file.component';
+import { AddTaskComponent } from './Task/add-task/add-task.component';
+import { UpdateTaskComponent } from './Task/update-task/update-task.component';
+import { UserTaskComponent } from './Task/user-task/user-task.component';
+import { ProjectTaskComponent } from './Task/project-task/project-task.component';
+import { AddUserToTaskComponent } from './Task/add-user-to-task/add-user-to-task.component';
 
 @NgModule({
   declarations: [
@@ -81,7 +92,18 @@ import {MatDialogModule} from '@angular/material/dialog';
     AddRoleComponent,
     RoleUserListComponent,
     ProjectDialogComponent,
-    RoleDialogComponent
+    RoleDialogComponent,
+    AddEducationComponent,
+    UpdateEducationComponent,
+    UserEducationComponent,
+    AddPersonalFileComponent,
+    UpdatePersonalFileComponent,
+    UserPersonalFileComponent,
+    AddTaskComponent,
+    UpdateTaskComponent,
+    UserTaskComponent,
+    ProjectTaskComponent,
+    AddUserToTaskComponent
   ],
   imports: [
     BrowserModule,
