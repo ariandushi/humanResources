@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { Guid } from 'guid-typescript';
 import { User } from '../user';
 import { UserService } from '../user.service';
@@ -12,6 +13,7 @@ import { UserDTO } from '../userDTO';
 })
 export class ChangePasswordComponent implements OnInit {
 
+  helper: JwtHelperService;
   username: String;
   userId:Guid;
   user: User= new User();
@@ -19,6 +21,8 @@ export class ChangePasswordComponent implements OnInit {
   constructor(private route: ActivatedRoute, private userService:UserService) { }
 
   ngOnInit(): void {
+    
+
     this.userId= this.route.snapshot.params['userId'];
     this.userService.getPasswordDTO(this.userId).subscribe(data=>{
       this.userDTO=data;
@@ -26,13 +30,13 @@ export class ChangePasswordComponent implements OnInit {
     },error=>console.log(error));
   }
 
-  // editPassword(userId:Guid){
-  //   this.userService.changePassword(userId).subscribe(data=>{
 
-  //   })
-  // }
   onSubmit(){
-    console.log();
+    // debugger;
+    this.userService.changePassword(this.userDTO).subscribe(data=>{
+      console.log(data);
+      console.log("success");
+    })
   }
 
 }

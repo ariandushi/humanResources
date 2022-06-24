@@ -10,7 +10,7 @@ import { User } from '../../User/user';
 export class UserAuthService {
 
   public userSubject: BehaviorSubject<User>;
-  public user : Observable<User>;
+  public currentUser : Observable<User>;
   private baseURL="http://localhost:8080/hr_management/user";
 
   constructor(
@@ -33,8 +33,27 @@ export class UserAuthService {
 //           this.userSubject.next(user);
 //           return user;
 //       }));
-}
 
+
+  this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')!));
+  this.currentUser = this.userSubject.asObservable();
+  }
+  public get currentUserValue(): any {
+    return this.userSubject.value;
+  }
+
+  updateLocalStorage(user: any) {
+    let localuserToPatch = this.currentUserValue;
+    localuserToPatch = user;
+    localStorage.setItem('currentUser', JSON.stringify(localuserToPatch));
+    this.userSubject.next(localuserToPatch);
+  }
+
+
+
+
+
+  
   public setUserId(userId){
     localStorage.setItem('userId',JSON.stringify(userId));
   }

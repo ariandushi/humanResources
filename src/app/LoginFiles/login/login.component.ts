@@ -45,27 +45,31 @@ export class LoginComponent implements OnInit {
   login(loginForm: NgForm){
 
     this.userService.login(loginForm.value).subscribe((response=>{
-
+debugger;
       let res: any = response;
       // this.currentUser.username = decodedToken.username;
      localStorage.setItem("jwtToken", res.jwt);
      const decodedToken = this.helper.decodeToken(res.jwt);
      console.log(decodedToken);
+     let bbb= this.userAuthService.getToken();
+     console.log(bbb);
+
+
      this.currentUser.username=decodedToken.sub;
      this.currentUser.userId=decodedToken.userId;
-     this.currentUser.roles=decodedToken.Roles;
-     this.userAuthService.setRoles(decodedToken.Roles);
+     this.currentUser.roles=decodedToken.roles;
+     this.userAuthService.setRoles(decodedToken.roles);
      console.log(decodedToken.Roles);
 
-    const getRole= this.roleService.getRoleById(decodedToken.Roles).subscribe(data=>{
-      if(data.roleName=='Admin'){
-        this.router.navigate(['admin']);
-      }
-    });
+    // const getRole= this.roleService.getRoleById(decodedToken.roles).subscribe(data=>{
+    //   if(data.roleName=='Admin'){
+    //     this.router.navigate(['admin']);
+    //   }
+    // });
      
 
-     console.log(decodedToken.Roles);
-     const role= decodedToken.Roles[0];
+     console.log(decodedToken.roles);
+     const role = decodedToken.roles[0];
      console.log(role)
      this.userAuthService.getRoles();
      //const role = this.currentUser.role

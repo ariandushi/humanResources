@@ -45,7 +45,7 @@ import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DayOffRequestsComponent } from './dayOff/day-off-requests/day-off-requests.component';
 import { AssignTaskComponent } from './Tasks/assign-task/assign-task.component';
-import { TaskListComponent } from './tasks/task-list/task-list.component';
+import { TaskListComponent } from './Tasks/task-list/task-list.component';
 import { RoleListComponent } from './Roles/role-list/role-list.component';
 import { RoleUserListComponent } from './Roles/role-user-list/role-user-list.component';
 import { AddRoleComponent } from './Roles/add-role/add-role.component';

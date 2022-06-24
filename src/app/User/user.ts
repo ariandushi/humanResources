@@ -3,7 +3,6 @@ import { v4 as uuid } from 'uuid';
 import { Guid } from 'guid-typescript';
 import { Project } from '../Project/project';
 import { DayOff } from '../dayOff/dayOff';
-import { UserStatus } from './userStatus';
 // import { Role } from '../role';
 
 export class User {
@@ -19,7 +18,7 @@ export class User {
     startingDay: DatePipe;
     terminationDay: DatePipe;
     secondContact: string;
-    userStatus: UserStatus;
+    userStatus: boolean;
     project: Project;
     // role: Role;
     // token? : string;

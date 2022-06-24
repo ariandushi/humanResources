@@ -12,8 +12,9 @@ import { UserAuthService } from '../_services/user-auth.service';
 export class AuthGuard implements CanActivate {
   constructor(private userAuthService: UserAuthService, private router: Router, private userService: UserService, private loginComp: LoginComponent){}
   canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    route: ActivatedRouteSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+
+      debugger;
       if(this.userAuthService.getToken() !== null){
         console.log(route.data["jwt"]);
         console.log(route.data["roles"]);

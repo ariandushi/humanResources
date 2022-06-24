@@ -23,8 +23,8 @@ import { UserListComponent } from './User/user-list/user-list.component';
 import { UserProjectsListComponent } from './User/user-projects-list/user-projects-list.component';
 import { AuthGuard } from './LoginFiles/_auth/auth.guard';
 import { DayOffRequestsComponent } from './dayOff/day-off-requests/day-off-requests.component';
-import { TaskListComponent } from './tasks/task-list/task-list.component';
 import { ChangePasswordComponent } from './User/change-password/change-password.component';
+import { TaskListComponent } from 'src/app/Tasks/task-list/task-list.component';
 
 
 const routes: Routes = [
@@ -69,7 +69,7 @@ const routes: Routes = [
   {path: 'add-certifications/:userId', component:AddCertificationsComponent},
   {path: 'update-certifications/:userId', component:UpdateCertificationsComponent},
   {path: 'login', component:LoginComponent},
-  {path: 'admin', component:AdminComponent, canActivate:[AuthGuard], data:{roles:['Admin']}},
+  {path: 'admin', component:AdminComponent},
   {path: 'place-day-off-request/:userId', component:PlaceDayOffRequestComponent},
   {path: 'admin1', component:AdminComponent},
   {path: 'day-off-requests/:dayOffId', component:DayOffRequestsComponent},

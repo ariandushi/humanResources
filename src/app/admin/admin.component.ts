@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { Guid } from 'guid-typescript';
 import { DayOffService } from '../dayOff/day-off.service';
 import { DayOff } from '../dayOff/dayOff';
 import { StatusDto } from '../DTO/status.dto';
 import { DayOffStatus } from '../enums/dayOffStatus';
+import { UserAuthService } from '../LoginFiles/_services/user-auth.service';
 import { User } from '../User/user';
 import { UserService } from '../User/user.service';
 
@@ -15,6 +17,7 @@ import { UserService } from '../User/user.service';
 })
 export class AdminComponent implements OnInit {
 
+  helper = new JwtHelperService();
   // public statusTypes = Object.values(DayOffStatus);
   statusDTO: StatusDto = new StatusDto();
   daysOff: DayOff[];
@@ -23,12 +26,21 @@ export class AdminComponent implements OnInit {
   user:User=new User();
   users: User[];
   dayOff: DayOff=new DayOff();
-  constructor(private dayOffService:DayOffService, private route: ActivatedRoute,private userService: UserService,
+  constructor(private dayOffService:DayOffService, private route: ActivatedRoute,private userService: UserService,private userAuthService: UserAuthService,
     private router: Router) { }
 
   ngOnInit(): void {
-    // this.userId = this.route.snapshot.params['userId'];
-
+    // this.u/serId = this.route.snapshot.params['userId'];
+debugger;
+    let bbb =this.userAuthService.getToken();
+    const decodedToken = this.helper.decodeToken(bbb);
+    console.log(decodedToken);
+    this.userService.getUserById(decodedToken.userId).subscribe(data=>{
+      this.user=data;
+      console.log(this.user);
+    });
+    // merr token nga localstorage , shif rolin
+    //nqs nuk esht admin beje logout
     this.userService.getUsersList().subscribe(data=>{
       this.users=data;
     },error=>console.log(error));
@@ -48,10 +60,15 @@ export class AdminComponent implements OnInit {
   //     console.log(data);
   //   },error=>console.log(error));
   // }
-  approveRequest(){
-    debugger;
-    this.dayOffService.approveDayOff(this.statusDTO).subscribe(data=>{
-    debugger;  
+  approveRequest(dayOff:DayOff){
+    let requestBody: StatusDto = new StatusDto();
+    debugger; 
+    requestBody.dayOffId=dayOff.dayOffId;
+    requestBody.userId=this.user.userId;
+    requestBody.requestStatus=this.statusDTO.requestStatus;
+    requestBody.rejectReason=dayOff.rejectReason;
+    this.dayOffService.approveDayOff(requestBody).subscribe(data=>{
+     
       // console.log(this.statusi);
       console.log(data);
     })

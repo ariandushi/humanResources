@@ -24,7 +24,7 @@
 
 
             <td>
-                <form (ngSubmit)="approveRequest()">
+                <form (ngSubmit)="approveRequest(dayOff)">
                     <div class="form-group">
                     <label>Reject Reason</label>
                     <input type="text" class="form-control" id="rejectReason" 
@@ -35,11 +35,11 @@
 <!--                     
                     <label>Day Off</label>
                     <input type="text" name="dayOffId" [(ngModel)]="dayOff.dayOffId"> -->
-                    <fieldset id="group3">
-                    <label>approve</label>
+                    <fieldset id="group2">
                     <input type="radio" value="APPROVED" name="APPROVED" (change)="approveStatus($event.target)">
-                    <label>reject</label>
+                    <label>approve</label>
                     <input type="radio" value="REJECTED" name="REJECTED" (change)="approveStatus($event.target)">
+                    <label>reject</label>
                     </fieldset>
 
                     <!-- <input type="submit" value="Send Request"> -->

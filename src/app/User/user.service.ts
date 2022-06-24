@@ -50,8 +50,8 @@ export class UserService {
     return this.httpClient.get<UserDTO>(`${this.baseURL+"/getUserPassword"}/${userId}`);
   }
 
-  changePassword(userId:Guid):Observable<Object>{
-    return this.httpClient.patch(`${this.baseURL + "changePassword"}`, userId);
+  changePassword(userDTO: UserDTO):Observable<Object>{
+    return this.httpClient.patch(`${this.baseURL + "/changePassword"}`, userDTO);
   }
   
 

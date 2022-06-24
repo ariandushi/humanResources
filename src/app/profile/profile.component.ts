@@ -68,13 +68,13 @@ export class ProfileComponent implements OnInit {
 
 
 
-    // this.experienceService.getExperienceByUserId(this.userId).subscribe(data => {
-    //  this.experiences=data
-    // }, error=>console.log(error));
+    this.experienceService.getExperienceByUserId(this.userId).subscribe(data => {
+     this.experiences=data
+    }, error=>console.log(error));
 
-    // this.certificationsService.getCertificationByUserId(this.userId).subscribe(data => {
-    //   this.certifications = data;
-    // }, error=>console.log(error));
+    this.certificationsService.getCertificationByUserId(this.userId).subscribe(data => {
+      this.certifications = data;
+    }, error=>console.log(error));
     // this.projectService.getProjectsByUserId(this.userId).subscribe(data=>{
     //   this.projects=data;
     // }, error=> console.log(error));
