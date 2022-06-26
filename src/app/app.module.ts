@@ -26,14 +26,12 @@ import { AddAddressComponent } from './Address/add-address/add-address.component
 import { UpdateAddressComponent } from './Address/update-address/update-address.component';
 import { AddCertificationsComponent } from './Certifications/add-certifications/add-certifications.component';
 import { UpdateCertificationsComponent } from './Certifications/update-certifications/update-certifications.component';
-import { AddProjectToUserComponent } from './User/add-project-to-user/add-project-to-user.component';
 import { UserProjectsListComponent } from './User/user-projects-list/user-projects-list.component';
 import { AdminComponent } from './admin/admin.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './LoginFiles/login/login.component';
 import { HeaderComponent } from './header/header.component';
-// import { AuthGuard } from './_auth/auth.guard';
-import { AuthInterceptor } from './_auth/auth.interceptor';
+import { AuthInterceptor } from './LoginFiles/_auth/auth.interceptor';
 import { UserService } from './User/user.service';
 import { UserComponent } from './User/user/user.component';
 import { PlaceDayOffRequestComponent } from './dayOff/place-day-off-request/place-day-off-request.component';
@@ -45,7 +43,6 @@ import { RoleListComponent } from './Roles/role-list/role-list.component';
 import { AddRoleComponent } from './Roles/add-role/add-role.component';
 import { RoleUserListComponent } from './Roles/role-user-list/role-user-list.component';
 import {MatMenuModule} from '@angular/material/menu';
-import { ProjectDialogComponent } from './User/project-dialog/project-dialog.component';
 import { RoleDialogComponent } from './User/role-dialog/role-dialog.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { AddEducationComponent } from './Education/add-education/add-education.component';
@@ -59,6 +56,8 @@ import { UpdateTaskComponent } from './Task/update-task/update-task.component';
 import { UserTaskComponent } from './Task/user-task/user-task.component';
 import { ProjectTaskComponent } from './Task/project-task/project-task.component';
 import { AddUserToTaskComponent } from './Task/add-user-to-task/add-user-to-task.component';
+import { RemoveRoleDialogComponent } from './User/remove-role-dialog/remove-role-dialog.component';
+import { DayOffRequestsComponent } from './dayOff/day-off-requests/day-off-requests.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +78,6 @@ import { AddUserToTaskComponent } from './Task/add-user-to-task/add-user-to-task
     UpdateAddressComponent,
     AddCertificationsComponent,
     UpdateCertificationsComponent,
-    AddProjectToUserComponent,
     UserProjectsListComponent,
     AdminComponent,
     ForbiddenComponent,
@@ -91,7 +89,6 @@ import { AddUserToTaskComponent } from './Task/add-user-to-task/add-user-to-task
     RoleListComponent,
     AddRoleComponent,
     RoleUserListComponent,
-    ProjectDialogComponent,
     RoleDialogComponent,
     AddEducationComponent,
     UpdateEducationComponent,
@@ -103,7 +100,9 @@ import { AddUserToTaskComponent } from './Task/add-user-to-task/add-user-to-task
     UpdateTaskComponent,
     UserTaskComponent,
     ProjectTaskComponent,
-    AddUserToTaskComponent
+    AddUserToTaskComponent,
+    RemoveRoleDialogComponent,
+    DayOffRequestsComponent
   ],
   imports: [
     BrowserModule,

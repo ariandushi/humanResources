@@ -1,11 +1,13 @@
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
+import { JwtHelperService } from "@auth0/angular-jwt";
 import { catchError, Observable, throwError } from "rxjs";
 import { UserAuthService } from "../_services/user-auth.service";
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor{
+    helper = new JwtHelperService();
     constructor(private userAuthService:UserAuthService, private router: Router){}
     intercept(
       req: HttpRequest<any>,
@@ -16,8 +18,9 @@ export class AuthInterceptor implements HttpInterceptor{
     //   }
   
       const token = this.userAuthService.getToken();
+      const decodedToken = this.helper.decodeToken(token);
   
-      if(token != undefined ){
+      if(decodedToken != undefined ){
       //req = this.addToken(req, token);
       }
       return next.handle(req).pipe(
@@ -25,7 +28,7 @@ export class AuthInterceptor implements HttpInterceptor{
               (err:HttpErrorResponse) => {
                   console.log(err.status);
                   if(err.status === 401) {
-                      this.router.navigate(['/users']);
+                      this.router.navigate(['/login']);
                   } else if(err.status === 403) {
                       this.router.navigate(['/login']);
                   }

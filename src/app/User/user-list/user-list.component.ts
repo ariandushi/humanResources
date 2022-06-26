@@ -1,15 +1,15 @@
+import { RemoveRoleDialogComponent } from './../remove-role-dialog/remove-role-dialog.component';
+
 import { RoleDialogComponent } from './../role-dialog/role-dialog.component';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../../User/user.service';
 import{User} from '../../User/user'
-import { v4 as uuid } from 'uuid';
 import { Guid } from 'guid-typescript';
 import { Project } from 'src/app/Project/project';
 import { ProjectService } from 'src/app/Project/project.service';
 import { Role } from 'src/app/Roles/role';
 import { MatDialog } from '@angular/material/dialog';
-import { ProjectDialogComponent } from '../project-dialog/project-dialog.component';
 
 @Component({
   selector: 'app-user-list',
@@ -27,14 +27,17 @@ export class UserListComponent implements OnInit {
       this.getUsers();
     });
   }
-  openProjectDialog() {
-    const dialogRef = this.dialog.open(ProjectDialogComponent);
 
+  openRemoveRoleDialog(userId: Guid) {
+    console.log(userId);
+    const dialogRef = this.dialog.open(RemoveRoleDialogComponent, {data: {
+      userId,
+    }});
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
+      this.getUsers();
     });
   }
-
   userId:Guid;
   projectId:Guid;
   users : User[];
@@ -48,31 +51,17 @@ export class UserListComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUsers();
-// this.userService.getUsersList().subscribe(data=>{
-//   this.users=data;})
-  
   this.projectService.getProjectList().subscribe(data=>{
     this.projects=data;
   })
   }
-
   private getUsers(){
     this.userService.getUsersList().subscribe(data=> {
       this.users=data;
     });
   }
-
   updateUser(userId: Guid){
     this.router.navigate(['update-user', userId]);
-  }
-  /*updateUserUsername(username){
-    this.router.navigate(['update-user', username]);
-  }*/
-  deleteUser(userId: Guid){
-    this.userService.deleteUser(userId).subscribe(data=>{
-      console.log(data);
-      this.getUsers();
-    })
   }
   navigateToProfile(userId:Guid){
     this.router.navigate(['profile', userId]);
@@ -85,34 +74,6 @@ export class UserListComponent implements OnInit {
       console.log(data);
     }, error=> console.log(error));
     this.router.navigate(["/add-user"]);
-  }
-
-  addProjectToUser(user:User){
-    console.log(this.user);
-    this.userService.assignProjectToUser(user.username, this.project.projectId ).subscribe(data=>{
-      console.log(data);
-      this.router.navigate(['/user-list']);
-    }, error=>console.log(error));
-  }
-  chosenProject(e:any){
-    this.project=e;
-  }
-  addRoleToUser(user:User){
-    console.log(this.user);
-    this.userService.assignRoleToUser(user.userId, this.role.roleId ).subscribe(data=>{
-      console.log(data);
-      this.router.navigate(['/user-list']);
-    }, error=>console.log(error));
-  }
-  chosenRole(e:any){
-    this.role=e;
-  }
-  addNewProjectToUser(user:User){
-    console.log(this.user);
-    this.userService.assignProjectToUser(user.username, this.project.projectId).subscribe(data=>{
-      console.log(data);
-      this.router.navigate(['/user-list']);
-    }, error=>console.log(error));
   }
   reloadCurrentPage(){
     window.location.reload();

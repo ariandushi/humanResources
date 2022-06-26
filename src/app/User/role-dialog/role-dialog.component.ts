@@ -22,9 +22,10 @@ export class RoleDialogComponent implements OnInit {
         this.roles=data;
     })
   }
-
   saveRole() {
     console.log("Role: ", this.roleId, this.data.userId);
     this.userService.assignRoleToUser(this.data.userId, this.roleId).subscribe(res => console.log(res));
   }
+
+  
 }

@@ -14,7 +14,7 @@ import { CertificationsService } from '../certifications.service';
 export class AddCertificationsComponent implements OnInit {
 
   userId:Guid;
-  certification: Certification=new Certification;
+  certification: Certification=new Certification();
   user:User = new User();
 
   constructor(private route: ActivatedRoute, private userService: UserService,

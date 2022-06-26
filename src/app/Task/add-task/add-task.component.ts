@@ -35,7 +35,7 @@ export class AddTaskComponent implements OnInit {
     }, error=>console.log(error));
   }
   goToProjectList(projectId:Guid){
-    this.router.navigate(['project-list', projectId]);
+    this.router.navigate(['/project-list', projectId]);
   }
   onSubmit(){    
     console.log(this.task);

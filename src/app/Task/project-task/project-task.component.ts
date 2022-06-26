@@ -1,3 +1,5 @@
+import { ProjectService } from './../../Project/project.service';
+import { Project } from './../../Project/project';
 import { Task } from './../task';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -12,15 +14,18 @@ import { TaskService } from '../task.service';
 export class ProjectTaskComponent implements OnInit {
 
   projectId:Guid;
-  taskId: Guid;
-  task: Task = new Task();
+  project: Project = new Project();
   tasks: Task[];
-  constructor(private taskService: TaskService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private taskService: TaskService, private router: Router, private projectService: ProjectService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.projectId = this.route.snapshot.params['projectId'];
-    this.taskService.getTaskByProjectId(this.projectId).subscribe(data => {
-      this.tasks = data;
+    this.projectService.getProjectByProjectId(this.projectId).subscribe(data => {
+      this.project = data;
     }, error=>console.log(error));
-  }
+
+  this.taskService.getTaskByProjectId(this.projectId).subscribe(data => {
+    this.tasks = data;
+  }, error=>console.log(error));
+}
 }

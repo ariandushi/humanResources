@@ -1,3 +1,5 @@
+import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { DayOffRequestsComponent } from './dayOff/day-off-requests/day-off-requests.component';
 import { AddUserToTaskComponent } from './Task/add-user-to-task/add-user-to-task.component';
 import { ProjectTaskComponent } from './Task/project-task/project-task.component';
 import { UserTaskComponent } from './Task/user-task/user-task.component';
@@ -22,20 +24,18 @@ import { PlaceDayOffRequestComponent } from './dayOff/place-day-off-request/plac
 import { AddExperienceComponent } from './Experience/add-experience/add-experience.component';
 import { UpdateExperienceComponent } from './Experience/update-experience/update-experience.component';
 import { UserExperienceComponent } from './Experience/user-experience/user-experience.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './LoginFiles/login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AddProjectComponent } from './Project/add-project/add-project.component';
 import { AddUserToProjectComponent } from './Project/add-user-to-project/add-user-to-project.component';
 import { ProjectListComponent } from './Project/project-list/project-list.component';
 import { ProjectUserListComponent } from './Project/project-user-list/project-user-list.component';
 import { UpdateProjectComponent } from './Project/update-project/update-project.component';
-import { AddProjectToUserComponent } from './User/add-project-to-user/add-project-to-user.component';
 import { AddUserComponent } from './User/add-user/add-user.component';
 import { UpdateUserComponent } from './User/update-user/update-user.component';
 import { UserListComponent } from './User/user-list/user-list.component';
 import { UserProjectsListComponent } from './User/user-projects-list/user-projects-list.component';
-import { AuthGuard } from './_auth/auth.guard';
-import { Roles } from './enums/roles';
+import { AuthGuard } from './LoginFiles/_auth/auth.guard';
 
 
 const routes: Routes = [
@@ -46,7 +46,8 @@ const routes: Routes = [
   {path: 'add-experience/:userId', component:AddExperienceComponent},
   {path: 'update-experience/:expId', component:UpdateExperienceComponent},
   {path: 'user-list', component:UserListComponent,canActivate: [ AuthGuard ], 
-  data: { roles: [Roles.ADMIN] }},
+  // data: { roles: [Roles.ADMIN] }
+},
   {path: 'profile',
         children:[
           {path: ':userId', component:ProfileComponent},
@@ -68,20 +69,7 @@ const routes: Routes = [
   {path: 'add-role', component: AddRoleComponent},
   {path: 'role-list', component: RoleListComponent},
   {path: 'role-user-list/:roleId', component: RoleUserListComponent},
-
-  // {path: 'project-user-list',
-  //       children:[
-  //         {path: ':userId' , component:ProjectUserListComponent},
-  //         {path: ':projectId' , component:ProjectUserListComponent},
-  //       ]},
-
-  // {path: 'add-user-to-project',
-  //       children:[
-  //         {path: ':userId', component:AddUserToProjectComponent},
-  //         {path: ':projectId', component:AddUserToProjectComponent},
-  //       ]},
   {path: 'add-user-to-project/:projectId', component:AddUserToProjectComponent},
-  {path: 'add-project-to-user/:userId', component:AddProjectToUserComponent},
   {path: 'add-address/:userId', component:AddAddressComponent},
   {path: 'user-address', component:UserAddressComponent},
   {path: 'add-certifications/:userId', component:AddCertificationsComponent},
@@ -94,12 +82,15 @@ const routes: Routes = [
   {path: 'user-personal-file', component:UserPersonalFileComponent},
   {path: 'add-task/:projectId', component: AddTaskComponent},
   {path: 'user-task', component: UserTaskComponent},
-  {path: 'project-task', component: ProjectTaskComponent},
+  {path: 'project-task/:projectId', component: ProjectTaskComponent},
   {path: 'add-user-to-task/:taskId', component: AddUserToTaskComponent},
+  {path: 'day-off-requests/:dayOffId', component: DayOffRequestsComponent},
+  {path: 'place-day-off-request/:userId', component: PlaceDayOffRequestComponent},
   {path: 'login', component:LoginComponent},
   // {path: 'admin', component:AdminComponent, canActivate:[AuthGuard], data:{roles:['Admin']}},
   {path: 'place-day-off-request/:userId', component:PlaceDayOffRequestComponent},
   {path: 'admin', component:AdminComponent},
+  {path: 'forbidden', component: ForbiddenComponent},
   {path:'', redirectTo:'users', pathMatch:'full'}
 ];
 

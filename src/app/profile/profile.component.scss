@@ -67,10 +67,8 @@ body{
     font-weight: bold;
     font-size: medium;
     width: 150%;
-    //background-color: gray;
 }
 .col-sm-9.text-secondary{
-    //background-color: gray;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -79,29 +77,36 @@ body{
     margin:10px;
 }
 
+.right-content label{
+    width:20%;
+    text-align: center;
+}
 
-// .container{
-//     display: grid;
-//     border: 10px solid blue;
-//     height: 100vh;
-//     grid-template-columns: 1fr 2fr;
-// }
-// .container-item{
-//     background-color: aqua;
-//     border: 4px solid red;
-//     padding: 20px;
-// }
-// .item1{
-//     grid-column-start: 1;
-//     grid-column-end: 2;
-// }
-// .item2{
-//     grid-column-start: 1;
-//     grid-column-end: 2;
-// }
-// .item3{
-//     grid-column-start: 2;
-//     grid-column-end: 4;
-//     grid-row-start: 1;
-//     grid-row-end: 4;
-// }
+input { display: none; }
+input + label { display: inline-block }
+
+input ~ .tab { display: none }
+#tab1:checked ~ .tab.content1,
+#tab2:checked ~ .tab.content2,
+#tab3:checked ~ .tab.content3,
+#tab4:checked ~ .tab.content4,
+#tab5:checked ~ .tab.content5,
+#tab6:checked ~ .tab.content6,
+#tab7:checked ~ .tab.content7 { display: block; }
+
+input + label {
+  border: 1px solid #999;
+  background: #EEE;
+  padding: 4px 12px;
+  border-radius: 4px 4px 0 0;
+  position: relative;
+  top: 1px;
+}
+input:checked + label {
+  background: #FFF;
+  border-bottom: 1px solid transparent;
+}
+input ~ .tab {
+  border-top: 1px solid #999;
+  padding: 12px;
+}

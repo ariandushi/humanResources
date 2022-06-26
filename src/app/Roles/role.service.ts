@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { UserAuthService } from '../_services/user-auth.service';
+import { UserAuthService } from '../LoginFiles/_services/user-auth.service';
 import { Role } from './role';
 import { Guid } from 'guid-typescript';
 
@@ -11,7 +11,7 @@ import { Guid } from 'guid-typescript';
 export class RoleService {
 
   requestHeader = new HttpHeaders({'No-Auth':'True'})
-  private baseURL = "http://localhost:8080/hr_management/roles";
+  private baseURL = "http://localhost:8080/hr_management/role";
   constructor(private httpClient:HttpClient, private userAuthService:UserAuthService) { }
 
   getRoleList(): Observable<Role[]>{
@@ -27,10 +27,10 @@ export class RoleService {
     return this.httpClient.put(`${this.baseURL+"/updateRole"}/${roleId}`, role);
   }
   getRoleByUserId(userId:Guid):Observable<Role[]>{
-    return this.httpClient.get<Role[]>(`${this.baseURL+"/getRoleByUser"}/${userId}`);
+    return this.httpClient.get<Role[]>(`${this.baseURL+"/getRoleByUserId"}/${userId}`);
   }
   deleteRole(roleId: Guid):Observable<Object>{
-    return this.httpClient.delete(`${this.baseURL+"/deleteRole"}/${roleId}`);
+    return this.httpClient.delete(`${this.baseURL+"/delete"}/${roleId}`);
   }
   getRoleByName(roleName: String): Observable<Role>{
     return this.httpClient.get<Role>(`${this.baseURL+"/name"}/${roleName}`);

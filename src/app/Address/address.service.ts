@@ -9,7 +9,7 @@ import { Guid } from 'guid-typescript';
 })
 export class AddressService {
 
-  private baseURL='http://localhost:8080/api/v1/hr_management_system/addresses';
+  private baseURL='http://localhost:8080/hr_management/address';
   constructor(private httpClient: HttpClient) { }
 
   getAddressList():Observable<Address[]>{
@@ -21,13 +21,10 @@ export class AddressService {
   getAddressByAddressId(addressID:Guid):Observable<Address>{
     return this.httpClient.get<Address>(`${this.baseURL+"/getAddressById"}/${addressID}`);
   }
-  getAddressByUserId(userId:Guid):Observable<Address[]>{
-    return this.httpClient.get<Address[]>(`${this.baseURL+"/getAddressByUserId"}/${userId}`);
+  getAddressByUserId(userId:Guid):Observable<Address>{
+    return this.httpClient.get<Address>(`${this.baseURL+"/getAddressByUserId"}/${userId}`);
   }
   editAddress(addressID:Guid,address: Address): Observable<Object>{
-    return this.httpClient.put(`${this.baseURL+"/editAddress"}/${addressID}`,address);
+    return this.httpClient.put(`${this.baseURL+"/editAddress"}`,address);
   }
-  // assignUserToAddress(addressID:Guid, userId:Guid): Observable<Object>{
-  //   return this.httpClient.patch(`${this.baseURL+"assignUser"}/${addressID}/userId/${userId}`, null);
-  // }
 }

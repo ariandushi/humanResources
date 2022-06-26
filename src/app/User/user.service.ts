@@ -3,8 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from './user';
 import { Guid } from 'guid-typescript';
-import { UserAuthService } from '../_services/user-auth.service';
-import { Project } from '../Project/project';
+import { UserAuthService } from '../LoginFiles/_services/user-auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -30,17 +29,12 @@ export class UserService {
   updateUser(userId: Guid, user: User): Observable<Object>{
     return this.httpClient.put(`${this.baseURL+"/updateUser"}/${userId}`, user);
   }
-
-  assignProjectToUser(username: String, projectId:Guid): Observable<Object>{
-    return this.httpClient.patch(`${this.baseURL+"/assignProject"}/${username}/projectId/${projectId}`, null);
-  }
   assignRoleToUser(userId: Guid, roleId: Guid): Observable<Object>{
-    return this.httpClient.patch(`${this.baseURL+"/assignRole"}/${userId}/roleId/${roleId}`, null, {
-      headers: new HttpHeaders({'Content-Type':'application/json; charset=utf-8'}),
-      observe: 'body'
-    });
+    return this.httpClient.patch(`${this.baseURL+"/assignRole"}/${userId}/roleId/${roleId}`, null);
   }
-
+  removeRoleFromUser(userId: Guid, roleId: Guid): Observable<Object>{
+    return this.httpClient.patch(`${this.baseURL+"/removeRole"}/${userId}/roleId/${roleId}`, null);
+  }
   getUsersByProjectId(projectId:Guid):Observable<User[]>{
     return this.httpClient.get<User[]>(`${this.baseURL+"/getUsersByProject"}/${projectId}`);
   }

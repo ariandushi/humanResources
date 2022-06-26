@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class PersonalFilesService {
 
-  private baseURL="http://localhost:8080/hr_management/personalFiles";
+  private baseURL="http://localhost:8080/hr_management/personalFile";
 
   constructor(private httpClient: HttpClient) { }
 

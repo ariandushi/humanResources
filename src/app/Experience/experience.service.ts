@@ -24,7 +24,7 @@ export class ExperienceService {
     return this.httpClient.get<Experience>(`${this.baseURL+"/getExperiencesByExpId"}/${expId}`);
   }
   getExperiences(): Observable<Experience[]>{
-    return this.httpClient.get<Experience[]>(`${this.baseURL+"/experiences"}`);
+    return this.httpClient.get<Experience[]>(`${this.baseURL+"/getAll"}`);
   }
   updateExperienceByExpId(expId:Guid, experience: Experience): Observable<Object>{
     return this.httpClient.put(`${this.baseURL+"/updateExperience"}/${expId}`, experience);

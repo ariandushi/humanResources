@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddProjectToUserComponent } from './add-project-to-user.component';
+import { RemoveRoleDialogComponent } from './remove-role-dialog.component';
 
-describe('AddProjectToUserComponent', () => {
-  let component: AddProjectToUserComponent;
-  let fixture: ComponentFixture<AddProjectToUserComponent>;
+describe('RemoveRoleDialogComponent', () => {
+  let component: RemoveRoleDialogComponent;
+  let fixture: ComponentFixture<RemoveRoleDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddProjectToUserComponent ]
+      declarations: [ RemoveRoleDialogComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddProjectToUserComponent);
+    fixture = TestBed.createComponent(RemoveRoleDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

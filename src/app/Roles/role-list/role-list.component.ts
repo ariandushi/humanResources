@@ -35,7 +35,9 @@ export class RoleListComponent implements OnInit {
   chosenUser(e:any){
     this.user = e;
   }
-
+  addRole(){
+    this.router.navigate(["/add-role"]);
+  }
   showUsers(roleId:Guid){
     this.router.navigate([`/role-user-list`, roleId]);
   }

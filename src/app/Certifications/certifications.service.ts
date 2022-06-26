@@ -22,10 +22,10 @@ export class CertificationsService {
     return this.httpClient.get<Certification>(`${this.baseURL+"/getCertificationById"}/${certificationID}`);
   }
   getCertificationByUserId(userId:Guid): Observable<Certification[]>{
-    return this.httpClient.get<Certification[]>(`${this.baseURL+"/getCertificationsByUserId"}/${userId}`);
+    return this.httpClient.get<Certification[]>(`${this.baseURL+"/getCertificationByUserId"}/${userId}`);
   }
-  editCertification(certificationID:Guid, certification:Certification):Observable<Object>{
-    return this.httpClient.put(`${this.baseURL+"/editCertification"}/${certificationID}`, certification);
+  editCertification(certification:Certification):Observable<Object>{
+    return this.httpClient.put(`${this.baseURL+"/editCertification"}`, certification);
   }
   deleteCertification(certificationID:Guid):Observable<Certification>{
     return this.httpClient.delete<Certification>(`${this.baseURL+"/deleteCertification"}/${certificationID}`);

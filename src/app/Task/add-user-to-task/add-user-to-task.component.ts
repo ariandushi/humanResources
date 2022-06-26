@@ -16,11 +16,11 @@ export class AddUserToTaskComponent implements OnInit {
 
   userId:Guid;
   users: User[];
-
+  projectId: Guid;
   constructor(private taskService: TaskService, private userService: UserService, private route: ActivatedRoute, @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit(): void {
-    this.userService.getUsersList().subscribe(data=>{
+    this.userService.getUsersByProjectId(this.projectId).subscribe(data=>{
       this.users=data;
     })
     }

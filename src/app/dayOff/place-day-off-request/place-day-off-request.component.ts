@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Guid } from 'guid-typescript';
 import { PermissionType } from 'src/app/enums/permissionType';
-import { Status } from 'src/app/enums/status';
+
 import { User } from 'src/app/User/user';
 import { UserService } from 'src/app/User/user.service';
 import { DayOffService } from '../day-off.service';
@@ -29,13 +29,17 @@ export class PlaceDayOffRequestComponent implements OnInit {
   }
 
   placeDayOffRequest(){
-    this.dayOffService.placeDayOffRequest(this.dayOff, this.userId).subscribe(data=>{
+    debugger;
+    this.dayOffService.placeDayOffRequest(this.dayOff).subscribe(data=>{
       console.log(data);
       this.goToUserProfile(this.userId);
     }, error=>console.log(error));
   }
   goToUserProfile(userId:Guid){
     this.router.navigate(['profile', userId]);
+  }
+  public changeStatus(value:any){
+  this.dayOff.permissionType = value.value;
   }
   onSubmit(){
     this.placeDayOffRequest();

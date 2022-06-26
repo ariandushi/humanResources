@@ -1,357 +1,300 @@
 <div class="container">
     <div class="main-body">  
-          <div class="row gutters-sm">
-            <div class="col-md-4 mb-3">
+          <div class="row">
+            <div class="col-4 mb-3">
               <div class="card">
                 <div class="card-body">
                   <div class="d-flex flex-column align-items-center text-center">
-                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" class="rounded-circle" width="150">
                     <div class="mt-3">
-                      <h4>{{user.username}}</h4>
-                      <p class="text-secondary mb-1">Full Stack Developer</p>
-                      <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
+                      <h4>{{ user.username }}</h4>
+                      <hr>
+                      <h5>{{ user.userId }}</h5>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div id="details" class="col-md-8 mt-1">
-              <div class="card mb-3 container">
-                <div class="card-body">
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Username</h6>
+              <div id="details" class="col-12">
+                <div class="card mb-3 container">
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <h6 class="mb-0">Username</h6>
+                      </div>
+                      <div class="col-sm-6 text-secondary">
+                          <tbody>
+                          <td> {{ user.username}}</td>
+                          </tbody>
+                      </div>
+                      <hr>
                     </div>
-                    <div class="col-sm-9 text-secondary">
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <h6 class="mb-0">Name</h6>
+                      </div>
+                      <div class="col-sm-6 text-secondary">
+                          <tbody>
+                              <td> {{ user.firstName}}</td>
+                          </tbody>
+                      </div>
+                      <hr>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <h6 class="mb-0">Last Name</h6>
+                      </div>
+                      <div class="col-sm-6 text-secondary">
+                          <tbody>
+                              <td> {{ user.lastName}}</td>
+                          </tbody>
+                      </div>
+                      <hr>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <h6 class="mb-0">Email</h6>
+                      </div>
+                      <div class="col-sm-6 text-secondary">
+                          <tbody>
+                              <td> {{ user.email}}</td>
+                          </tbody>
+                      </div>
+                      <hr>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <h6 class="mb-0">Date Of Birth</h6>
+                      </div>
+                      <div class="col-sm-6 text-secondary">
                         <tbody>
-                        <td> {{ user.username}}</td>
+                          <td> {{ user.dob}}</td>
+                      </tbody>
+                      </div>
+                      <hr>
+                    </div>
+                  
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <h6 class="mb-0">Mobile Phone</h6>
+                      </div>
+                      <div class="col-sm-6 text-secondary">
+                          <tbody>
+                          <td> {{ user.mobile}}</td>
+                          </tbody>
+                      </div>
+                      <hr>
+                    </div>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <h6 class="mb-0">Starting Day</h6>
+                    </div>
+                    <div class="col-sm-6 text-secondary">
+                        <tbody>
+                            <td> {{ user.startingDay}}</td>
                         </tbody>
                     </div>
                     <hr>
                   </div>
                   <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Name</h6>
+                    <div class="col-sm-6">
+                      <h6 class="mb-0">Contact</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
+                    <div class="col-sm-6 text-secondary">
                         <tbody>
-                            <td> {{ user.firstName}}</td>
+                            <td> {{ user.secondContact}}</td>
                         </tbody>
                     </div>
                     <hr>
                   </div>
                   <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Last Name</h6>
+                    <div class="col-sm-6">
+                      <h6 class="mb-0">second</h6>
                     </div>
-                    <div class="col-sm-9 text-secondary">
-                        <tbody>
-                            <td> {{ user.lastName}}</td>
-                        </tbody>
-                    </div>
-                    <hr>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Email</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
+                    <div class="col-sm-6 text-secondary">
                         <tbody>
                             <td> {{ user.email}}</td>
                         </tbody>
                     </div>
                     <hr>
                   </div>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Date Of Birth</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                      <tbody>
-                        <td> {{ user.dob}}</td>
-                    </tbody>
-                    </div>
-                    <hr>
                   </div>
-                </div>
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h6 class="mb-0">Mobile Phone</h6>
-                    </div>
-                    <div class="col-sm-9 text-secondary">
-                        <tbody>
-                        <td> {{ user.mobile}}</td>
-                        </tbody>
-                    </div>
-                    <hr>
                   </div>
-                <div class="row">
-                  <div class="col-sm-3">
-                    <h6 class="mb-0">Starting Day</h6>
-                  </div>
-                  <div class="col-sm-9 text-secondary">
-                      <tbody>
-                          <td> {{ user.startingDay}}</td>
-                      </tbody>
-                  </div>
-                  <hr>
-                </div>
-                <div class="row">
-                  <div class="col-sm-3">
-                    <h6 class="mb-0">Contact</h6>
-                  </div>
-                  <div class="col-sm-9 text-secondary">
-                      <tbody>
-                          <td> {{ user.secondContact}}</td>
-                      </tbody>
-                  </div>
-                  <hr>
-                </div>
-                <div class="row">
-                  <div class="col-sm-3">
-                    <h6 class="mb-0">second</h6>
-                  </div>
-                  <div class="col-sm-9 text-secondary">
-                      <tbody>
-                          <td> {{ user.email}}</td>
-                      </tbody>
-                  </div>
-                  <hr>
-                </div>
-                </div>
-                </div>
-                <div class="row">
-              <div class="row gutters-sm">
-                <div class="col-sm-6 mb-3">
-                  <div class="card h-100">
-                    <div class="card-body">
-                      <div class="address-button" *ngIf="!isButtonVisible">
-                        <div class="row">
-                          <div class="col-sm-12">
-                            <button (click)="addAddress(user.userId)" class="btn btn-info">Add Address</button>
-                          </div>
-                        </div>
-                      </div>
-                      <tr *ngFor="let address of addresses">
-                        <h6 class="d-flex align-items-center mb-3"  *ngIf="isButtonVisible">State</h6>
-                        <td *ngIf="isButtonVisible"> {{address.state}}</td>
-                        <h6 class="d-flex align-items-center mb-3"  *ngIf="isButtonVisible">City</h6>
-                        <td *ngIf="isButtonVisible"> {{address.city}}</td>
-                        <h6 class="d-flex align-items-center mb-3"  *ngIf="isButtonVisible">Postal Code</h6>
-                        <td *ngIf="isButtonVisible"> {{address.postalCode}}</td>
-                      </tr>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-              <div class="row gutters-sm">
-                <div class="col-sm-6 mb-3">
-                  <div class="card h-100">
-                    <div class="card-body">
-                      <div class="personalFile-button">
-                        <div class="row">
-                          <div class="col-sm-12">
-                            <div class="d-flex flex-stack position-relative mt-6">
-                                <div class="position-absolute h-100 w-4px bg-secondary rounded top-0 start-0"></div>
-                                <div class="fw-bold ms-5">
-                                <div class="fs-7 mb-1">14:30 - 15:30 
-                                <span class="fs-7 text-muted text-uppercase">pm</span></div>
-                                <a href="#" class="fs-5 fw-bolder text-dark text-hover-primary mb-2">Creative Content Initiative</a>
-                               
-                                <div class="fs-7 text-muted">Lead by 
-                                <a href="#">Kendell Trevor</a></div>
-                                </div>
-                                <a href="#" class="btn btn-light bnt-active-light-primary btn-sm">View</a>
-                              </div>
-                            <button (click)="addPersonalFile(user.userId)" class="btn btn-info">Add Personal File</button>
-                          </div>
-                        </div>
-                      </div>
-                      <tr *ngFor="let personalFile of personalFiles">
-                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">assignment</i>Personal File</h6>
-                      <td> {{ personalFile.userId }}</td>
-                      <div style="height: 5px">
-                        <div style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">assignment</i>EXP</h6>
-                      <td> {{ personalFile.personalFileId }}</td>
-                      <div style="height: 5px">
-                        <div style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <td> {{ personalFile.idCard }}</td>
-                      <div style="height: 5px">
-                        <div style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <td> {{ personalFile.degree }}</td>
-                      <div style="height: 5px">
-                        <div style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <td> {{ personalFile.workingSkills }}</td>
-                      <div style="height: 5px">
-                        <div style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-                      </div>
-                      <div class="personalFile-button">
-                        <div class="row">
-                          <div class="col-sm-12">
-                           <button (click)="updatePersonalFileById(personalFile.personalFileId)" class="btn btn-info">Edit Personal File</button>
-                         </div>
-                       </div>
-                     </div>
-                    <div class="personalFile-button">
-                      <div class="row">
-                        <div class="col-sm-12">
-                          <button (click)=" deletePersonalFile(personalFile.personalFileId)"(click)="reloadCurrentPage()" class="btn btn-info">Delete PersonalFile</button>
-                        </div>
-                      </div>
-                    </div>
-                    </div>
-                  </div>
-                </div>
+
+              
+              <div class="col-8 right-content">
+                <input type="radio" name="tabs" id="tab1" checked />
+                <label for="tab1">Address</label>
                 
-              </div>
+                <input type="radio" name="tabs" id="tab2" />
+                <label for="tab2">Personal Files</label>
+                
+                <input type="radio" name="tabs" id="tab3" />
+                <label for="tab3">Certifications</label>
+                
+                <input type="radio" name="tabs" id="tab4" />
+                <label for="tab4">Education</label>
+                
+                <input type="radio" name="tabs" id="tab5" />
+                <label for="tab5">Experiences</label>
 
-     
-         <div class="row gutters-sm">
-          <div class="col-sm-6 mb-3">
-            <div class="card h-100">
-              <div class="card-body">
-                <div class="experience-button">
-                  <div class="row">
-                    <div class="col-sm-12">
-                      <button (click)="addExperience(user.userId)" class="btn btn-info">Add Experience</button>
-                    </div>
-                  </div>
-                </div>
-                <tr *ngFor="let experience of experiences">
-                <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">assignment</i>Experience</h6>
-                <td> {{ experience.userId}}</td>
-                <div style="height: 5px">
-                  <div style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">assignment</i>EXP</h6>
-                <td> {{ experience.expId}}</td>
-                <div style="height: 5px">
-                  <div style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <td> {{ experience.company}}</td>
-                <div style="height: 5px">
-                  <div style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <div class="experience-button">
-                  <div class="row">
-                    <div class="col-sm-12">
-                     <button (click)="updateExperienceByExpId(experience.expId)" class="btn btn-info">Edit Experience</button>
-                   </div>
-                 </div>
-               </div>
-              <div class="experience-button">
-                <div class="row">
-                  <div class="col-sm-12">
-                    <button (click)=" deleteExperience(experience.expId)"(click)="reloadCurrentPage()" class="btn btn-info">Delete Experience</button>
-                  </div>
-                </div>
-              </div>
-              </div>
-            </div>
-          </div>
-          
-        </div>
-        <div class="row gutters-sm">
-          <div class="col-sm-6 mb-3">
-            <div class="card h-100">
-              <div class="card-body">
-                <div class="certification-button">
-                  <div class="row">
-                    <div class="col-sm-12">
-                      <button (click)="addCertification(user.userId)" class="btn btn-info">Add Certification</button>
-                    </div>
-                  </div>
-                  </div>
-                  
-          <tr *ngFor="let certification of certifications">
-            <h6 class="d-flex align-items-center mb-3">Certification</h6>
-            <td> {{ certification.userId}}</td>
-            <div style="height: 5px">
-              <div style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">assignment</i>EXP</h6>
-            <td> {{ certification.certificationID}}</td>
-            <div style="height: 5px">
-              <div style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <td> {{ certification.certificationName}}</td>
-            <div style="height: 5px">
-              <div style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <div class="certification-button">
-            <div class="row">
-              <div class="col-sm-12">
-                <button (click)="updateCertificationByCertificationId(certification.certificationID)" class="btn btn-info">Edit Certification</button>
-              </div>
-            </div>
-          </div>
-          <div class="certification-button">
-            <div class="row">
-              <div class="col-sm-12">
-                <button (click)=" deleteCertification(certification.certificationID)"(click)="reloadCurrentPage()" class="btn btn-info">Delete Certification</button>
-              </div>
-            </div>
-          </div>
+                <input type="radio" name="tabs" id="tab6" />
+                <label for="tab6">Tasks</label>
 
-          <div class="row gutters-sm">
-          <div class="col-sm-6 mb-3">
-            <div class="card h-100">
-              <div class="card-body">
-                <div class="education-button">
+                <input type="radio" name="tabs" id="tab7" />
+                <label for="tab7">Day Off</label>
+                
+                <div class="tab content1">
                   <div class="row">
-                    <div class="col-sm-12">
-                      <button (click)="addEducation(user.userId)" class="btn btn-info">Add Education</button>
-                    </div>
-                  </div>
-                  </div>
-                  
-          <tr *ngFor="let education of educations">
-            <h6 class="d-flex align-items-center mb-3">Education</h6>
-            <td> {{ education.userId }}</td>
-            <div style="height: 5px">
-              <div style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">assignment</i>Education</h6>
-            <td> {{ education.educationId }}</td>
-            <div style="height: 5px">
-              <div style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <td> {{ education.degree }}</td>
-            <div style="height: 5px">
-              <div style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-            <div class="education-button">
-            <div class="row">
-              <div class="col-sm-12">
-                <button (click)="updateEducationById(education.educationId)" class="btn btn-info">EditEducation</button>
-              </div>
-            </div>
-          </div>
-          <div class="education-button">
-            <div class="row">
-              <div class="col-sm-12">
-                <button (click)=" deleteEducation(education.educationId)"(click)="reloadCurrentPage()" class="btn btn-info">Delete Education</button>
-              </div>
-            </div>
-          </div>
-        <div class="row gutters-sm">
-          <div class="col-sm-6 mb-3">
-            <div class="card h-100">
-              <div class="card-body">
-                <div class="experience-button">
-                  <div class="row">
-                    <div class="col-sm-12">
-                      <button (click)="placeDayOff(user.userId)" class="btn btn-info">Place Day Off</button>
-                    </div>
+                    <div class="row gutters-sm">
+                      <div class="col-sm-6 mb-3">
+                        <div class="card h-100">
+                          <div class="card-body">
+                            <div class="address-button" *ngIf="!isButtonVisible">
+                              <div class="row">
+                                <div class="col-sm-12">
+                                  <button (click)="addAddress(user.userId)" class="btn btn-info">Add Address</button>
+                                </div>
+                              </div>
+                            </div>
+                            <tr *ngFor="let address of addresses">
+                              <h6 class="d-flex align-items-center mb-3"  *ngIf="isButtonVisible">State</h6>
+                              <td *ngIf="isButtonVisible"> {{address.state}}</td>
+                              <h6 class="d-flex align-items-center mb-3"  *ngIf="isButtonVisible">City</h6>
+                              <td *ngIf="isButtonVisible"> {{address.city}}</td>
+                              <h6 class="d-flex align-items-center mb-3"  *ngIf="isButtonVisible">Postal Code</h6>
+                              <td *ngIf="isButtonVisible"> {{address.postalCode}}</td>
+                            </tr>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
+                </div>
+                <div class="tab content2">
+                  <button (click)="addPersonalFile(user.userId)" class="btn btn-info">Add Personal File</button>
+                  <div class="row gutters-sm">
+                    <table class="table table-striped">
+                      <thead>
+                          <tr>
+                              <th> userId</th>
+                              <th> personalFileId</th>
+                              <th> idCard</th>
+                              <th> degree</th>
+                              <th> workingSkills</th>
+                              <th> Roles</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr *ngFor="let personalFile of personalFiles">
+                              <td> {{ personalFile.userId}}</td>
+                              <td> {{ personalFile.personalFileId}}</td>
+                              <td> {{ personalFile.idCard}}</td>
+                              <td> {{ personalFile.degree}}</td>
+                              <td> {{ personalFile.workingSkills}}</td>
+                              <td>
+                                  <button mat-button [matMenuTriggerFor]="menu">Actions</button>
+                  <mat-menu #menu="matMenu">
+                    <button (click)="updatePersonalFileById(personalFile.personalFileId)" class="btn btn-info">Edit Personal File</button>
+                    <button (click)=" deletePersonalFile(personalFile.personalFileId)" class="btn btn-info">Delete PersonalFile</button>         
+                  </mat-menu>
+                              </td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+            </div>
+                <div class="tab content3">
+                  <button (click)="addCertification(user.userId)" class="btn btn-info">Add Certification</button>
+                  <div class="row gutters-sm">
+                    <table class="table table-striped">
+                      <thead>
+                          <tr>
+                              <th> userId</th>
+                              <th> certificationId</th>
+                              <th> Certification Name</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr *ngFor="let certification of certifications">
+                              <td> {{ certification.userId}}</td>
+                              <td> {{ certification.certificationID}}</td>
+                              <td> {{ certification.certificationName}}</td>
+                              <td>
+                                  <button mat-button [matMenuTriggerFor]="menu">Actions</button>
+                  <mat-menu #menu="matMenu">
+                    <button (click)="updateCertificationByCertificationId(certification.certificationID)" class="btn btn-info">Edit Certification</button>
+                    <button (click)=" deleteCertification(certification.certificationID)" class="btn btn-info">Delete Certification</button>
+                  </mat-menu>
+                              </td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+            </div>
+                <div class="tab content4">
+                  <button (click)="addEducation(user.userId)" class="btn btn-info">Add Education</button>
+                  <div class="row gutters-sm">
+                    <table class="table table-striped">
+                      <thead>
+                          <tr>
+                              <th> userId</th>
+                              <th> educationId</th>
+                              <th> Degree</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr *ngFor="let education of educations">
+                              <td> {{ education.userId}}</td>
+                              <td> {{ education.educationId}}</td>
+                              <td> {{ education.degree}}</td>
+                              <td>
+                                  <button mat-button [matMenuTriggerFor]="menu">Actions</button>
+                  <mat-menu #menu="matMenu">
+                    <button (click)="updateEducationById(education.educationId)" class="btn btn-info">EditEducation</button>
+                    <button (click)=" deleteEducation(education.educationId)" class="btn btn-info">Delete Education</button>
+                  </mat-menu>
+                              </td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+           </div>
+                <div class="tab content5">
+                  
+                  <button (click)="addExperience(user.userId)" class="btn btn-info">Add Experience</button>
+                  <div class="row gutters-sm">
+                    <table class="table table-striped">
+                      <thead>
+                          <tr>
+                              <th> userId</th>
+                              <th> experienceId</th>
+                              <th> Company</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr *ngFor="let experience of experiences">
+                              <td> {{ experience.userId}}</td>
+                              <td> {{ experience.expId}}</td>
+                              <td> {{ experience.company}}</td>
+                              <td>
+                                  <button mat-button [matMenuTriggerFor]="menu">Actions</button>
+                  <mat-menu #menu="matMenu">
+                    <button (click)="updateExperienceByExpId(experience.expId)" class="btn btn-info">Edit Experience</button>
+                    <button (click)=" deleteExperience(experience.expId)" class="btn btn-info">Delete Experience</button>
+                  </mat-menu>
+                              </td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+                </div>
+                <div class="tab content6">Tab6 Contents</div>
+                <div class="tab content7">
+                  <button (click)="placeDayOff(user.userId)" class="btn btn-info">Place Day Off</button>
+                </div>
+
+
+      </div>
+    </div>     
           </div>
         </div>

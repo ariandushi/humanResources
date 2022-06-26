@@ -1,4 +1,4 @@
-import { UserAuthService } from './../../_services/user-auth.service';
+import { UserAuthService } from '../../LoginFiles/_services/user-auth.service';
 import { AddUserToProjectComponent } from './../add-user-to-project/add-user-to-project.component';
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
@@ -40,6 +40,9 @@ export class ProjectListComponent implements OnInit {
       this.users=data;
     })
   }
+  addProject(){
+    this.router.navigate(["/add-project"]);
+  }
 
   updateProject(projectId:Guid){
     this.router.navigate([`update-project`, projectId])
@@ -63,13 +66,13 @@ export class ProjectListComponent implements OnInit {
   showTasks(projectId:Guid){
     this.router.navigate([`/project-task`, projectId]);
   }
-  deleteProject(projectId:Guid){
-    this.projectService.deleteProject(projectId).subscribe(data=>{
-      console.log(data);
-       this.projectService.getProjectList().subscribe(data=>{
-        this.projects=data;})
-    },error=>console.log(error));
-  }
+  // deleteProject(projectId:Guid){
+  //   this.projectService.deleteProject(projectId).subscribe(data=>{
+  //     console.log(data);
+  //      this.projectService.getProjectList().subscribe(data=>{
+  //       this.projects=data;})
+  //   },error=>console.log(error));
+  // }
 
   // isAdmin = () => this.authService.isAdmin();
 }

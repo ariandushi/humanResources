@@ -1,8 +1,6 @@
 import { DatePipe } from '@angular/common';
-import { v4 as uuid } from 'uuid';
 import { Guid } from 'guid-typescript';
 import { Project } from '../Project/project';
-import { DayOff } from '../dayOff/dayOff';
 import { Role } from '../Roles/role';
 
 export class User {

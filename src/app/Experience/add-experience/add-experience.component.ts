@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Experience } from '../experience';
 import { ExperienceService } from '../experience.service';
-import {v4 as uuid} from 'uuid';
 import { UserService } from 'src/app/User/user.service';
 import { User } from 'src/app/User/user';
 import { Guid } from 'guid-typescript';
@@ -18,6 +17,7 @@ export class AddExperienceComponent implements OnInit {
   user: User=new User();
   expId:Guid;
   experience: Experience = new Experience();
+  experiences: Experience[];
   constructor(private experienceService: ExperienceService, private router: Router,
     private userService:UserService,
     private route: ActivatedRoute) { }
@@ -42,5 +42,4 @@ export class AddExperienceComponent implements OnInit {
     console.log(this.experience);
     this.saveExperience();
   }
-
 }

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ProjectDialogComponent } from './project-dialog.component';
+import { DayOffRequestsComponent } from './day-off-requests.component';
 
-describe('ProjectDialogComponent', () => {
-  let component: ProjectDialogComponent;
-  let fixture: ComponentFixture<ProjectDialogComponent>;
+describe('DayOffRequestsComponent', () => {
+  let component: DayOffRequestsComponent;
+  let fixture: ComponentFixture<DayOffRequestsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProjectDialogComponent ]
+      declarations: [ DayOffRequestsComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProjectDialogComponent);
+    fixture = TestBed.createComponent(DayOffRequestsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

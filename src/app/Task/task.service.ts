@@ -14,20 +14,20 @@ export class TaskService {
   constructor(private httpClient: HttpClient) { }
 
   addTask(task: Task):Observable<Object>{
-    return this.httpClient.post(`${this.baseURL+"/addNewTask"}`, task);
+    return this.httpClient.post(`${this.baseURL+"/newTask"}`, task);
   }
   getTaskByUserId(userId: Guid): Observable<Task[]>{
-    return this.httpClient.get<Task[]>(`${this.baseURL+"/getByUserId"}/${userId}`);
+    return this.httpClient.get<Task[]>(`${this.baseURL+"/getTaskByUserId"}/${userId}`);
   }
   getTaskByProjectId(projectId: Guid): Observable<Task[]>{
-    return this.httpClient.get<Task[]>(`${this.baseURL+"/getByProjectId"}/${projectId}`);
+    return this.httpClient.get<Task[]>(`${this.baseURL+"/getTaskByProjectId"}/${projectId}`);
   }
   getTaskById(taskId: Guid): Observable<Task>{
     return this.httpClient.get<Task>(`${this.baseURL+"/getTaskById"}/${taskId}`);
   }
-  // updateEducation(educationId: Guid, education: Education): Observable<Object>{
-  //   return this.httpClient.put(`${this.baseURL+"/updateEducation"}/${educationId}`, education);
-  // }
+  finishedTask(taskId: Guid):Observable<Object>{
+    return this.httpClient.patch(`${this.baseURL+"/finishedTask"}/${taskId}`, null);
+  }
   assignUserToTask(taskId:Guid, userId: Guid):Observable<Object>{
     return this.httpClient.patch(`${this.baseURL+"/assignUser"}/${taskId}/userId/${userId}`, null);
   }

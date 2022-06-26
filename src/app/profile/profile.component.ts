@@ -57,8 +57,10 @@ export class ProfileComponent implements OnInit {
      private projectService: ProjectService, private dayOffService: DayOffService) { }
 
   ngOnInit(): void {
+    console.log(this.route.snapshot.params , "PARAMS ")
     this.userId = this.route.snapshot.params['userId'];
     this.userService.getUserById(this.userId).subscribe(data => { 
+    
       this.user = data;
     }, error =>console.log(error));
 
@@ -87,7 +89,7 @@ export class ProfileComponent implements OnInit {
     }, error=> console.log(error));
 
     this.addressService.getAddressByUserId(this.userId).subscribe(data=>{
-      this.addresses=data;
+      this.address=data;
     }, error=> console.log(error));
 
     this.dayOffService.showDayOffRequestByUserId(this.userId).subscribe(data=>{
@@ -112,7 +114,7 @@ export class ProfileComponent implements OnInit {
     }, error=>console.log(error));
   }
   addEducation(userId:Guid){
-    this.router.navigate(['add-education', userId]);
+    this.router.navigate(['add-education', userId],{queryParams:{selectedTabID :  document.querySelectorAll('input:checked')[0].id}});
   }
   updateEducationById(educationId:Guid){
     this.router.navigate(['update-education', educationId]);
@@ -128,8 +130,8 @@ export class ProfileComponent implements OnInit {
   updatePersonalFileById(personalFileId:Guid){
     this.router.navigate(['update-personal-file', personalFileId]);
   }
-  deletePersonalFile(perosnalFileId:Guid){
-    this.personalFileService.deletePersonalFile(this.personalFileId).subscribe(data=>{
+  deletePersonalFile(personalFileId:Guid){
+    this.personalFileService.deletePersonalFile(personalFileId).subscribe(data=>{
       this.personalFile=data;
     }, error=>console.log(error));
   }
@@ -141,17 +143,12 @@ export class ProfileComponent implements OnInit {
   }
   deleteExperience(expId:Guid){
     this.experienceService.deleteExperience(expId).subscribe(data=>{
-      this.experience=data;
+      this.experienceService.getExperienceByUserId(this.userId).subscribe(data=>{
+        this.experiences=data;})
     }, error=>console.log(error));
   }
 
   addAddress( userId:Guid){
-    // this.addressService.getAddressByAddressId(addressID).subscribe(res => {
-    //   debugger;
-    // this.address=res
-    // });
-    // this.isButtonVisible=!this.isButtonVisible;
-
     this.router.navigate(['add-address', userId]);
     }
 
@@ -171,4 +168,5 @@ export class ProfileComponent implements OnInit {
   placeDayOff(userId:Guid){
     this.router.navigate(['place-day-off-request', userId]);
   }
+  
 }

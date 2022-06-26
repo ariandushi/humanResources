@@ -20,7 +20,7 @@ export class ProjectService {
     return this.httpClient.get<Project[]>(`${this.baseURL+"/getAll"}`);
   }
   getProjectByProjectId(projectId: Guid):Observable<Project>{
-    return this.httpClient.get<Project>(`${this.baseURL+"/getById"}/${projectId}`);
+    return this.httpClient.get<Project>(`${this.baseURL+"/getProjectById"}/${projectId}`);
   }
   updateProject(projectId:Guid, project: Project): Observable<Object>{
     return this.httpClient.put(`${this.baseURL+"/updateProject"}/${projectId}`, project);
@@ -29,12 +29,10 @@ export class ProjectService {
   //   return this.httpClient.put(`${this.baseURL+"/updateProject"}/${projectId}`, project);
   // }
   getProjectsByUserId(userId: Guid): Observable<Project[]>{
-    return this.httpClient.get<Project[]>(`${this.baseURL+"/getByUserId"}/${userId}`);
+    return this.httpClient.get<Project[]>(`${this.baseURL+"/getProjectByUserId"}/${userId}`);
   }
   assignUserToProject(projectId:Guid, userId: Guid):Observable<Object>{
     return this.httpClient.patch(`${this.baseURL+"/assignUser"}/${projectId}/userId/${userId}`, null);
   }
-  deleteProject(projectId:Guid):Observable<Object>{
-    return this.httpClient.delete(`${this.baseURL+"/deleteProject"}/${projectId}`);
-  }
+
 }

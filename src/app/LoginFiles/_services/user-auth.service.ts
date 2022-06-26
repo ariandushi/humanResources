@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, map, Observable } from 'rxjs';
-import { User } from '../User/user';
+import { User } from '../../User/user';
 
 @Injectable({
   providedIn: 'root'
@@ -10,16 +10,13 @@ import { User } from '../User/user';
 export class UserAuthService {
 
   public userSubject: BehaviorSubject<User>;
-  public user : Observable<User>;
+  public currentUser : Observable<User>;
   private baseURL="http://localhost:8080/hr_management/users";
-  private currentUserSubject: BehaviorSubject<any>;
 
   constructor(
     private router: Router,
     private httpClient: HttpClient
   ) {
-    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')!));
-
   // this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('user')!));
   // this.user = this.userSubject.asObservable();}
 
@@ -36,12 +33,33 @@ export class UserAuthService {
 //           this.userSubject.next(user);
 //           return user;
 //       }));
-}
 
-public get currentUserValue(): any {
-  return this.currentUserSubject.value;
-}
 
+  this.userSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')!));
+  this.currentUser = this.userSubject.asObservable();
+  }
+  public get currentUserValue(): any {
+    return this.userSubject.value;
+  }
+
+  updateLocalStorage(user: any) {
+    let localuserToPatch = this.currentUserValue;
+    localuserToPatch = user;
+    localStorage.setItem('currentUser', JSON.stringify(localuserToPatch));
+    this.userSubject.next(localuserToPatch);
+  }
+
+
+
+
+
+  
+  // public setUserId(userId){
+  //   localStorage.setItem('userId',JSON.stringify(userId));
+  // }
+  // public getUserId(){
+  //   return JSON.parse(localStorage.getItem('userId')!);
+  // }
   public setRoles(roles:[]){
     localStorage.setItem('roles',JSON.stringify(roles));
   }
@@ -57,7 +75,7 @@ public get currentUserValue(): any {
     return localStorage.getItem('jwtToken')!;
   }
   public clear(){
-    localStorage.clear;
+    localStorage.clear();
   }
   public isLoggedIn(){
     return this.getRoles() && this.getToken();
