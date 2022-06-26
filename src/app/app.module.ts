@@ -110,6 +110,7 @@ import { ChangePasswordComponent } from './User/change-password/change-password.
     useClass:AuthInterceptor,
     multi:true
   },
+  LoginComponent,
   UserService
   ],
   bootstrap: [AppComponent]

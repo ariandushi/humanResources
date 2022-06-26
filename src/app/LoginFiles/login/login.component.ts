@@ -49,6 +49,7 @@ debugger;
       let res: any = response;
       // this.currentUser.username = decodedToken.username;
      localStorage.setItem("jwtToken", res.jwt);
+     console.log(res.jwt);
      const decodedToken = this.helper.decodeToken(res.jwt);
      console.log(decodedToken);
      let bbb= this.userAuthService.getToken();
@@ -71,7 +72,9 @@ debugger;
      console.log(decodedToken.roles);
      const role = decodedToken.roles[0];
      console.log(role)
-     this.userAuthService.getRoles();
+     let rolet = this.userAuthService.getRoles();
+     console.log(rolet)
+
      //const role = this.currentUser.role
     //  this.userAuthService.setUserId(res.user.userId);
 

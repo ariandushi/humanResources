@@ -25,10 +25,11 @@ import { AuthGuard } from './LoginFiles/_auth/auth.guard';
 import { DayOffRequestsComponent } from './dayOff/day-off-requests/day-off-requests.component';
 import { ChangePasswordComponent } from './User/change-password/change-password.component';
 import { TaskListComponent } from 'src/app/Tasks/task-list/task-list.component';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
 
 
 const routes: Routes = [
-  {path: 'users', component : UserListComponent},
+  {path: 'users', component : UserListComponent, canActivate:[AuthGuard],  data: {roles: ['admin', 'employee']}},
   {path: 'add-user', component: AddUserComponent},
   {path: 'update-user/:userId', component:UpdateUserComponent},
   {path: 'user-experience', component:UserExperienceComponent},
@@ -69,14 +70,13 @@ const routes: Routes = [
   {path: 'add-certifications/:userId', component:AddCertificationsComponent},
   {path: 'update-certifications/:userId', component:UpdateCertificationsComponent},
   {path: 'login', component:LoginComponent},
-  {path: 'admin', component:AdminComponent},
+  {path: 'admin', component:AdminComponent, canActivate:[AuthGuard], data: {roles: ['admin']}},
   {path: 'place-day-off-request/:userId', component:PlaceDayOffRequestComponent},
   {path: 'admin1', component:AdminComponent},
   {path: 'day-off-requests/:dayOffId', component:DayOffRequestsComponent},
   {path: 'task-list/:projectId', component:TaskListComponent},
   {path: 'change-password/:userId', component:ChangePasswordComponent},
-
-
+  {path: 'forbidden', component:ForbiddenComponent},
   {path:'', redirectTo:'login', pathMatch:'full'}
 ];
 
