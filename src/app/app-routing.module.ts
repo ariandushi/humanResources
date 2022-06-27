@@ -24,12 +24,24 @@ import { UserProjectsListComponent } from './User/user-projects-list/user-projec
 import { AuthGuard } from './LoginFiles/_auth/auth.guard';
 import { DayOffRequestsComponent } from './dayOff/day-off-requests/day-off-requests.component';
 import { ChangePasswordComponent } from './User/change-password/change-password.component';
-import { TaskListComponent } from 'src/app/Tasks/task-list/task-list.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { AddEducationComponent } from './Education/add-education/add-education.component';
+import { UpdateEducationComponent } from './Education/update-education/update-education.component';
+import { UserEducationComponent } from './Education/user-education/user-education.component';
+import { AddPersonalFileComponent } from './Personal Files/add-personal-file/add-personal-file.component';
+import { UpdatePersonalFileComponent } from './Personal Files/update-personal-file/update-personal-file.component';
+import { AddTaskComponent } from './Task/add-task/add-task.component';
+import { UserTaskComponent } from './Task/user-task/user-task.component';
+import { ProjectTaskComponent } from './Task/project-task/project-task.component';
+import { AddUserToTaskComponent } from './Task/add-user-to-task/add-user-to-task.component';
+import { RoleListComponent } from './Roles/role-list/role-list.component';
+import { RoleUserListComponent } from './Roles/role-user-list/role-user-list.component';
+import { AddRoleComponent } from './Roles/add-role/add-role.component';
+import { UpdateAddressComponent } from './Address/update-address/update-address.component';
 
 
 const routes: Routes = [
-  {path: 'users', component : UserListComponent, canActivate:[AuthGuard],  data: {roles: ['admin', 'employee']}},
+  {path: 'users', component : UserListComponent, canActivate:[AuthGuard],  data: {roles: ['Admin', 'Employee']}},
   {path: 'add-user', component: AddUserComponent},
   {path: 'update-user/:userId', component:UpdateUserComponent},
   {path: 'user-experience', component:UserExperienceComponent},
@@ -52,31 +64,35 @@ const routes: Routes = [
   {path: 'user-projects-list', component:UserProjectsListComponent},
   {path: 'project-user-list/:projectId', component:ProjectUserListComponent},
 
-  // {path: 'project-user-list',
-  //       children:[
-  //         {path: ':userId' , component:ProjectUserListComponent},
-  //         {path: ':projectId' , component:ProjectUserListComponent},
-  //       ]},
-
-  // {path: 'add-user-to-project',
-  //       children:[
-  //         {path: ':userId', component:AddUserToProjectComponent},
-  //         {path: ':projectId', component:AddUserToProjectComponent},
-  //       ]},
   {path: 'add-user-to-project/:projectId', component:AddUserToProjectComponent},
   {path: 'add-project-to-user/:userId', component:AddProjectToUserComponent},
   {path: 'add-address/:userId', component:AddAddressComponent},
   {path: 'user-address', component:UserAddressComponent},
+  {path: 'update-address/:addressID', component:UpdateAddressComponent},
+
   {path: 'add-certifications/:userId', component:AddCertificationsComponent},
-  {path: 'update-certifications/:userId', component:UpdateCertificationsComponent},
+  {path: 'update-certifications/:certificationID', component:UpdateCertificationsComponent},
+  {path: 'add-education/:userId', component:AddEducationComponent},
+  {path: 'update-education/:educationId', component:UpdateEducationComponent},
+  {path: 'user-education', component:UserEducationComponent},
+  {path: 'add-personal-file/:userId', component:AddPersonalFileComponent},
+  {path: 'update-personal-file/:personalFileId', component:UpdatePersonalFileComponent},
+  {path: 'add-task/:projectId', component: AddTaskComponent},
+  {path: 'user-task', component: UserTaskComponent},
+  {path: 'project-task/:projectId', component: ProjectTaskComponent},
+  {path: 'add-user-to-task/:taskId', component: AddUserToTaskComponent},
   {path: 'login', component:LoginComponent},
-  {path: 'admin', component:AdminComponent, canActivate:[AuthGuard], data: {roles: ['admin']}},
+  {path: 'admin', component:AdminComponent, canActivate:[AuthGuard], data: {roles: ['Admin', 'Employee']}},
   {path: 'place-day-off-request/:userId', component:PlaceDayOffRequestComponent},
   {path: 'admin1', component:AdminComponent},
-  {path: 'day-off-requests/:dayOffId', component:DayOffRequestsComponent},
-  {path: 'task-list/:projectId', component:TaskListComponent},
   {path: 'change-password/:userId', component:ChangePasswordComponent},
   {path: 'forbidden', component:ForbiddenComponent},
+  {path: 'role-list', component:RoleListComponent},
+  {path: 'role-user-list', component:RoleUserListComponent},
+  {path: 'add-role', component:AddRoleComponent},
+
+
+
   {path:'', redirectTo:'login', pathMatch:'full'}
 ];
 

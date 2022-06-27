@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AssignTaskComponent } from './assign-task.component';
+import { RoleDialogComponent } from './role-dialog.component';
 
-describe('AssignTaskComponent', () => {
-  let component: AssignTaskComponent;
-  let fixture: ComponentFixture<AssignTaskComponent>;
+describe('RoleDialogComponent', () => {
+  let component: RoleDialogComponent;
+  let fixture: ComponentFixture<RoleDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AssignTaskComponent ]
+      declarations: [ RoleDialogComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AssignTaskComponent);
+    fixture = TestBed.createComponent(RoleDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

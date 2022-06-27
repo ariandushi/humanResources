@@ -26,9 +26,9 @@ export class DayOffRequestsComponent implements OnInit {
   }
 
   approveRequest(){
-    debugger;
+    ;
     this.dayOffService.approveDayOff(this.statusDTO).subscribe(data=>{
-    debugger;  
+    ;  
       // console.log(this.statusi);
       console.log(data);
     })

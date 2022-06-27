@@ -19,7 +19,7 @@ export class AuthGuard implements CanActivate {
  
  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
   
-  debugger;
+  ;
 
   let isLoggedIn = this.userAuthService.isLoggedIn();
   if(isLoggedIn!=null){
@@ -35,7 +35,7 @@ export class AuthGuard implements CanActivate {
       return true;
     }
     else{
-      this.router.navigate(['/users']);
+      this.router.navigate(['/forbidden']);
       console.log("not allowed");
            return false;
     }
@@ -52,7 +52,7 @@ export class AuthGuard implements CanActivate {
   // canActivate(
   //   route: ActivatedRouteSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-  //     debugger;
+  //     ;
   //     if(this.userAuthService.getToken() !== null){
   //       console.log(route.data["jwt"]);
   //       console.log(route.data["roles"]);

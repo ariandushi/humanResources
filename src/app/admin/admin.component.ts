@@ -25,13 +25,13 @@ export class AdminComponent implements OnInit {
   dayOffId:Guid;
   user:User=new User();
   users: User[];
-  dayOff: DayOff=new DayOff();
+  dayOff: DayOff;
   constructor(private dayOffService:DayOffService, private route: ActivatedRoute,private userService: UserService,private userAuthService: UserAuthService,
     private router: Router) { }
 
   ngOnInit(): void {
     // this.u/serId = this.route.snapshot.params['userId'];
-debugger;
+;
     let bbb =this.userAuthService.getToken();
     const decodedToken = this.helper.decodeToken(bbb);
     console.log(decodedToken);
@@ -49,8 +49,7 @@ debugger;
 
   getDaysOff(){
     this.dayOffService.showDayOffRequestList().subscribe(data=>{
-      this.daysOff=data;
-      console.log(data);
+      this.daysOff=data;debugger;
     },error=>console.log(error));
   }
 
@@ -62,7 +61,7 @@ debugger;
   // }
   approveRequest(dayOff:DayOff){
     let requestBody: StatusDto = new StatusDto();
-    debugger; 
+    ; 
     requestBody.dayOffId=dayOff.dayOffId;
     requestBody.userId=this.user.userId;
     requestBody.requestStatus=this.statusDTO.requestStatus;
@@ -92,4 +91,8 @@ debugger;
     // })
     this.router.navigate(['day-off-requests', dayOffId])
   }
+
+  // toArray(daysOff: object) {
+  //   return Object.keys(daysOff).map(key => daysOff[key])
+  // }
 }

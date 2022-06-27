@@ -30,8 +30,8 @@
         
         <div class="form-group">
             <label>Date of Birth</label>
-            <input matInput [matDatepicker]="picker" id="dob"
-             [(ngModel)] = "user.dob" name="dob">
+            <input matInput [matDatepicker]="picker" id="dateOfBirth"
+             [(ngModel)] = "user.dateOfBirth" name="dateOfBirth">
             <mat-hint>MM/DD/YYYY</mat-hint>
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
@@ -55,10 +55,15 @@
                 [(ngModel)] = "user.secondContact" name="secondContact">
         </div>
         <div class="form-group">
+            <label>Leave Days Left</label>
+            <input type="text" class="form-control" id="leaveDaysLeft" 
+                [(ngModel)] = "user.leaveDaysLeft" name="leaveDaysLeft">
+        </div>
+        <div class="form-group">
             <fieldset id="group2">
-                <input type="radio" name="userStatus" [(ngModel)]="user.userStatus" [value]="true">
+                <input type="radio" name="userStatus" [(ngModel)]="user.usersStatus" [value]="true">
                 <label>ACTIVE</label> <br/>
-                <input type="radio" name="userStatus" [(ngModel)]="user.userStatus" [value]="false">
+                <input type="radio" name="userStatus" [(ngModel)]="user.usersStatus" [value]="false">
                 <label>INACTIVE</label>
 
             </fieldset>

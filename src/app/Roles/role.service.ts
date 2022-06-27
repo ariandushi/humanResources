@@ -26,10 +26,10 @@ export class RoleService {
     return this.httpClient.put(`${this.baseURL+"/updateRole"}/${roleId}`, role);
   }
   getRoleByUserId(userId:Guid):Observable<Role[]>{
-    return this.httpClient.get<Role[]>(`${this.baseURL+"/getRoleByUser"}/${userId}`);
+    return this.httpClient.get<Role[]>(`${this.baseURL+"/getRoleByUserId"}/${userId}`);
   }
   deleteRole(roleId: Guid):Observable<Object>{
-    return this.httpClient.delete(`${this.baseURL+"/deleteRole"}/${roleId}`);
+    return this.httpClient.delete(`${this.baseURL+"/delete"}/${roleId}`);
   }
   getRoleByName(roleName: String): Observable<Role>{
     return this.httpClient.get<Role>(`${this.baseURL+"/name"}/${roleName}`);

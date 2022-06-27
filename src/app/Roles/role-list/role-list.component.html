@@ -1,1 +1,17 @@
-<p>role-list works!</p>
+<h2> Role List</h2>
+<button (click)="addRole()" class="btn btn-info">Add Role</button>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th> roleId</th>
+            <th> roleName</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let role of roles">
+                <td> {{ role.roleId}}</td>
+                <td> {{ role.roleName}}</td>
+                <button (click)="showUsers(role.roleId)" class="btn btn-info"> Show Users</button>
+                <button (click)="deleteRole(role.roleId)" class="btn btn-info"> Delete Role</button>
+            </tr>
+        </tbody>
+    </table>

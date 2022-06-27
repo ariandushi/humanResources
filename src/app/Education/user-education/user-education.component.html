@@ -1,0 +1,30 @@
+<h2> User Education</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th> userid</th>
+            <th> educationid</th>
+            <th> Degree</th>
+            <th> University Name</th>
+            <th> Faculty Name</th>
+            <th> Start Time</th>
+            <th> End Time</th>
+            <th> Average</th>
+            <th> Active Status</th>
+        </tr>
+    </thead>
+    <tbody>
+            <td> {{ education.userId }}</td>
+            <td> {{ education.educationId }}</td>
+            <td> {{ education.degree }}</td>
+            <td> {{ education.universityName }}</td>
+            <td> {{ education.facultyName }}</td>
+            <td> {{ education.startTime }}</td>
+            <td> {{ education.endTime }}</td>
+            <td> {{ education.average }}</td>
+            <td> {{ education.activeStatus }}</td>
+            <td>
+                <button (click)="updateEducation(education.educationId)" class="btn btn-info">Update</button>
+            </td>
+    </tbody>
+</table>

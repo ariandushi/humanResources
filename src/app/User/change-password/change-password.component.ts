@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Guid } from 'guid-typescript';
 import { User } from '../user';
@@ -18,7 +18,7 @@ export class ChangePasswordComponent implements OnInit {
   userId:Guid;
   user: User= new User();
   userDTO: UserDTO= new UserDTO();
-  constructor(private route: ActivatedRoute, private userService:UserService) { }
+  constructor(private route: ActivatedRoute, private userService:UserService, private router: Router) { }
 
   ngOnInit(): void {
     
@@ -32,11 +32,16 @@ export class ChangePasswordComponent implements OnInit {
 
 
   onSubmit(){
-    // debugger;
+    // ;
     this.userService.changePassword(this.userDTO).subscribe(data=>{
       console.log(data);
       console.log("success");
     })
+    this.navigateToProfile(this.userId);
   }
 
+  navigateToProfile(userId:Guid){
+    this.router.navigate(['profile', userId]);
+
+  }
 }

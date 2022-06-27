@@ -24,7 +24,7 @@ export class AddCertificationsComponent implements OnInit {
   ngOnInit(): void {
     this.userId = this.route.snapshot.params['userId'];
     this.certification.userId=this.userId;
-    //debugger;
+    //;
     this.userService.getUserById(this.userId).subscribe(data => {
       
       this.user = data;

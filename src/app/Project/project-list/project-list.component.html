@@ -8,8 +8,6 @@
             <th> Start Time</th>
             <th> End Time</th>
             <th> Description</th>
-            <th> User</th>
-            <th> Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -17,33 +15,18 @@
             <td> {{ project.projectId}}</td>
             <td> {{ project.projectName}}</td>
             <td> {{ project.startTime}}</td>
-            <!-- <td> {{ project.endTime}}</td> -->
             <td> {{ project.description}}</td>
-            <!-- <td *ngIf="project.users!=undefined"> {{ project.users[0].userId}}</td> -->
-        
-            <!-- <tr *ngFor="let user of project.users"> -->
-
-                <!-- <tr *ngFor="let user of users"></tr> -->
-            
-                <!-- <select  [(ngModel)]="userId" (change)="chosenUser(userId)">
-                    <option *ngFor="let user of users" [ngValue]=user>
-                        {{user.userId}}
-                    </option>
-                </select>                <div>
-                    <input type="text" [(ngModel)] = "user.userId">
-                    <button (click)="addNewUserToProject(project)" class="btn btn-info">Save User</button>
-                  </div> -->
-            <button (click)="updateProject(project.projectId)" class="btn btn-info">Update</button>
-            <!-- <select class="form-select"[(ngModel)]="user.userId">
-                <option *ngFor="let u of users">{{u.username}}</option>
-            </select>
-            {{user}} -->
-            <button (click)="addUserToProject(project.projectId)" class="btn btn-info">Add User To Project</button>
-            <button (click)="showUsers(project.projectId)" class="btn btn-info"> Show Users</button>
-            <button (click)="deleteProject(project.projectId)"  (click)="reloadCurrentPage()" class="btn btn-info"> Delete Project</button>
-            <button (click)="showTasks(project.projectId)" class="btn btn-info"> Show Tasks</button>
-
-
+            <td>
+                <button mat-button [matMenuTriggerFor]="menu">Actions</button>
+<mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="updateProject(project.projectId)">Update</button>
+            <button mat-menu-item (click)="addUserToProject(project.projectId)">Add User To Project</button>
+            <button mat-menu-item (click)="removeUserFromProject(project.projectId)">Remove User From Project</button>
+            <button mat-menu-item (click)="addTaskToProject(project.projectId)">Add Task To Project</button>
+            <button mat-menu-item (click)="showUsers(project.projectId)"> Show Users</button>
+            <button mat-menu-item (click)="showTasks(project.projectId)"> Show Tasks</button>
+</mat-menu>
+            </td>
         </tr>
     </tbody>
 </table>

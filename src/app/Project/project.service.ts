@@ -40,4 +40,7 @@ export class ProjectService {
   deleteProject(projectId:Guid):Observable<Object>{
     return this.httpClient.delete(`${this.baseURL+"/projects/deleteProject"}/${projectId}`);
   }
+  removeUserFromProject(projectId: Guid, userId: Guid): Observable<Object>{
+    return this.httpClient.patch(`${this.baseURL+"/removeUser"}/${projectId}/userId/${userId}`, null);
+  }
 }

@@ -20,7 +20,7 @@ export class UpdateUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId = this.route.snapshot.params['userId'];
-   // debugger;
+   // ;
     this.userService.getWholeUserByUserId(this.userId).subscribe(data => {
       
       this.user = data;
@@ -71,7 +71,7 @@ export class UpdateUserComponent implements OnInit {
   }
 
   changeStatus(v){
-    this.user.userStatus=v.value;
+    this.user.usersStatus=v.value;
   }
 
 }

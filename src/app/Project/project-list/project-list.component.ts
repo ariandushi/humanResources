@@ -1,12 +1,16 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Guid } from 'guid-typescript';
-import { Task } from 'src/app/Tasks/task';
+import { Task } from 'src/app/Task/task';
+import{TaskService} from 'src/app/Task/task.service'
 import { User } from 'src/app/User/user';
 import { UserService } from 'src/app/User/user.service';
+import { AddUserToProjectComponent } from '../add-user-to-project/add-user-to-project.component';
 import { Project } from '../project';
 import { ProjectService } from '../project.service';
+import { RemoveUserDialogComponent } from '../remove-user-dialog/remove-user-dialog.component';
 
 @Component({
   selector: 'app-project-list',
@@ -27,7 +31,7 @@ export class ProjectListComponent implements OnInit {
   task:Task=new Task();
   constructor(private projectService: ProjectService,
     private router: Router, private userService:UserService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute, private taskService: TaskService, private dialog: MatDialog ) { }
 
   ngOnInit(): void {
     this.projectService.getProjectList().subscribe(data=>{
@@ -47,9 +51,7 @@ export class ProjectListComponent implements OnInit {
   updateProject(projectId:Guid){
     this.router.navigate([`update-project`, projectId])
   }
-  addUserToProject(projectId:Guid){
-    this.router.navigate([`add-user-to-project`, projectId])
-  }
+ 
   navigateToProjectList(){
     this.router.navigate(['/projects']);
   }
@@ -60,16 +62,16 @@ export class ProjectListComponent implements OnInit {
       // this.projects.push(this.user)
     },error=>console.log(error));
   }
-  // setNewUser(user: User): void{
-  //   console.log(user);
-  //   this.currentUser=user;
-  // }
-  addNewUserToProject(project: Project){
-    console.log(this.project);
-    this.projectService.assignUserToProject(project.projectId, this.user.username).subscribe(data=>{
-      console.log(data);
-      this.router.navigate(['/project-list']);
-    }, error=>console.log(error));
+
+  addUserToProject(projectId:Guid){
+    const dialogRef = this.dialog.open(AddUserToProjectComponent, {data: {
+      projectId
+    }});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+      this.projectService.getProjectList().subscribe(data=>{
+        this.projects=data;})
+    });
   }
   showUsers(projectId:Guid){
     this.router.navigate([`project-user-list`, projectId]);
@@ -90,7 +92,24 @@ export class ProjectListComponent implements OnInit {
   }
   showTasks(projectId:Guid){
     this.router.navigate([`task-list`, projectId]);
-
   }
- 
+
+  addTaskToProject(projectId:Guid){
+    this.router.navigate([`/add-task`, projectId]);
+  }
+  // addTaskToProject(project: Project){
+  //   this.taskService.assignTaskToProject(project.projectId, this.task.taskId).subscribe(data=>{
+  //     this.router.navigate(["/add-task"]);
+  //   },error=>console.log(error));
+  // }
+  removeUserFromProject(projectId:Guid){
+    const dialogRef = this.dialog.open(RemoveUserDialogComponent, {data: {
+      projectId
+    }});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+      this.projectService.getProjectList().subscribe(data=>{
+        this.projects=data;})
+    });
+  }
 }

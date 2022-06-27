@@ -1,5 +1,0 @@
-export enum TaskStatus{
-    UNASSIGNED="UNASSIGNED",
-    ASSIGNED="ASSIGNED",
-    FINISHED="FINISHED",
-}

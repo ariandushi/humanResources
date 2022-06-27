@@ -54,39 +54,21 @@ export class UserService {
     return this.httpClient.patch(`${this.baseURL + "/changePassword"}`, userDTO);
   }
   
-
+  getUsersByRoleId(roleId:Guid):Observable<User[]>{
+    return this.httpClient.get<User[]>(`${this.baseURL+"/getUsersByRole"}/${roleId}`);
+  }
+  assignRoleToUser(userId: Guid, roleId: Guid): Observable<Object>{
+    return this.httpClient.patch(`${this.baseURL+"/assignRole"}/${userId}/roleId/${roleId}`, null);
+  }
+  removeRoleFromUser(userId: Guid, roleId: Guid): Observable<Object>{
+    return this.httpClient.patch(`${this.baseURL+"/removeRole"}/${userId}/roleId/${roleId}`, null);
+  }
   public login(loginData: any){
     return this.httpClient.post(this.baseURL+'/login',loginData, {headers:this.requestHeader});
   }
-  public forUser(){
-    return this.httpClient.get(this.baseURL+"/forUser", {responseType:'text'});
-  }
-  public forAdmin(){
-    return this.httpClient.get(this.baseURL+"/forAdmin", {responseType:'text'});
-  }
-
-
-  // roleMatch(allowedRoles: any): boolean {
-  //   var isMatch = false;
-  //   var userRoles: string[] = JSON.parse(localStorage.getItem('userRoles'));
-  //   allowedRoles.forEach(element => {
-  //     if (userRoles.indexOf(element) > -1) {
-  //       isMatch = true;
-  //       return false;
-  //     }
-  //   });
-  //   return isMatch;
-
-  // }
-
   deleteUser(userId: Guid):Observable<Object>{
     return this.httpClient.delete(`${this.baseURL+"/deleteUser"}/${userId}`);
   }
 
-  /*getUserByUsername(username): Observable<User>{
-    return this.httpClient.get<User>(`${this.baseURL+"username/"}${username}`);
-  }*/
-  /*updateUserUsername(username, user: User): Observable<Object>{
-    return this.httpClient.put(`${this.baseURL+"updateUserByUsername/"}${username}`, user);
-  }*/
+  
 }

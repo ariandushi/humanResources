@@ -41,15 +41,30 @@ import { ProjectUserListComponent } from './Project/project-user-list/project-us
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule} from '@angular/material/core';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatDialogModule} from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DayOffRequestsComponent } from './dayOff/day-off-requests/day-off-requests.component';
-import { AssignTaskComponent } from './Tasks/assign-task/assign-task.component';
-import { TaskListComponent } from './Tasks/task-list/task-list.component';
+
 import { RoleListComponent } from './Roles/role-list/role-list.component';
 import { RoleUserListComponent } from './Roles/role-user-list/role-user-list.component';
 import { AddRoleComponent } from './Roles/add-role/add-role.component';
 import { ChangePasswordComponent } from './User/change-password/change-password.component';
+import { AddEducationComponent } from './Education/add-education/add-education.component';
+import { UserEducationComponent } from './Education/user-education/user-education.component';
+import { UpdateEducationComponent } from './Education/update-education/update-education.component';
+import { UpdatePersonalFileComponent } from './Personal Files/update-personal-file/update-personal-file.component';
+import { AddPersonalFileComponent } from './Personal Files/add-personal-file/add-personal-file.component';
+import { AddTaskComponent } from './Task/add-task/add-task.component';
+import { AddUserToTaskComponent } from './Task/add-user-to-task/add-user-to-task.component';
+import { ProjectTaskComponent } from './Task/project-task/project-task.component';
+import { UpdateTaskComponent } from './Task/update-task/update-task.component';
+import { UserTaskComponent } from './Task/user-task/user-task.component';
+import { UserPersonalFileComponent } from './Personal Files/user-personal-file/user-personal-file.component';
+import { RoleDialogComponent } from './User/role-dialog/role-dialog.component';
+import { RemoveRoleDialogComponent } from './User/remove-role-dialog/remove-role-dialog.component';
+import { RemoveUserDialogComponent } from './Project/remove-user-dialog/remove-user-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -78,12 +93,24 @@ import { ChangePasswordComponent } from './User/change-password/change-password.
     PlaceDayOffRequestComponent,
     ProjectUserListComponent,
     DayOffRequestsComponent,
-    AssignTaskComponent,
-    TaskListComponent,
     RoleListComponent,
     RoleUserListComponent,
     AddRoleComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    AddEducationComponent,
+    UserEducationComponent,
+    UpdateEducationComponent,
+    UpdatePersonalFileComponent,
+    AddPersonalFileComponent,
+    AddTaskComponent,
+    AddUserToTaskComponent,
+    ProjectTaskComponent,
+    UpdateTaskComponent,
+    UserTaskComponent,
+    UserPersonalFileComponent,
+    RoleDialogComponent,
+    RemoveRoleDialogComponent,
+    RemoveUserDialogComponent
     
   ],
   imports: [
@@ -102,7 +129,9 @@ import { ChangePasswordComponent } from './User/change-password/change-password.
     MatDatepickerModule,
     MatNativeDateModule,
     MatCardModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatMenuModule,
+    MatDialogModule
   ],
   providers: [
     AuthGuard,

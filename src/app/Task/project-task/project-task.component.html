@@ -1,0 +1,20 @@
+<h2> Project Task</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th> projectid</th>
+            <th> taskid</th>
+            <th> Task Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let task of tasks">
+            <td> {{ project.projectName }}</td>
+            <td> {{ task.taskId }}</td>
+            <td> {{ task.taskName }}</td>
+            </tr>
+            <td>
+                <!-- <button (click)="updateEducation(education.educationId)" class="btn btn-info">Update</button> -->
+            </td>
+    </tbody>
+</table>

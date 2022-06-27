@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>Assign User</h2>
+<mat-dialog-content class="mat-typography">
+   <select [(ngModel)]="userId">
+    <option *ngFor="let user of users" [value]="user.userId">
+    {{ user.username }}
+    </option>
+   </select>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial (click)="saveUser()">Save</button>
+  </mat-dialog-actions>

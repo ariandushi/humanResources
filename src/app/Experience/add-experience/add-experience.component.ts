@@ -25,7 +25,7 @@ export class AddExperienceComponent implements OnInit {
   ngOnInit(): void {
     this.userId = this.route.snapshot.params['userId'];
     this.experience.userId=this.userId;
-    //debugger;
+    //;
     this.userService.getUserById(this.userId).subscribe(data => {
       
       this.user = data;

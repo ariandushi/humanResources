@@ -3,6 +3,7 @@ import { v4 as uuid } from 'uuid';
 import { Guid } from 'guid-typescript';
 import { Project } from '../Project/project';
 import { DayOff } from '../dayOff/dayOff';
+import { Role } from '../Roles/role';
 // import { Role } from '../role';
 
 export class User {
@@ -12,14 +13,15 @@ export class User {
     firstName:string;
     lastName:string;
     email:string;
-    dob: DatePipe;
+    dateOfBirth: DatePipe;
     leaveDaysLeft: number;
     mobile: string;
     startingDay: DatePipe;
     terminationDay: DatePipe;
     secondContact: string;
-    userStatus: boolean;
+    usersStatus: boolean;
     project: Project;
+    roles: Role[];
     // role: Role;
     // token? : string;
 

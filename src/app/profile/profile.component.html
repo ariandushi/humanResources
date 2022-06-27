@@ -1,7 +1,6 @@
-<div class="container">
+<!-- <div class="container">
     <div class="main-body">
     
-          <!-- Breadcrumb -->
           <nav aria-label="breadcrumb" class="main-breadcrumb">
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -9,7 +8,6 @@
               <li class="breadcrumb-item active" aria-current="page">User Profile</li>
             </ol>
           </nav>
-          <!-- /Breadcrumb -->
     
           <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
@@ -156,7 +154,7 @@
                
                 <div class="row">
                   <div class="col-sm-3">
-                    <h6 class="mb-0">second</h6>
+                    <h6 class="mb-0">Second Contact</h6>
                   </div>
                   <div class="col-sm-9 text-secondary">
                       <tbody>
@@ -168,14 +166,16 @@
               
                 <div class="row">
                   <div class="col-sm-3">
-                    <h6 class="mb-0">TEST</h6>
+                    <h6 class="mb-0">User Status</h6>
                   </div>
                   <div class="col-sm-9 text-secondary">
-                    Bay Area, San Francisco, CA
+                    <tbody>
+                      <td>{{user.userStatus ? 'Yes' : 'No'}}</td>
+                    </tbody>
                   </div>
-                  <hr>
-                </div>
                     </div>
+
+                    
 
                     <div class="change-password-button">
                       <div class="row">
@@ -198,7 +198,7 @@
                             </div>
                             
                               <h6 class="d-flex align-items-center mb-3" >State</h6>
-                              <!-- <td *ngIf="isButtonVisible"> {{address.addressID}}</td> -->
+                              <td *ngIf="isButtonVisible"> {{address.addressID}}</td>
                               <td> {{address.state}}</td>
                               <h6 class="d-flex align-items-center mb-3"  >City</h6>
                               <td> {{address.city}}</td>
@@ -371,10 +371,347 @@
                           </div>
                         </div>
                         </div>
-
-
-
             </div>
           </div>
 
-        <!-- </div> -->
+     -->
+
+
+
+
+     <div class="container">
+      <div class="main-body">  
+            <div class="row">
+              <div class="col-4 mb-3">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="d-flex flex-column align-items-center text-center">
+                      <img src="https://bootdey.com/img/Content/avatar/avatar7.png" class="rounded-circle" width="150">
+                      <div class="mt-3">
+                        <h4>{{ user.username }}</h4>
+                        <hr>
+                        <h5>{{ user.userId }}</h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div id="details" class="col-12">
+                  <div class="card mb-3 container">
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <h6 class="mb-0">Username</h6>
+                        </div>
+                        <div class="col-sm-6 text-secondary">
+                            <tbody>
+                            <td> {{ user.username}}</td>
+                            </tbody>
+                        </div>
+                        <hr>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <h6 class="mb-0">Name</h6>
+                        </div>
+                        <div class="col-sm-6 text-secondary">
+                            <tbody>
+                                <td> {{ user.firstName}}</td>
+                            </tbody>
+                        </div>
+                        <hr>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <h6 class="mb-0">Last Name</h6>
+                        </div>
+                        <div class="col-sm-6 text-secondary">
+                            <tbody>
+                                <td> {{ user.lastName}}</td>
+                            </tbody>
+                        </div>
+                        <hr>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <h6 class="mb-0">Email</h6>
+                        </div>
+                        <div class="col-sm-6 text-secondary">
+                            <tbody>
+                                <td> {{ user.email}}</td>
+                            </tbody>
+                        </div>
+                        <hr>
+                      </div>
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <h6 class="mb-0">Date Of Birth</h6>
+                        </div>
+                        <div class="col-sm-6 text-secondary">
+                          <tbody>
+                            <td> {{ user.dateOfBirth}}</td>
+                        </tbody>
+                        </div>
+                        <hr>
+                      </div>
+                    
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <h6 class="mb-0">Mobile Phone</h6>
+                        </div>
+                        <div class="col-sm-6 text-secondary">
+                            <tbody>
+                            <td> {{ user.mobile}}</td>
+                            </tbody>
+                        </div>
+                        <hr>
+                      </div>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <h6 class="mb-0">Starting Day</h6>
+                      </div>
+                      <div class="col-sm-6 text-secondary">
+                          <tbody>
+                              <td> {{ user.startingDay}}</td>
+                          </tbody>
+                      </div>
+                      <hr>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <h6 class="mb-0">Contact</h6>
+                      </div>
+                      <div class="col-sm-6 text-secondary">
+                          <tbody>
+                              <td> {{ user.secondContact}}</td>
+                          </tbody>
+                      </div>
+                      <hr>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <h6 class="mb-0">second</h6>
+                      </div>
+                      <div class="col-sm-6 text-secondary">
+                          <tbody>
+                              <td> {{ user.email}}</td>
+                          </tbody>
+                      </div>
+                      <hr>
+                      <div class="col-sm-12">
+                        <button (click)="changePassword(user.userId)" class="btn btn-info">Change Password</button>
+                      </div>
+                    </div>
+                    </div>
+                    </div>
+              </div>
+  
+              
+                <div class="col-8 right-content">
+                  <input type="radio" name="tabs" id="tab1" checked />
+                  <label for="tab1">Address</label>
+                  
+                  <input type="radio" name="tabs" id="tab2" />
+                  <label for="tab2">Personal Files</label>
+                  
+                  <input type="radio" name="tabs" id="tab3" />
+                  <label for="tab3">Certifications</label>
+                  
+                  <input type="radio" name="tabs" id="tab4" />
+                  <label for="tab4">Education</label>
+                  
+                  <input type="radio" name="tabs" id="tab5" />
+                  <label for="tab5">Experiences</label>
+  
+                  <input type="radio" name="tabs" id="tab6" />
+                  <label for="tab6">Tasks</label>
+  
+                  <input type="radio" name="tabs" id="tab7" />
+                  <label for="tab7">Day Off</label>
+                  
+                  <div class="tab content1">
+                    <button (click)="addAddress(user.userId)" class="btn btn-info">Add Address</button>
+                    <div class="row gutters-sm">
+                      <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th> State</th>
+                                <th> City</th>
+                                <th> Postal Code</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let address of addresses">
+                                <td> {{ address.state}}</td>
+                                <td> {{ address.city}}</td>
+                                <td> {{ address.postalCode}}</td>
+                           
+                                <td>
+                                    <button mat-button [matMenuTriggerFor]="menu">Actions</button>
+                    <mat-menu #menu="matMenu">
+                      <button (click)="updateAddress(address.addressID)" class="btn btn-info">Update Address</button>
+                      <button (click)=" deleteAddress(address.addressID)" class="btn btn-info">Delete Address</button>         
+                    </mat-menu>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+              </div>
+                  <div class="tab content2">
+                    <button (click)="addPersonalFile(user.userId)" class="btn btn-info">Add Personal File</button>
+                    <div class="row gutters-sm">
+                      <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th> userId</th>
+                                <th> personalFileId</th>
+                                <th> idCard</th>
+                                <th> degree</th>
+                                <th> workingSkills</th>
+                                <th> Roles</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let personalFile of personalFiles">
+                                <td> {{ personalFile.userId}}</td>
+                                <td> {{ personalFile.personalFileId}}</td>
+                                <td> {{ personalFile.idCard}}</td>
+                                <td> {{ personalFile.degree}}</td>
+                                <td> {{ personalFile.workingSkills}}</td>
+                                <td>
+                                    <button mat-button [matMenuTriggerFor]="menu">Actions</button>
+                    <mat-menu #menu="matMenu">
+                      <button (click)="updatePersonalFileById(personalFile.personalFileId)" class="btn btn-info">Edit Personal File</button>
+                      <button (click)=" deletePersonalFile(personalFile.personalFileId)" class="btn btn-info">Delete PersonalFile</button>         
+                    </mat-menu>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+              </div>
+                  <div class="tab content3">
+                    <button (click)="addCertification(user.userId)" class="btn btn-info">Add Certification</button>
+                    <div class="row gutters-sm">
+                      <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th> userId</th>
+                                <th> certificationId</th>
+                                <th> Certification Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let certification of certifications">
+                                <td> {{ certification.userId}}</td>
+                                <td> {{ certification.certificationID}}</td>
+                                <td> {{ certification.certificationName}}</td>
+                                <td>
+                                    <button mat-button [matMenuTriggerFor]="menu">Actions</button>
+                    <mat-menu #menu="matMenu">
+                      <button (click)="updateCertificationByCertificationId(certification.certificationID)" class="btn btn-info">Edit Certification</button>
+                      <button (click)=" deleteCertification(certification.certificationID)" class="btn btn-info">Delete Certification</button>
+                    </mat-menu>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+              </div>
+                  <div class="tab content4">
+                    <button (click)="addEducation(user.userId)" class="btn btn-info">Add Education</button>
+                    <div class="row gutters-sm">
+                      <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th> userId</th>
+                                <th> educationId</th>
+                                <th> Degree</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let education of educations">
+                                <td> {{ education.userId}}</td>
+                                <td> {{ education.educationId}}</td>
+                                <td> {{ education.degree}}</td>
+                                <td>
+                                    <button mat-button [matMenuTriggerFor]="menu">Actions</button>
+                    <mat-menu #menu="matMenu">
+                      <button (click)="updateEducationById(education.educationId)" class="btn btn-info">EditEducation</button>
+                      <button (click)=" deleteEducation(education.educationId)" class="btn btn-info">Delete Education</button>
+                    </mat-menu>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+             </div>
+                  <div class="tab content5">
+                    
+                    <button (click)="addExperience(user.userId)" class="btn btn-info">Add Experience</button>
+                    <div class="row gutters-sm">
+                      <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th> userId</th>
+                                <th> experienceId</th>
+                                <th> Company</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let experience of experiences">
+                                <td> {{ experience.userId}}</td>
+                                <td> {{ experience.expId}}</td>
+                                <td> {{ experience.company}}</td>
+                                <td>
+                                    <button mat-button [matMenuTriggerFor]="menu">Actions</button>
+                    <mat-menu #menu="matMenu">
+                      <button (click)="updateExperienceByExpId(experience.expId)" class="btn btn-info">Edit Experience</button>
+                      <button (click)=" deleteExperience(experience.expId)" class="btn btn-info">Delete Experience</button>
+                    </mat-menu>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                  </div>
+                  <div class="tab content6">Tab6 Contents</div>
+                  <div class="tab content7">
+                    <button (click)="placeDayOff(user.userId)" class="btn btn-info">Place Day Off</button>
+                    <div class="row gutters-sm">
+                      <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th> userId</th>
+                                <th> Id of Approver</th>
+                                <th> Request Status</th>
+                                <th> Permission Type</th>
+                                <th> Day Off Amount </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let dayOff of daysOff">
+                                <td> {{ dayOff.userId}}</td>
+                                <td> {{ dayOff.idOffApprove}}</td>
+                                <td> {{ dayOff.requestStatus}}</td>
+                                <td> {{ dayOff.permissionType}}</td>
+                                <td> {{ dayOff.dayOffAmount}}</td>
+
+
+                                <td>
+                                    <button mat-button [matMenuTriggerFor]="menu">Actions</button>
+                    <mat-menu #menu="matMenu">
+                      
+                    </mat-menu>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                  </div>
+  
+  
+        </div>
+      </div>     
+            </div>
+          </div>

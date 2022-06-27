@@ -2,7 +2,7 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th> userId</th>
+            <th> User Full Name</th>
             <th> Start Date</th>
             <th> End Date</th>
             <th> Reason</th>
@@ -12,9 +12,9 @@
         </tr>
     </thead>
     <tbody>
-        <div *ngFor="let user of users">
+        <!-- <div *ngFor="let user of users"> -->
         <tr *ngFor="let dayOff of daysOff">
-            <td > {{ user.username}}</td>
+            <td > {{ dayOff.users.firstName}} {{ dayOff.users.lastName}}</td>
             <td> {{ dayOff.startDate}}</td>
             <td> {{ dayOff.endDate}}</td>
             <td> {{ dayOff.reason}}</td>
@@ -53,6 +53,6 @@
         </td>
         </tr>
     
-        </div>
+        <!-- </div> -->
     </tbody>
 </table>

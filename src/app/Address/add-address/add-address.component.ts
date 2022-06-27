@@ -26,7 +26,7 @@ export class AddAddressComponent implements OnInit {
     this.address.userId= this.userId;
     
     this.userService.getUserById(this.userId).subscribe(data=>{
-    //  debugger;
+    //  ;
       this.user=data;
     }, error=>console.log(error));
   }
@@ -34,7 +34,7 @@ export class AddAddressComponent implements OnInit {
   onSubmit(){
     console.log(this.address)
   this.addressService.addNewAddress(this.address, this.userId).subscribe(data=>{
-    // debugger;
+    // ;
     console.log(data);
     this.goToAddressList(this.userId);
   }, error=> console.log(error))

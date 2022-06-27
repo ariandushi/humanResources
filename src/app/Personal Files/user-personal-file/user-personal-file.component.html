@@ -1,0 +1,22 @@
+<h2> User Personal File</h2>
+ <table class="table table-striped">
+    <thead>
+        <tr>
+             <th> userid</th>
+             <th> personalFileid</th>
+             <th> Id Card</th>
+             <th> Degree</th>
+             <th> Working Skills</th>
+        </tr>
+    </thead>
+    <tbody>
+            <td> {{ personalFile.userId }}</td>
+            <td> {{ personalFile.personalFileId }}</td>
+            <td> {{ personalFile.idCard }}</td>
+            <td> {{ personalFile.degree }}</td>
+            <td> {{ personalFile.workingSkills }}</td>
+            <td>
+                <button (click)="updatePersonalFile(personalFile.personalFileId)" class="btn btn-info">Update</button>
+            </td>
+    </tbody>
+    </table>
