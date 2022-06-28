@@ -5,6 +5,7 @@ import { User } from 'src/app/User/user';
 import { Guid } from 'guid-typescript';
 import { Component, OnInit } from '@angular/core';
 import { Role } from '../role';
+import { LoginService } from 'src/app/LoginFiles/login.service';
 
 @Component({
   selector: 'app-role-list',
@@ -21,7 +22,7 @@ export class RoleListComponent implements OnInit {
   roles: Role[];
   constructor(private roleService: RoleService,
     private router: Router, private userService: UserService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute, public loginService: LoginService) { }
 
   ngOnInit(): void {
     this.roleService.getRoleList().subscribe(data=>{

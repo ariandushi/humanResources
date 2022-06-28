@@ -18,9 +18,6 @@ export class AuthGuard implements CanActivate {
   constructor(private userAuthService: UserAuthService, private router: Router, private userService: UserService, private loginService: LoginService){}
  
  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-  
-  ;
-
   let isLoggedIn = this.userAuthService.isLoggedIn();
   if(isLoggedIn!=null){
   let token = this.userAuthService.getToken();
@@ -44,7 +41,7 @@ export class AuthGuard implements CanActivate {
    console.log("not allowed 2");
    return false;
   }
-  this.router.navigate(['/login']);
+  this.router.navigate(['/users']);
   return false;
 
  }

@@ -1,9 +1,11 @@
 import { Guid } from "guid-typescript";
+import { Project } from "../Project/project";
+import { TaskStatus } from "./taskStatus";
 
 export class Task{
     userId: Guid;
     projectId: Guid;
     taskId: Guid;
-    taskStatus: String;
+    taskStatus: TaskStatus;
     taskName: String;
 }

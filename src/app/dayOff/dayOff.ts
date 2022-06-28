@@ -1,7 +1,7 @@
 import { DatePipe } from "@angular/common";
 import { Guid } from "guid-typescript";
 import { DayOffStatus } from "../enums/dayOffStatus";
-import { PermissionType } from "../enums/permissionType";
+import { DayOffPermission } from "../enums/dayOffPermission";
 import { User } from "../User/user";
 
 export class DayOff{
@@ -16,6 +16,6 @@ export class DayOff{
     userId: Guid;
     leaveDaysLeft:Number;
     requestStatus: DayOffStatus;
-    permissionType: PermissionType;
+    dayOffPermission: DayOffPermission;
     users: User;
 }

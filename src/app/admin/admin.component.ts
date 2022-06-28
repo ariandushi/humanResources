@@ -27,24 +27,31 @@ export class AdminComponent implements OnInit {
   users: User[];
   dayOff: DayOff;
   constructor(private dayOffService:DayOffService, private route: ActivatedRoute,private userService: UserService,private userAuthService: UserAuthService,
-    private router: Router) { }
+    private router: Router) { let bbb =this.userAuthService.getToken();
+      const decodedToken = this.helper.decodeToken(bbb);
+      console.log(decodedToken);
+      this.userService.getUserById(decodedToken.userId).subscribe(data=>{
+        this.user=data;
+        console.log(this.user);
+      });
+      }
 
   ngOnInit(): void {
     // this.u/serId = this.route.snapshot.params['userId'];
 ;
-    let bbb =this.userAuthService.getToken();
-    const decodedToken = this.helper.decodeToken(bbb);
-    console.log(decodedToken);
-    this.userService.getUserById(decodedToken.userId).subscribe(data=>{
-      this.user=data;
-      console.log(this.user);
-    });
-    // merr token nga localstorage , shif rolin
-    //nqs nuk esht admin beje logout
-    this.userService.getUsersList().subscribe(data=>{
-      this.users=data;
-    },error=>console.log(error));
-    this.getDaysOff();
+    // let bbb =this.userAuthService.getToken();
+    // const decodedToken = this.helper.decodeToken(bbb);
+    // console.log(decodedToken);
+    // this.userService.getUserById(decodedToken.userId).subscribe(data=>{
+    //   this.user=data;
+    //   console.log(this.user);
+    // });
+    // // merr token nga localstorage , shif rolin
+    // //nqs nuk esht admin beje logout
+    // this.userService.getUsersList().subscribe(data=>{
+    //   this.users=data;
+    // },error=>console.log(error));
+    // this.getDaysOff();
   }
 
   getDaysOff(){

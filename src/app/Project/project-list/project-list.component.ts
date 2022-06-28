@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Guid } from 'guid-typescript';
+import { LoginService } from 'src/app/LoginFiles/login.service';
 import { Task } from 'src/app/Task/task';
 import{TaskService} from 'src/app/Task/task.service'
 import { User } from 'src/app/User/user';
@@ -31,7 +32,7 @@ export class ProjectListComponent implements OnInit {
   task:Task=new Task();
   constructor(private projectService: ProjectService,
     private router: Router, private userService:UserService,
-    private route: ActivatedRoute, private taskService: TaskService, private dialog: MatDialog ) { }
+    private route: ActivatedRoute, private taskService: TaskService, private dialog: MatDialog , public loginService: LoginService) { }
 
   ngOnInit(): void {
     this.projectService.getProjectList().subscribe(data=>{
@@ -91,7 +92,7 @@ export class ProjectListComponent implements OnInit {
     this.router.navigate(["/add-project"]);
   }
   showTasks(projectId:Guid){
-    this.router.navigate([`task-list`, projectId]);
+    this.router.navigate([`/project-task`, projectId]);
   }
 
   addTaskToProject(projectId:Guid){

@@ -21,6 +21,8 @@ import { PersonalFilesService } from '../Personal Files/personal-files.service';
 import { PersonalFile } from '../Personal Files/personalFile';
 import { Education } from '../Education/education';
 import { filter } from 'rxjs';
+import { Task } from '../Task/task';
+import { TaskService } from '../Task/task.service';
 
 
 @Component({
@@ -60,13 +62,16 @@ export class ProfileComponent implements OnInit {
   personalFile: PersonalFile = new PersonalFile();
   personalFiles: PersonalFile[];
   kot:any;
+  tasks: Task[];
+  task:Task;
+  taskId:Guid;
   constructor(private userService: UserService, private router: Router,
      public route: ActivatedRoute,
      private experienceService: ExperienceService, private addressService:AddressService,
      private certificationsService: CertificationsService,
      private projectService: ProjectService, private dayOffService: DayOffService,
      private educationService: EducationService,
-     private personalFileService: PersonalFilesService,) { }
+     private personalFileService: PersonalFilesService, private taskService: TaskService) { }
 
   ngOnInit(): void {
     this.userId = this.route.snapshot.params['userId'];
@@ -98,6 +103,7 @@ export class ProfileComponent implements OnInit {
     }, error=> console.log(error));
     this.dayOffService.showDayOffRequestByUserId(this.userId).subscribe(data=>{
       this.daysOff=data;
+      console.log(this.daysOff);
     }, error=> console.log(error));
 
     this.educationService.getEducationByUserId(this.userId).subscribe(data => {
@@ -109,6 +115,10 @@ export class ProfileComponent implements OnInit {
       this.personalFiles = data;
       console.log(data);
     }, error=>console.log(error));
+
+    this.taskService.getTaskByUserId(this.userId).subscribe(data=>{
+      this.tasks=data;
+    }, error=> console.log(error));
     if(localStorage.getItem('selectedTabID')){
       const elementId = localStorage.getItem('selectedTabID');
       console.log(elementId );
@@ -118,6 +128,7 @@ export class ProfileComponent implements OnInit {
       if(this.kot){
         this.kot!.checked = true;
       }
+      
     }
 
     console.log(this.route.snapshot.params['selected'])
@@ -133,10 +144,10 @@ export class ProfileComponent implements OnInit {
     })
   }*/
   updateUser(userId:Guid){
-    this.router.navigate(['update-user', userId]);
+    this.router.navigate(['/update-user', userId]);
   }
   navigateToProfile(userId:Guid){
-    this.router.navigate(['profile', userId]);
+    this.router.navigate(['/profile', userId]);
   }
 
 
@@ -148,7 +159,9 @@ export class ProfileComponent implements OnInit {
   }
   deleteEducation(educationId:Guid){
     this.educationService.deleteEducation(educationId).subscribe(data=>{
-      this.education=data;
+      this.educationService.getEducationByUserId(this.userId).subscribe(data=>{
+      this.educations=data;
+      });
     }, error=>console.log(error));
   }
   addPersonalFile(userId:Guid){
@@ -160,7 +173,9 @@ export class ProfileComponent implements OnInit {
   }
   deletePersonalFile(personalFileId:Guid){
     this.personalFileService.deletePersonalFile(personalFileId).subscribe(data=>{
-      this.personalFile=data;
+      this.personalFileService.getPersonalFileByUserId(this.userId).subscribe(data=>{
+      this.personalFiles=data;
+      });
     }, error=>console.log(error));
   }
 
@@ -197,11 +212,6 @@ export class ProfileComponent implements OnInit {
       }, error=>console.log(error));
     }
 
-  reloadCurrentPage(){
-    window.location.reload();
-  }
-  visible:boolean=false;
-
   onClick(){
     this.isButtonVisible=!this.isButtonVisible;
   }
@@ -214,8 +224,18 @@ export class ProfileComponent implements OnInit {
   }
   deleteCertification(certificationID:Guid){
     this.certificationsService.deleteCertification(certificationID).subscribe(data=>{
-      this.certification=data;
+      this.certificationsService.getCertificationByUserId(this.userId).subscribe(data=>{
+
+      this.certifications=data;
+      });
     }, error=>console.log(error));
+  }
+  finishedTask(taskId:Guid){
+    this.taskService.finishedTask(taskId).subscribe(data=>{
+      this.taskService.getTaskByUserId(this.userId).subscribe(data=>{
+        this.tasks=data;
+      });
+    });
   }
 
   addProjectToUser(userId:Guid){
@@ -233,6 +253,12 @@ export class ProfileComponent implements OnInit {
   changePassword(userId:Guid){
     this.router.navigate(['change-password', userId]);
   }
+  deleteDayOff(dayOffId:Guid){
+    this.dayOffService.deleteDayOff(dayOffId).subscribe(data=>{
+      this.dayOffService.showDayOffRequestByUserId(this.userId).subscribe(data=>{
+        this.daysOff=data;})
+    }, error=>console.log(error));
+  }
 
   checkStatus(){
     console.log(this.user.usersStatus);
@@ -241,5 +267,8 @@ export class ProfileComponent implements OnInit {
     }else{
       return false;
     }
+  }
+  reloadCurrentPage(){
+    window.location.reload();
   }
 }

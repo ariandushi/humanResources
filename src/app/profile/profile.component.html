@@ -386,7 +386,7 @@
                 <div class="card">
                   <div class="card-body">
                     <div class="d-flex flex-column align-items-center text-center">
-                      <img src="https://bootdey.com/img/Content/avatar/avatar7.png" class="rounded-circle" width="150">
+                      <img src="https://www.kindpng.com/picc/m/269-2697881_computer-icons-user-clip-art-transparent-png-icon.png" class="rounded-circle" width="150">
                       <div class="mt-3">
                         <h4>{{ user.username }}</h4>
                         <hr>
@@ -499,6 +499,9 @@
                       <div class="col-sm-12">
                         <button (click)="changePassword(user.userId)" class="btn btn-info">Change Password</button>
                       </div>
+                      <div class="col-sm-12">
+                        <button (click)="updateUser(user.userId)" class="btn btn-info">Edit Profile</button>
+                      </div>
                     </div>
                     </div>
                     </div>
@@ -535,6 +538,7 @@
                             <tr>
                                 <th> State</th>
                                 <th> City</th>
+                                <th> Street</th>
                                 <th> Postal Code</th>
 
                             </tr>
@@ -543,6 +547,7 @@
                             <tr *ngFor="let address of addresses">
                                 <td> {{ address.state}}</td>
                                 <td> {{ address.city}}</td>
+                                <td> {{ address.street}}</td>
                                 <td> {{ address.postalCode}}</td>
                            
                                 <td>
@@ -675,33 +680,64 @@
                     </table>
                 </div>
                   </div>
-                  <div class="tab content6">Tab6 Contents</div>
+                  <div class="tab content6">
+                    <div class="row gutters-sm">
+                      <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <!-- <th> project Name</th> -->
+                                <th> taskId</th>
+                                <th> Task Name</th>
+                                <th> Task Status</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let task of tasks">
+                                <!-- <td> {{ task.projectName }}</td> -->
+                                <td> {{ task.taskId }}</td>
+                                <td> {{ task.taskName }}</td>
+                                <td> {{ task.taskStatus }}</td>
+
+                                <td>
+                                  <button (click)="finishedTask(task.taskId)" class="btn btn-info">Finish Task</button>
+
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                  </div>
                   <div class="tab content7">
                     <button (click)="placeDayOff(user.userId)" class="btn btn-info">Place Day Off</button>
                     <div class="row gutters-sm">
                       <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th> userId</th>
-                                <th> Id of Approver</th>
+                                <!-- <th> userId</th>
+                                <th> Id of Approver</th> -->
                                 <th> Request Status</th>
                                 <th> Permission Type</th>
                                 <th> Day Off Amount </th>
+                                <th> Leave Days Left </th>
+
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let dayOff of daysOff">
-                                <td> {{ dayOff.userId}}</td>
-                                <td> {{ dayOff.idOffApprove}}</td>
+                                <!-- <td> {{ dayOff.userId}}</td>
+                                <td> {{ dayOff.idOffApprove}}</td> -->
                                 <td> {{ dayOff.requestStatus}}</td>
-                                <td> {{ dayOff.permissionType}}</td>
+                                <td> {{ dayOff.dayOffPermission}}</td>
                                 <td> {{ dayOff.dayOffAmount}}</td>
+                                <td> {{ dayOff.users.leaveDaysLeft}}</td>
 
 
                                 <td>
                                     <button mat-button [matMenuTriggerFor]="menu">Actions</button>
                     <mat-menu #menu="matMenu">
-                      
+                      <button (click)=" deleteDayOff(dayOff.dayOffId)" class="btn btn-info">Delete DayOff</button>
+
                     </mat-menu>
                                 </td>
                             </tr>

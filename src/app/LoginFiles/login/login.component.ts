@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { UserService } from '../../User/user.service';
@@ -28,10 +28,11 @@ export class LoginComponent implements OnInit {
   form = new FormGroup({
     username: new FormControl(null, Validators.required),
     password: new FormControl(null, Validators.required),
-  });
+  },{updateOn: 'submit'});
 
   userId:Guid;
   user: User= new User();
+  username: string;
   
   
   constructor(private userService: UserService, private userAuthService:UserAuthService, private router:Router, private roleService : RoleService,
@@ -47,53 +48,15 @@ export class LoginComponent implements OnInit {
     this.userService.login(loginForm.value).subscribe((response=>{
 ;
       let res: any = response;
-      // this.currentUser.username = decodedToken.username;
      localStorage.setItem("jwtToken", res.jwt);
-     console.log(res.jwt);
      const decodedToken = this.helper.decodeToken(res.jwt);
-     console.log(decodedToken);
      let bbb= this.userAuthService.getToken();
-     console.log(bbb);
-
-
      this.currentUser.username=decodedToken.sub;
      this.currentUser.userId=decodedToken.userId;
      this.currentUser.roles=decodedToken.roles;
      this.userAuthService.setRoles(decodedToken.roles);
-     console.log(decodedToken.Roles);
-
-    // const getRole= this.roleService.getRoleById(decodedToken.roles).subscribe(data=>{
-    //   if(data.roleName=='Admin'){
-    //     this.router.navigate(['admin']);
-    //   }
-    // });
-     
-
-     console.log(decodedToken.roles);
      const role = decodedToken.roles[0];
-     console.log(role)
-     let rolet = this.userAuthService.getRoles();
-     console.log(rolet)
-
-     //const role = this.currentUser.role
-    //  this.userAuthService.setUserId(res.user.userId);
-
     this.router.navigate(['profile', this.currentUser.userId]);
-    
-    //  this.navigateToProfile(decodedToken.userId);
-    // if(role=== 'Admin'){
-    //   this.router.navigate(['/admin']);
-    //   // this.userAuthService.getUserId();
-    //   //  this.userId= this.route.snapshot.params['userId'];
-    //   //  this.navigateToProfile(this.userId);
-    // }else{
-    //   this.router.navigate(['/project-list']);
-    // }
-    //  if(role=== 'Admin'){
-    //     this.router.navigate(['/users']);
-    //  }else{
-    //         this.router.navigate(['/project-list']);
-    //       }
     }));
   }  
   

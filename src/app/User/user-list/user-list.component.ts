@@ -10,6 +10,7 @@ import { Role } from 'src/app/Roles/role';
 import { RoleDialogComponent } from '../role-dialog/role-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { RemoveRoleDialogComponent } from '../remove-role-dialog/remove-role-dialog.component';
+import { LoginService } from 'src/app/LoginFiles/login.service';
 
 @Component({
   selector: 'app-user-list',
@@ -48,7 +49,7 @@ export class UserListComponent implements OnInit {
   roleName: String;
   role: Role= new Role();
   roles: Role[];
-  constructor(private userService: UserService, private router: Router, private projectService: ProjectService, private dialog: MatDialog) { }
+  constructor(private userService: UserService, private router: Router, private projectService: ProjectService, private dialog: MatDialog, public loginService: LoginService) { }
 
   ngOnInit(): void {
     this.getUsers();

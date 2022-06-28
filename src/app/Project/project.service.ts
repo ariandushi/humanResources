@@ -22,6 +22,9 @@ export class ProjectService {
   getProjectByProjectId(projectId: Guid):Observable<Project>{
     return this.httpClient.get<Project>(`${this.baseURL+"/projects/id"}/${projectId}`);
   }
+  getProjectByTask(taskId: Guid):Observable<Project>{
+    return this.httpClient.get<Project>(`${this.baseURL+"/getByTask"}/${taskId}`);
+  }
   updateProject(projectId:Guid, project: Project): Observable<Object>{
     return this.httpClient.put(`${this.baseURL+"/projects/updateProject"}/${projectId}`, project);
   }

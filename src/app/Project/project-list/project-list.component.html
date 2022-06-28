@@ -1,5 +1,5 @@
 <h2> Project List</h2>
-<button (click)="addProject()" class="btn btn-info">Add Project</button>
+<button (click)="addProject()" class="btn btn-info" *ngIf="loginService.roleMatch(['Admin', 'HR-Manager', 'HR-Specialist'])">Add Project</button>
 <table class="table table-striped">
     <thead>
         <tr>
@@ -19,10 +19,10 @@
             <td>
                 <button mat-button [matMenuTriggerFor]="menu">Actions</button>
 <mat-menu #menu="matMenu">
-            <button mat-menu-item (click)="updateProject(project.projectId)">Update</button>
-            <button mat-menu-item (click)="addUserToProject(project.projectId)">Add User To Project</button>
-            <button mat-menu-item (click)="removeUserFromProject(project.projectId)">Remove User From Project</button>
-            <button mat-menu-item (click)="addTaskToProject(project.projectId)">Add Task To Project</button>
+            <button mat-menu-item (click)="updateProject(project.projectId)" *ngIf="loginService.roleMatch(['Admin', 'HR-Manager', 'HR-Specialist'])">Update</button>
+            <button mat-menu-item (click)="addUserToProject(project.projectId)" *ngIf="loginService.roleMatch(['Admin', 'HR-Manager', 'HR-Specialist'])">Add User To Project</button>
+            <button mat-menu-item (click)="removeUserFromProject(project.projectId)" *ngIf="loginService.roleMatch(['Admin', 'HR-Manager', 'HR-Specialist'])">Remove User From Project</button>
+            <button mat-menu-item (click)="addTaskToProject(project.projectId)" *ngIf="loginService.roleMatch(['Admin', 'HR-Manager', 'HR-Specialist'])">Add Task To Project</button>
             <button mat-menu-item (click)="showUsers(project.projectId)"> Show Users</button>
             <button mat-menu-item (click)="showTasks(project.projectId)"> Show Tasks</button>
 </mat-menu>

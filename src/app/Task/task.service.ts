@@ -17,24 +17,23 @@ export class TaskService {
     return this.httpClient.post(`${this.baseURL+"/newTask"}`, task);
   }
   getTaskByUserId(userId: Guid): Observable<Task[]>{
-    return this.httpClient.get<Task[]>(`${this.baseURL+"/getTaskByUserId"}/${userId}`);
+    return this.httpClient.get<Task[]>(`${this.baseURL+"/userId"}/${userId}`);
   }
   getTaskByProjectId(projectId: Guid): Observable<Task[]>{
-    return this.httpClient.get<Task[]>(`${this.baseURL+"/getTaskByProjectId"}/${projectId}`);
+    return this.httpClient.get<Task[]>(`${this.baseURL+"/projectId"}/${projectId}`);
   }
   getTaskById(taskId: Guid): Observable<Task>{
     return this.httpClient.get<Task>(`${this.baseURL+"/getTaskById"}/${taskId}`);
   }
+  
   finishedTask(taskId: Guid):Observable<Object>{
     return this.httpClient.patch(`${this.baseURL+"/finishedTask"}/${taskId}`, null);
   }
-  assignUserToTask(taskId:Guid, userId: Guid):Observable<Object>{
-    return this.httpClient.patch(`${this.baseURL+"/assignUser"}/${taskId}/userId/${userId}`, null);
+  assignUserToTask(taskId: Guid, userId:Guid):Observable<Object>{
+    return this.httpClient.patch(`${this.baseURL+"/assignTask"}/${taskId}/userId/${userId}`, null);
   }
   deleteTask(taskId: Guid): Observable<Task>{
     return this.httpClient.delete<Task>(`${this.baseURL+"/deleteTask"}/${taskId}`);
   }
-  assignTaskToProject(projectId: Guid, taskId:Guid): Observable<Object>{
-    return this.httpClient.patch(`${this.baseURL+""}/${projectId}/taskId/${taskId}`,null);
-  }
+  
 }

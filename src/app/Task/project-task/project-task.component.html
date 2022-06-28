@@ -12,9 +12,9 @@
             <td> {{ project.projectName }}</td>
             <td> {{ task.taskId }}</td>
             <td> {{ task.taskName }}</td>
-            </tr>
             <td>
-                <!-- <button (click)="updateEducation(education.educationId)" class="btn btn-info">Update</button> -->
+                <button (click)="openAddUserDialog(project.projectId, task.taskId)" class="btn btn-info">Assign User</button>
             </td>
+        </tr>
     </tbody>
 </table>

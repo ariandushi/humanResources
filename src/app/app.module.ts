@@ -138,9 +138,11 @@ import { RemoveUserDialogComponent } from './Project/remove-user-dialog/remove-u
    { provide: HTTP_INTERCEPTORS,
     useClass:AuthInterceptor,
     multi:true
+
   },
   LoginComponent,
-  UserService
+  UserService,
+
   ],
   bootstrap: [AppComponent]
 })

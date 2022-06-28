@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Guid } from 'guid-typescript';
-import { PermissionType } from 'src/app/enums/permissionType';
-
+import { DayOffPermission } from 'src/app/enums/dayOffPermission';
 import { User } from 'src/app/User/user';
 import { UserService } from 'src/app/User/user.service';
 import { DayOffService } from '../day-off.service';
@@ -39,7 +38,7 @@ export class PlaceDayOffRequestComponent implements OnInit {
     this.router.navigate(['profile', userId]);
   }
   public changeStatus(value){
-  this.dayOff.permissionType = value.value;
+  this.dayOff.dayOffPermission = value.value;
   }
   onSubmit(){
     this.placeDayOffRequest();

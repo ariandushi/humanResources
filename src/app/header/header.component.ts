@@ -16,20 +16,34 @@ export class HeaderComponent implements OnInit {
   helper = new JwtHelperService();
 
   user: User
+  isUserLoggedIn = false;
 
   constructor(
     private userAuthService: UserAuthService,
      private router: Router,public userService:UserService, public loginService: LoginService) { 
 
      }
-
+     
   ngOnInit(): void {
+    this.isUserLoggedIn = false;
     let bbb = this.userAuthService.getToken();
     const decodedToken = this.helper.decodeToken(bbb);
-    this.userService.getUserById(decodedToken.userId).subscribe(data=>{
-      this.user =data;
-    });
+    if(decodedToken != null) {
+      
+      this.userService.getUserById(decodedToken.userId).subscribe(data=>{
+        this.user =data;
+      });
+    }
 
+  }
+
+  ngDoCheck(){
+    if(localStorage.getItem('jwtToken') != null){
+      this.isUserLoggedIn = true;
+    }else{
+      this.isUserLoggedIn = false;
+    }
+    
   }
 
   public isLoggedIn() {

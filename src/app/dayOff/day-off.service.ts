@@ -28,6 +28,9 @@ export class DayOffService {
   getDayOffById(dayOffId:Guid): Observable<DayOff>{
     return this.httpClient.get<DayOff>(`${this.baseURL+"/getDayOff"}/${dayOffId}`);
   }
+  deleteDayOff(dayOffId:Guid): Observable<Object>{
+    return this.httpClient.delete<Object>(`${this.baseURL+"/delete"}/${dayOffId}`);
+  }
 //   approveDayOff( ):Observable<Object>{
 //     return this.httpClient.patch(`${this.baseURL+"/approveDayOff"}/${userId}/dayOffId/${dayOffId}`, null);
 //   }

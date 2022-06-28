@@ -38,12 +38,13 @@ import { RoleListComponent } from './Roles/role-list/role-list.component';
 import { RoleUserListComponent } from './Roles/role-user-list/role-user-list.component';
 import { AddRoleComponent } from './Roles/add-role/add-role.component';
 import { UpdateAddressComponent } from './Address/update-address/update-address.component';
+import { HeaderComponent } from './header/header.component';
 
 
 const routes: Routes = [
-  {path: 'users', component : UserListComponent, canActivate:[AuthGuard],  data: {roles: ['Admin', 'Employee']}},
-  {path: 'add-user', component: AddUserComponent},
-  {path: 'update-user/:userId', component:UpdateUserComponent},
+  {path: 'users', component : UserListComponent},
+  {path: 'add-user', component: AddUserComponent, canActivate:[AuthGuard], data: {roles: ['Admin']}},
+  {path: 'update-user/:userId', component:UpdateUserComponent, canActivate:[AuthGuard], data: {roles: ['Admin']}},
   {path: 'user-experience', component:UserExperienceComponent},
   {path: 'add-experience/:userId', component:AddExperienceComponent},
   {path: 'update-experience/:expId', component:UpdateExperienceComponent},
@@ -59,13 +60,13 @@ const routes: Routes = [
 
         ]},
   {path: 'project-list', component:ProjectListComponent},
-  {path: 'add-project', component:AddProjectComponent},
-  {path: 'update-project/:projectId', component:UpdateProjectComponent},
+  {path: 'add-project', component:AddProjectComponent, canActivate:[AuthGuard], data: {roles: ['Admin' , 'HR-Manager', 'HR-Specialist']}},
+  {path: 'update-project/:projectId', component:UpdateProjectComponent, canActivate:[AuthGuard], data: {roles: ['Admin' , 'HR-Manager', 'HR-Specialist']} },
   {path: 'user-projects-list', component:UserProjectsListComponent},
   {path: 'project-user-list/:projectId', component:ProjectUserListComponent},
 
-  {path: 'add-user-to-project/:projectId', component:AddUserToProjectComponent},
-  {path: 'add-project-to-user/:userId', component:AddProjectToUserComponent},
+  {path: 'add-user-to-project/:projectId', component:AddUserToProjectComponent, canActivate:[AuthGuard], data: {roles: ['Admin' , 'HR-Manager', 'HR-Specialist']} },
+  {path: 'add-project-to-user/:userId', component:AddProjectToUserComponent, canActivate:[AuthGuard], data: {roles: ['Admin' , 'HR-Manager', 'HR-Specialist']} },
   {path: 'add-address/:userId', component:AddAddressComponent},
   {path: 'user-address', component:UserAddressComponent},
   {path: 'update-address/:addressID', component:UpdateAddressComponent},
@@ -77,19 +78,19 @@ const routes: Routes = [
   {path: 'user-education', component:UserEducationComponent},
   {path: 'add-personal-file/:userId', component:AddPersonalFileComponent},
   {path: 'update-personal-file/:personalFileId', component:UpdatePersonalFileComponent},
-  {path: 'add-task/:projectId', component: AddTaskComponent},
+  {path: 'add-task/:projectId', component: AddTaskComponent, canActivate:[AuthGuard], data: {roles: ['Admin' , 'HR-Manager', 'HR-Specialist']} },
   {path: 'user-task', component: UserTaskComponent},
   {path: 'project-task/:projectId', component: ProjectTaskComponent},
-  {path: 'add-user-to-task/:taskId', component: AddUserToTaskComponent},
+  {path: 'add-user-to-task/:taskId', component: AddUserToTaskComponent, canActivate:[AuthGuard], data: {roles: ['Admin' , 'HR-Manager', 'HR-Specialist']} },
   {path: 'login', component:LoginComponent},
-  {path: 'admin', component:AdminComponent, canActivate:[AuthGuard], data: {roles: ['Admin', 'Employee']}},
+  {path: 'admin', component:AdminComponent, canActivate:[AuthGuard], data: {roles: ['Admin', 'HR-Manager', 'HR-Specialist']}},
+  {path: 'header', component:HeaderComponent, canActivate:[AuthGuard]},
   {path: 'place-day-off-request/:userId', component:PlaceDayOffRequestComponent},
-  {path: 'admin1', component:AdminComponent},
   {path: 'change-password/:userId', component:ChangePasswordComponent},
   {path: 'forbidden', component:ForbiddenComponent},
   {path: 'role-list', component:RoleListComponent},
-  {path: 'role-user-list', component:RoleUserListComponent},
-  {path: 'add-role', component:AddRoleComponent},
+  {path: 'role-user-list/:roleId', component:RoleUserListComponent},
+  {path: 'add-role', component:AddRoleComponent, canActivate:[AuthGuard], data: {roles: ['Admin']} },
 
 
 
