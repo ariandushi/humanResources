@@ -8,6 +8,7 @@
             <th> Last Name</th>
             <th> Email</th>
             <th> Roles</th>
+            <th> Skills</th>
             <th> User Status</th>
         </tr>
     </thead>
@@ -24,12 +25,21 @@
                     </li>
                 </ul>
             </td>
+            <td> 
+                <ul>
+                    <li *ngFor="let skill of user.skills">
+                        {{ skill.skillName}}
+                    </li>
+                </ul>
+            </td>
             <td> {{ user.usersStatus ? 'Active' : 'Inactive' }}</td>
             <td>
                 <button mat-button [matMenuTriggerFor]="menu" >Actions</button>
 <mat-menu #menu="matMenu">
     <button mat-menu-item (click)="openRoleDialog(user.userId)"  *ngIf="loginService.roleMatch(['Admin'])">Assign Role</button>
     <button mat-menu-item (click)="openRemoveRoleDialog(user.userId)"  *ngIf="loginService.roleMatch(['Admin'])">Remove Role</button>
+    <button mat-menu-item (click)="openSkillDialog(user.userId)" *ngIf="loginService.roleMatch(['Admin', 'HR-Manager', 'HR-Specialist'])">Assign Skill</button>
+    <button mat-menu-item (click)="openRemoveSkillDialog(user.userId)" *ngIf="loginService.roleMatch(['Admin', 'HR-Manager', 'HR-Specialist'])">Remove Skill</button>
     <button mat-menu-item (click)="updateUser(user.userId)" *ngIf="loginService.roleMatch(['Admin', 'HR-Manager', 'HR-Specialist'])">Update</button>
     <button mat-menu-item (click)="navigateToProfile(user.userId)"  *ngIf="loginService.roleMatch(['Admin', 'HR-Manager', 'HR-Specialist'])" >Profile</button>
 </mat-menu>

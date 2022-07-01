@@ -2,12 +2,7 @@
     <h3>Add Experience</h3>
     <form (ngSubmit)="onSubmit()">
     
-      
-        <div class="form-group">
-            <label>userid</label>
-            <input type="text" class="form-control" id="userId" 
-                [(ngModel)] = "certification.userId" name="userId">
-        </div>
+
         <div class="form-group">
             <label>Certification Name</label>
             <input type="text" class="form-control" id="certificationName" 
@@ -23,6 +18,17 @@
             <input type="text" class="form-control" id="expirationDate" 
                 [(ngModel)] = "certification.expirationDate" name="expirationDate">
         </div>
+        <div class="form-group">
+            <label>Releasing Authority</label>
+            <input type="text" class="form-control" id="releasingAuthority" 
+                [(ngModel)] = "certification.releasingAuthority" name="releasingAuthority">
+        </div>
+        <div class="form-group">
+            <label>Link of Certificate</label>
+            <input type="text" class="form-control" id="linkOfCertification" 
+                [(ngModel)] = "certification.linkOfCertification" name="linkOfCertification">
+        </div>
+        
         
         <button class="btn btn-success" type="submit">Submit</button>
     </form>

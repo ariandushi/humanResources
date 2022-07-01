@@ -26,6 +26,7 @@ export class AdminComponent implements OnInit {
   user:User=new User();
   users: User[];
   dayOff: DayOff;
+  dayOffStatus: DayOffStatus;
   constructor(private dayOffService:DayOffService, private route: ActivatedRoute,private userService: UserService,private userAuthService: UserAuthService,
     private router: Router) { let bbb =this.userAuthService.getToken();
       const decodedToken = this.helper.decodeToken(bbb);
@@ -38,20 +39,20 @@ export class AdminComponent implements OnInit {
 
   ngOnInit(): void {
     // this.u/serId = this.route.snapshot.params['userId'];
-;
-    // let bbb =this.userAuthService.getToken();
-    // const decodedToken = this.helper.decodeToken(bbb);
-    // console.log(decodedToken);
-    // this.userService.getUserById(decodedToken.userId).subscribe(data=>{
-    //   this.user=data;
-    //   console.log(this.user);
-    // });
+
+    let bbb =this.userAuthService.getToken();
+    const decodedToken = this.helper.decodeToken(bbb);
+    console.log(decodedToken);
+    this.userService.getUserById(decodedToken.userId).subscribe(data=>{
+      this.user=data;
+      console.log(this.user);
+    });
     // // merr token nga localstorage , shif rolin
     // //nqs nuk esht admin beje logout
-    // this.userService.getUsersList().subscribe(data=>{
-    //   this.users=data;
-    // },error=>console.log(error));
-    // this.getDaysOff();
+    this.userService.getUsersList().subscribe(data=>{
+      this.users=data;
+    },error=>console.log(error));
+    this.getDaysOff();
   }
 
   getDaysOff(){

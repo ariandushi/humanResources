@@ -46,9 +46,12 @@
                 [(ngModel)] = "user.mobile" name="mobile">
         </div>
         <div class="form-group">
-            <label>Starting Day</label>
-            <input type="text" class="form-control" id="startingDay" 
-                [(ngModel)] = "user.startingDay" name="startingDay">
+            <label> Starting Day</label>
+            <input matInput [matDatepicker]="picker1" id="startingDay"
+             [(ngModel)] = "user.startingDay" name="startingDay">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
         </div>
         <div class="form-group">
             <label>Second Contact</label>

@@ -39,6 +39,9 @@ import { RoleUserListComponent } from './Roles/role-user-list/role-user-list.com
 import { AddRoleComponent } from './Roles/add-role/add-role.component';
 import { UpdateAddressComponent } from './Address/update-address/update-address.component';
 import { HeaderComponent } from './header/header.component';
+import { AddSkillComponent } from './Skills/add-skill/add-skill.component';
+import { SkillListComponent } from './Skills/skill-list/skill-list.component';
+import { SkillUserListComponent } from './Skills/skill-user-list/skill-user-list.component';
 
 
 const routes: Routes = [
@@ -92,7 +95,9 @@ const routes: Routes = [
   {path: 'role-user-list/:roleId', component:RoleUserListComponent},
   {path: 'add-role', component:AddRoleComponent, canActivate:[AuthGuard], data: {roles: ['Admin']} },
 
-
+  {path: 'add-skill', component:AddSkillComponent ,  canActivate:[AuthGuard], data: {roles: ['Admin', 'HR-Manager', 'HR-Specialist']}},
+  {path: 'skill-list', component:SkillListComponent},
+  {path: 'skill-user-list/:skillId', component:SkillUserListComponent},
 
   {path:'', redirectTo:'login', pathMatch:'full'}
 ];

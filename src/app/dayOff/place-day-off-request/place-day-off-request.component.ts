@@ -35,7 +35,7 @@ export class PlaceDayOffRequestComponent implements OnInit {
     }, error=>console.log(error));
   }
   goToUserProfile(userId:Guid){
-    this.router.navigate(['profile', userId]);
+    this.router.navigate(['/profile', userId]);
   }
   public changeStatus(value){
   this.dayOff.dayOffPermission = value.value;

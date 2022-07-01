@@ -220,7 +220,7 @@ export class ProfileComponent implements OnInit {
     this.router.navigate(['add-certifications', userId]);
   }
   updateCertificationByCertificationId(certificationID:Guid){
-    this.router.navigate(['update-certification', certificationID]);
+    this.router.navigate(['update-certifications', certificationID]);
   }
   deleteCertification(certificationID:Guid){
     this.certificationsService.deleteCertification(certificationID).subscribe(data=>{

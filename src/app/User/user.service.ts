@@ -69,6 +69,14 @@ export class UserService {
   deleteUser(userId: Guid):Observable<Object>{
     return this.httpClient.delete(`${this.baseURL+"/deleteUser"}/${userId}`);
   }
-
+  getUsersBySkillId(skillId:Guid):Observable<User[]>{
+    return this.httpClient.get<User[]>(`${this.baseURL+"/getUsersBySkill"}/${skillId}`);
+  }
+  assignSkillToUser(userId: Guid, skillId: Guid): Observable<Object>{
+    return this.httpClient.patch(`${this.baseURL+"/assignSkill"}/${userId}/skillId/${skillId}`, null);
+  }
+  removeSkillFromUser(userId: Guid, skillId: Guid): Observable<Object>{
+    return this.httpClient.patch(`${this.baseURL+"/removeSkill"}/${userId}/skillId/${skillId}`, null);
+  }
   
 }

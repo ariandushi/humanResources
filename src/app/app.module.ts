@@ -65,6 +65,12 @@ import { UserPersonalFileComponent } from './Personal Files/user-personal-file/u
 import { RoleDialogComponent } from './User/role-dialog/role-dialog.component';
 import { RemoveRoleDialogComponent } from './User/remove-role-dialog/remove-role-dialog.component';
 import { RemoveUserDialogComponent } from './Project/remove-user-dialog/remove-user-dialog.component';
+import { DatePipe } from '@angular/common';
+import { AddSkillComponent } from './Skills/add-skill/add-skill.component';
+import { SkillListComponent } from './Skills/skill-list/skill-list.component';
+import { SkillUserListComponent } from './Skills/skill-user-list/skill-user-list.component';
+import { AddSkillDialogComponent } from './User/add-skill-dialog/add-skill-dialog.component';
+import { RemoveSkillDialogComponent } from './User/remove-skill-dialog/remove-skill-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -110,7 +116,12 @@ import { RemoveUserDialogComponent } from './Project/remove-user-dialog/remove-u
     UserPersonalFileComponent,
     RoleDialogComponent,
     RemoveRoleDialogComponent,
-    RemoveUserDialogComponent
+    RemoveUserDialogComponent,
+    AddSkillComponent,
+    SkillListComponent,
+    SkillUserListComponent,
+    AddSkillDialogComponent,
+    RemoveSkillDialogComponent
     
   ],
   imports: [
@@ -142,6 +153,7 @@ import { RemoveUserDialogComponent } from './Project/remove-user-dialog/remove-u
   },
   LoginComponent,
   UserService,
+  [DatePipe]
 
   ],
   bootstrap: [AppComponent]

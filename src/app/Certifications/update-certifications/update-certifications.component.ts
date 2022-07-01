@@ -14,6 +14,7 @@ import { CertificationsService } from '../certifications.service';
 export class UpdateCertificationsComponent implements OnInit {
 
   userId:Guid;
+  certificationID:Guid;
   certifications: Certification[];
   user: User=new User();
   certification: Certification = new Certification();
@@ -22,17 +23,14 @@ export class UpdateCertificationsComponent implements OnInit {
     private certificationsService: CertificationsService, private router: Router) { }
 
   ngOnInit(): void {
-    this.userId = this.route.snapshot.params['userId'];
-    //;
-    this.userService.getUserById(this.userId).subscribe(data => {
-      
-      this.user = data;
-      //this.user.addressID
-    }, error =>console.log(error));
+    // this.userId = this.route.snapshot.params['userId'];
+    // this.userService.getUserById(this.userId).subscribe(data => {
+    //   this.user = data;
+    // }, error =>console.log(error));
 
-
-    this.certificationsService.getCertificationByUserId(this.userId).subscribe(data => {
-      this.certifications = data;
+    this.certificationID = this.route.snapshot.params['certificationID'];
+    this.certificationsService.getCertificationByCertificationId(this.certificationID).subscribe(data => {
+      this.certification = data;
     }, error=>console.log(error));
   }
 
@@ -40,8 +38,11 @@ export class UpdateCertificationsComponent implements OnInit {
     this.router.navigate(['add-certifications', userId]);
   }
 
-  updateCert(userId:Guid){
-    this.router.navigate(['update-certifications', userId]);
+  onSubmit(){
+    this.certificationsService.editCertification(this.certificationID, this.certification).subscribe(data=>{
+      this.router.navigate(['profile', this.certification.userId]);
+
+    })
   }
 
 }

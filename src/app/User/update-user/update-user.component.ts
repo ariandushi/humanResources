@@ -37,18 +37,11 @@ export class UpdateUserComponent implements OnInit {
   }*/
   
   onSubmit(){
-  //   debugger;
-  //   if(this.user.dateOfBirth != null) {
+    debugger;
+    // let d = new Date();
+    // new Date(d.getFullYear(), d.getMonth(), d.getDate(), d.getHours(), d.getMinutes() - d.getTimezoneOffset()).toISOString();
+    // var temp =(moment.utc(local.date));
 
-  //     const date = new Date(this.user.dateOfBirth);
-  //     const offset = date.getTimezoneOffset();
-  //   if (offset < 0) {
-  //     date.setHours(12,0,0);
-  // }
-  // return date.toISOString().substring(0,10);
-
-  //   }
-    
     this.userService.updateUser(this.userId, this.user).subscribe( data =>{
       this.goToUserProfile(this.userId);
     }

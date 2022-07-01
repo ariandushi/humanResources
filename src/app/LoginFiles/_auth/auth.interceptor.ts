@@ -21,7 +21,7 @@ export class AuthInterceptor implements HttpInterceptor{
       const decodedToken = this.helper.decodeToken(token);
   
       if(decodedToken != undefined ){
-      //req = this.addToken(req, token);
+      req = this.addToken(req, token);
       }
       return next.handle(req).pipe(
           catchError(

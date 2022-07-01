@@ -7,7 +7,7 @@
   <ul class = "navbar-nav" *ngIf="isUserLoggedIn" >
 
   <li class = "nav-item">
-    <a routerLink="admin"  *ngIf="loginService.roleMatch(['Admin'])" routerLinkActive="active" class="nav-link" >Admin Panel</a>
+    <a routerLink="admin"  *ngIf="loginService.roleMatch(['Admin', 'HR-Manager', 'HR-Specialist'])" routerLinkActive="active" class="nav-link" >HR Panel</a>
   </li>&nbsp;&nbsp;
   
 
@@ -35,9 +35,16 @@
     <a class="nav-link dropdown-toggle"   href="#" id="dropdown10" data-bs-toggle="dropdown" aria-expanded="false">Roles</a>
     <ul class="dropdown-menu" aria-labelledby="dropdown10">
       <li><a routerLink="role-list" routerLinkActive="active" class="dropdown-item" >Role List</a></li>
-      <li><a routerLink="add-role" routerLinkActive="active" class="dropdown-item" *ngIf="loginService.roleMatch(['Admin', 'HR-Manager', 'HR-Specialist'])">Add Role</a></li>
+      <li><a routerLink="add-role" routerLinkActive="active" class="dropdown-item" *ngIf="loginService.roleMatch(['Admin'])">Add Role</a></li>
     </ul>
-  </li>  
+  </li> 
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-bs-toggle="dropdown" aria-expanded="false">Skills</a>
+    <ul class="dropdown-menu" aria-labelledby="dropdown10">
+      <li><a routerLink="skill-list" routerLinkActive="active" class="dropdown-item" >Skill List</a></li>
+      <li><a routerLink="add-skill" routerLinkActive="active" class="dropdown-item" *ngIf="loginService.roleMatch(['Admin', 'HR-Manager', 'HR-Specialist'])" >Add Skill</a></li>
+    </ul>
+  </li> 
   </ul>
   <!-- <button *ngIf="!isLoggedIn()" type="button" class="btn btn-success" routerLink="/login">Login</button> -->
   

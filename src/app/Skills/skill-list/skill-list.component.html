@@ -1,0 +1,17 @@
+<h2> Skill List</h2>
+<button (click)="addSkill()" class="btn btn-info">Add Skill</button>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th> skillId</th>
+            <th> skillName</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let skill of skills">
+                <td> {{ skill.skillId}}</td>
+                <td> {{ skill.skillName}}</td>
+                <button (click)="showUsers(skill.skillId)" class="btn btn-info"> Show Users</button>
+                <button (click)="deleteSkill(skill.skillId)" class="btn btn-info"> Delete Skill</button>
+            </tr>
+        </tbody>
+    </table>

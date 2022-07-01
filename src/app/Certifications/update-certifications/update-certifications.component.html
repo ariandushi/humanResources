@@ -1,35 +1,35 @@
-<div class="col-sm-12">
-    <button (click)="addCertification(user.userId)" class="btn btn-info">Add Certification</button>
-</div>
-    <tr *ngFor="let certification of certifications">
-      <h6 class="d-flex align-items-center mb-3">Certification</h6>
-      <td> {{ certification.userId}</td>
-      <div class="progress mb-3" style="height: 5px">
-        <div class="progress-bar bg-primary" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+<div class="col-md-8 offset-md-3">
+  <h3>Update Certification</h3>
+  <form (ngSubmit)="onSubmit()">
+  
+
+      <div class="form-group">
+          <label>Certification Name</label>
+          <input type="text" class="form-control" id="certificationName" 
+              [(ngModel)] = "certification.certificationName" name="certificationName">
       </div>
-      <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">assignment</i>EXP</h6>
-      <td> {{ certification.certificationID}}</td>
-      <div class="progress mb-3" style="height: 5px">
-        <div class="progress-bar bg-primary" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
+      <div class="form-group">
+          <label>Certification Year</label>
+          <input type="text" class="form-control" id="certificationYear" 
+              [(ngModel)] = "certification.certificationYear" name="certificationYear">
       </div>
-      <td> {{ certification.certificationName}}</td>
-      <div class="progress mb-3" style="height: 5px">
-        <div class="progress-bar bg-primary" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
+      <div class="form-group">
+          <label>Expiration Date</label>
+          <input type="text" class="form-control" id="expirationDate" 
+              [(ngModel)] = "certification.expirationDate" name="expirationDate">
       </div>
-      <td> {{ certification.certificationYear}}</td>
-      <div class="progress mb-3" style="height: 5px">
-        <div class="progress-bar bg-primary" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+      <div class="form-group">
+          <label>Releasing Authority</label>
+          <input type="text" class="form-control" id="releasingAuthority" 
+              [(ngModel)] = "certification.releasingAuthority" name="releasingAuthority">
       </div>
-      <td> {{ certification.expirationDate}}</td>
-      <div class="progress mb-3" style="height: 5px">
-        <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
+      <div class="form-group">
+          <label>Link of Certificate</label>
+          <input type="text" class="form-control" id="linkOfCertification" 
+              [(ngModel)] = "certification.linkOfCertification" name="linkOfCertification">
       </div>
-      <td> {{ certification.releasingAuthority}}</td>
-      <div class="progress mb-3" style="height: 5px">
-        <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
-      <td> {{ certification.linkOfCertification}}</td>
-      <div class="progress mb-3" style="height: 5px">
-        <div class="progress-bar bg-primary" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
-    </tr>
+      
+      
+      <button class="btn btn-success" type="submit">Submit</button>
+  </form>
+  </div>

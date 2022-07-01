@@ -568,18 +568,14 @@
                       <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th> userId</th>
-                                <th> personalFileId</th>
+
                                 <th> idCard</th>
                                 <th> degree</th>
                                 <th> workingSkills</th>
-                                <th> Roles</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let personalFile of personalFiles">
-                                <td> {{ personalFile.userId}}</td>
-                                <td> {{ personalFile.personalFileId}}</td>
                                 <td> {{ personalFile.idCard}}</td>
                                 <td> {{ personalFile.degree}}</td>
                                 <td> {{ personalFile.workingSkills}}</td>
@@ -601,16 +597,22 @@
                       <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th> userId</th>
-                                <th> certificationId</th>
                                 <th> Certification Name</th>
+                                <th> Year</th>
+                                <th> Releasing Authority</th>
+                                <th> Expiration Date</th>
+                                <th> Link of Certificate</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let certification of certifications">
-                                <td> {{ certification.userId}}</td>
-                                <td> {{ certification.certificationID}}</td>
                                 <td> {{ certification.certificationName}}</td>
+                                <td> {{ certification.certificationYear}}</td>
+                                <td> {{ certification.releasingAuthority}}</td>
+                                <td> {{ certification.expirationDate}}</td>
+                                <td> {{ certification.linkOfCertification}}</td>
+
+
                                 <td>
                                     <button mat-button [matMenuTriggerFor]="menu">Actions</button>
                     <mat-menu #menu="matMenu">
@@ -629,16 +631,24 @@
                       <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th> userId</th>
-                                <th> educationId</th>
                                 <th> Degree</th>
-                            </tr>
+                                <th> University Name</th>
+                                <th> Faculty Name</th>
+                                <th> Start Time</th>
+                                <th> End Time</th>
+                                <th> Average</th>
+
+                              </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let education of educations">
-                                <td> {{ education.userId}}</td>
-                                <td> {{ education.educationId}}</td>
                                 <td> {{ education.degree}}</td>
+                                <td> {{ education.universityName}}</td>
+                                <td> {{ education.facultyName}}</td>
+                                <td> {{ education.startTime}}</td>
+                                <td> {{ education.endTime}}</td>
+                                <td> {{ education.average}}</td>
+
                                 <td>
                                     <button mat-button [matMenuTriggerFor]="menu">Actions</button>
                     <mat-menu #menu="matMenu">
@@ -658,16 +668,22 @@
                       <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th> userId</th>
-                                <th> experienceId</th>
                                 <th> Company</th>
+                                <th> Position</th>
+                                <th> Start Time</th>
+                                <th> End Time</th>
+                                <th> Description</th>
+
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let experience of experiences">
-                                <td> {{ experience.userId}}</td>
-                                <td> {{ experience.expId}}</td>
-                                <td> {{ experience.company}}</td>
+                              <td> {{ experience.company}}</td>
+                                <td> {{ experience.position}}</td>
+                                <td> {{ experience.startTime}}</td>
+                                <td> {{ experience.endTime}}</td>
+                                <td> {{ experience.description}}</td>
+
                                 <td>
                                     <button mat-button [matMenuTriggerFor]="menu">Actions</button>
                     <mat-menu #menu="matMenu">
@@ -686,18 +702,19 @@
                         <thead>
                             <tr>
                                 <!-- <th> project Name</th> -->
-                                <th> taskId</th>
-                                <th> Task Name</th>
+                                 <th> Task Name</th>
                                 <th> Task Status</th>
+                                <th> Task Description</th>
+
 
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let task of tasks">
                                 <!-- <td> {{ task.projectName }}</td> -->
-                                <td> {{ task.taskId }}</td>
                                 <td> {{ task.taskName }}</td>
                                 <td> {{ task.taskStatus }}</td>
+                                <td> {{ task.description }}</td>
 
                                 <td>
                                   <button (click)="finishedTask(task.taskId)" class="btn btn-info">Finish Task</button>

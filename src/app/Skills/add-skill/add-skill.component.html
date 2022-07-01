@@ -1,0 +1,12 @@
+<div class="col-md-8 offset-md-3">
+    <h3>Add Skill</h3>
+    <form (ngSubmit)="onSubmit()">
+    
+        <div class="form-group">
+            <label> Skill Name</label>
+            <input type="text" class="form-control" id="skillName" 
+                [(ngModel)] = "skill.skillName" name="skillName">
+        </div>
+        <button class="btn btn-success" type="submit">Submit</button>
+    </form>
+    </div>

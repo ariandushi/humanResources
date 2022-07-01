@@ -11,6 +11,8 @@ import { RoleDialogComponent } from '../role-dialog/role-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { RemoveRoleDialogComponent } from '../remove-role-dialog/remove-role-dialog.component';
 import { LoginService } from 'src/app/LoginFiles/login.service';
+import { AddSkillDialogComponent } from '../add-skill-dialog/add-skill-dialog.component';
+import { RemoveSkillDialogComponent } from '../remove-skill-dialog/remove-skill-dialog.component';
 
 @Component({
   selector: 'app-user-list',
@@ -32,6 +34,25 @@ export class UserListComponent implements OnInit {
   openRemoveRoleDialog(userId: Guid) {
     console.log(userId);
     const dialogRef = this.dialog.open(RemoveRoleDialogComponent, {data: {
+      userId,
+    }});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+      this.getUsers();
+    });
+  }
+  openSkillDialog(userId: Guid) {
+    const dialogRef = this.dialog.open(AddSkillDialogComponent, {data: {
+      userId,
+    }});
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+      this.getUsers();
+    });
+  }
+  openRemoveSkillDialog(userId: Guid) {
+    console.log(userId);
+    const dialogRef = this.dialog.open(RemoveSkillDialogComponent, {data: {
       userId,
     }});
     dialogRef.afterClosed().subscribe(result => {

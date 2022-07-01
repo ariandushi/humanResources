@@ -8,4 +8,6 @@ export class Task{
     taskId: Guid;
     taskStatus: TaskStatus;
     taskName: String;
+    description: String;
+
 }
