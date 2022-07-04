@@ -1,8 +1,8 @@
+import { Task } from './task';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Guid } from 'guid-typescript';
 import { Observable } from 'rxjs';
-import { Task } from 'c:/Users/Arian/Desktop/frontend/humanResources/src/app/Task/task';
 
 @Injectable({
   providedIn: 'root'
